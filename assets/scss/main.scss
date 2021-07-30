@@ -1,0 +1,42 @@
+@import "./fonts.scss";
+@import "./variables.scss";
+
+html,
+body,
+span,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+ul,
+ol,
+.nav-lin {
+  font-family: "proxima_nova_rgregular", sans-serif !important;
+  scroll-behavior: smooth;
+}
+
+.btn-imp-secondary {
+  border-radius: 15px;
+  color: #000000;
+  text-transform: capitalize;
+  background-color: $SECONDARY-COLOR;
+}
+
+.text-primary {
+  color: $PRIMARY-COLOR !important;
+}
+
+.footer {
+  background-color: $PRIMARY-COLOR !important;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1228px;
+  }
+}
