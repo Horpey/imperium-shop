@@ -145,3 +145,13 @@ ol,
     color: #cbdfab;
   }
 }
+a.text-primary:focus,
+a.text-primary:hover {
+  color: $PRIMARY-COLOR !important;
+}
+a.bg-primary:focus,
+a.bg-primary:hover,
+button.bg-primary:focus,
+button.bg-primary:hover {
+  background-color: $PRIMARY-COLOR !important;
+}
