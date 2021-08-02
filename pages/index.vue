@@ -37,7 +37,7 @@
     <div class="calculator-view">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-md-7">
+          <div class="col-md-7 mb-sm">
             <div class="media">
               <a class="d-flex" href="#">
                 <img src="/images/svgs/light-outline.svg" alt="" />
@@ -81,7 +81,7 @@
             </div>
           </div>
           <div class="col-md-8 px-0">
-            <div class="row">
+            <div class="row margin-non">
               <div class="col-md-6 px-0">
                 <div class="solar-img-div">
                   <img src="/images/solar-panel.png" height="194" alt="" />
@@ -99,7 +99,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row margin-non">
               <div class="col-md-8 px-0">
                 <div class="complete-sol invertersys">
                   <div class="row align-items-center">
@@ -208,7 +208,7 @@
                 Click here
               </nuxt-link>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 hide-sm">
               <img src="/images/specta-card.png" height="170" alt="" />
             </div>
           </div>
@@ -279,7 +279,7 @@
               <img
                 src="/images/power-user.png"
                 style="width: 90%"
-                class="img-fluid"
+                class="img-fluid mb-sm"
                 alt=""
               />
             </div>
@@ -448,5 +448,32 @@ export default {
 .makeRequest {
   background: #dceac7;
   padding: 66px 0px;
+}
+@media only screen and (max-width: 768px) {
+  .text-head {
+    font-size: 2.8rem;
+    line-height: 50px;
+  }
+  .card-specta .head {
+    padding: 10px;
+  }
+  .hide-sm {
+    display: none;
+  }
+  .mb-sm {
+    margin-bottom: 32px;
+  }
+  .margin-non {
+    margin: 0px;
+  }
+  .power-service {
+    font-size: 23px;
+    img {
+      margin: 0;
+    }
+  }
+  .invertersys {
+    height: 430px;
+  }
 }
 </style>
