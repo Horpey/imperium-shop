@@ -288,3 +288,54 @@ button.bg-primary:hover {
 .bg-white .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
+.text-head {
+  font-weight: 800;
+  font-size: 4rem;
+  line-height: 69px;
+}
+.section-pd {
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+.card-specta {
+  text-align: center;
+  background: #cbdfab;
+  border-radius: 40px;
+  .head {
+    font-weight: bold;
+    font-size: 42px;
+    line-height: 51px;
+    color: #255e13;
+  }
+}
+.makeRequest {
+  background: #dceac7;
+  padding: 66px 0px;
+}
+@media only screen and (max-width: 768px) {
+  .text-head {
+    font-size: 2.8rem;
+    line-height: 50px;
+  }
+  .card-specta .head {
+    padding: 10px;
+  }
+  .hide-sm {
+    display: none;
+  }
+  .mb-sm {
+    margin-bottom: 32px;
+  }
+  .margin-non {
+    margin: 0px;
+  }
+  .power-service {
+    font-size: 23px;
+    img {
+      margin: 0;
+    }
+  }
+  .invertersys {
+    height: 430px;
+  }
+}
