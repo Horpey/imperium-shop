@@ -33,11 +33,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    "ant-design-vue/dist/antd.css",
-    "@/assets/css/argon-design-system.min.css",
-    "@/assets/scss/main.scss"
-  ],
+  css: ["ant-design-vue/dist/antd.css", "@/assets/scss/main.scss"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ["@/plugins/antd-ui"],

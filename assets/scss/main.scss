@@ -1,5 +1,6 @@
 @import "./fonts.scss";
 @import "./variables.scss";
+@import "./utils/index.scss";
 
 html,
 body,
@@ -154,4 +155,97 @@ a.bg-primary:hover,
 button.bg-primary:focus,
 button.bg-primary:hover {
   background-color: $PRIMARY-COLOR !important;
+}
+.section {
+  position: relative;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.media {
+  display: flex;
+  align-items: flex-start;
+  .media-body {
+    flex: 1;
+  }
+}
+
+.position-sticky {
+  position: sticky !important;
+}
+@media (min-width: 992px) {
+  .navbar-expand-lg {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+  }
+  .navbar-expand-lg .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+  }
+  .navbar-expand-lg .navbar-nav {
+    flex-direction: row;
+  }
+  .ml-lg-auto,
+  .mx-lg-auto {
+    margin-left: auto !important;
+  }
+  .navbar-nav .nav-item {
+    margin-right: 0.5rem;
+  }
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+  .navbar-nav .nav-link {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 0.25rem;
+  }
+}
+.navbar.navbar-main {
+  z-index: 3;
+}
+.top-0 {
+  top: 0;
+}
+.profile-page .card-profile .card-profile-image img,
+.shadow {
+  box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07) !important;
+}
+.bg-white {
+  background-color: #fff !important;
+}
+.navbar-brand {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.05px;
+  display: inline-block;
+  padding-top: 0.0625rem;
+  padding-bottom: 0.0625rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
+.navbar-brand img {
+  height: 30px;
+}
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.navbar-nav .nav-link {
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-transform: normal;
+  letter-spacing: 0;
+  transition: all 0.15s linear;
+}
+.navbar-nav {
+  align-items: center;
+}
+.bg-white .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
