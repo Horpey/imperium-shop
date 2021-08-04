@@ -16,17 +16,18 @@
         <img src="/images/logo.svg" />
       </nuxt-link>
       <button
+        v-if="!toogle"
         class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbar_global"
-        aria-controls="navbar_global"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
+        @click="toogle = true"
+        style="z-index: 9999"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="navbar-collapse collapse" id="navbar_global">
+      <div
+        :class="{ 'navbar-collapse': true, collapse: true, show: toogle }"
+        id="navbar_global"
+        style="outline: 0"
+      >
         <div class="navbar-collapse-header">
           <div class="row">
             <div class="col-6 collapse-brand">
@@ -36,13 +37,9 @@
             </div>
             <div class="col-6 collapse-close">
               <button
-                type="button"
+                v-if="toogle"
+                @click="toggle = false"
                 class="navbar-toggler"
-                data-toggle="collapse"
-                data-target="#navbar_global"
-                aria-controls="navbar_global"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
               >
                 <span></span>
                 <span></span>
@@ -93,30 +90,17 @@
             </nuxt-link>
           </li>
         </ul>
-        <!-- <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-          <li class="nav-item">
-            <a
-              class="nav-link nav-link-icon"
-              href="https://www.instagram.com/creativetimofficial"
-              target="_blank"
-              data-toggle="tooltip"
-              title="Follow us on Instagram"
-            >
-              <i class="fa fa-instagram"></i>
-              <span class="nav-link-inner--text d-lg-none">Instagram</span>
-            </a>
-          </li>
-          <li class="nav-item d-none d-lg-block">
-            <nuxt-link
-             to="/"
-              target="_blank"
-              class="btn btn-imp-secondary btn-icon"
-            >
-              <span class="nav-link-inner--text">Login</span>
-            </nuxt-link>
-          </li>
-        </ul> -->
       </div>
     </div>
   </nav>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      toogle: false,
+    };
+  },
+  methods: {},
+};
+</script>

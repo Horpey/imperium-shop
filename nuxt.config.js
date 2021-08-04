@@ -24,12 +24,7 @@ export default {
       }
     ],
 
-    script: [
-      { src: "/js/jquery-3.5.1.min.js" },
-      { src: "/js/popper.min.js" },
-      { src: "/js/bootstrap.min.js" },
-      { src: "/js/argon-design-system.min.js" }
-    ]
+    script: []
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
