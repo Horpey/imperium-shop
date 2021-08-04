@@ -76,7 +76,7 @@
                 OFFER PRODUCTS
               </p>
               <nuxt-link class="text-primary" to="/complete"
-                >View all ⟶</nuxt-link
+                >View all</nuxt-link
               >
               <div class="p-5">
                 <img class="img-fluid" src="/images/product-3.png" alt="" />
@@ -227,7 +227,9 @@
             </div>
             <div class="col-4">
               <div class="text-right">
-                <nuxt-link class="sect-link" to="/"> View all ⟶</nuxt-link>
+                <nuxt-link class="sect-link" to="/">
+                  <span> View all</span>
+                </nuxt-link>
               </div>
             </div>
           </div>
@@ -255,7 +257,9 @@
             </div>
             <div class="col-4">
               <div class="text-right">
-                <nuxt-link class="sect-link" to="/"> View all ⟶</nuxt-link>
+                <nuxt-link class="sect-link" to="/">
+                  <span> View all</span>
+                </nuxt-link>
               </div>
             </div>
           </div>
@@ -337,7 +341,9 @@
             </div>
             <div class="col-4">
               <div class="text-right">
-                <nuxt-link class="sect-link" to="/"> View all ⟶</nuxt-link>
+                <nuxt-link class="sect-link" to="/">
+                  <span> View all</span>
+                </nuxt-link>
               </div>
             </div>
           </div>
@@ -365,7 +371,9 @@
             </div>
             <div class="col-4">
               <div class="text-right">
-                <nuxt-link class="sect-link" to="/"> View all ⟶</nuxt-link>
+                <nuxt-link class="sect-link" to="/">
+                  <span> View all</span>
+                </nuxt-link>
               </div>
             </div>
           </div>
