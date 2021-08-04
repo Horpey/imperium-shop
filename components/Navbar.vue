@@ -24,7 +24,11 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div
-        :class="{ 'navbar-collapse': true, collapse: true, show: toogle }"
+        :class="{
+          'navbar-collapse': true,
+          collapse: true,
+          show: toogle == true,
+        }"
         id="navbar_global"
         style="outline: 0"
       >
@@ -38,7 +42,7 @@
             <div class="col-6 collapse-close">
               <button
                 v-if="toogle"
-                @click="toggle = false"
+                @click="toogle = false"
                 class="navbar-toggler"
               >
                 <span></span>
