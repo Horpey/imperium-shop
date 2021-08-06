@@ -12,7 +12,7 @@
               CHOOSE A PACKAGE THAT SUITES YOU FROM OUR VARIETIES OF SPECIAL
               OFFER PRODUCTS
             </p>
-            <nuxt-link class="sect-link" to="/">
+            <nuxt-link class="sect-link" to="/categories/2">
               <span> View all products</span>
             </nuxt-link>
             <div class="p-5">
@@ -33,7 +33,7 @@
                 <p class="grid-descrip">
                   High output and efficiency performance
                 </p>
-                <nuxt-link class="sect-link" to="/">
+                <nuxt-link class="sect-link" to="/categories/2">
                   <span> View all products</span>
                 </nuxt-link>
               </div>
@@ -49,7 +49,7 @@
                       <p class="grid-descrip text-left">
                         High output and efficiency performance
                       </p>
-                      <nuxt-link class="sect-link" to="/">
+                      <nuxt-link class="sect-link" to="/categories/2">
                         <span> View all products</span>
                       </nuxt-link>
                     </div>

@@ -8,7 +8,7 @@
           </div>
           <div class="col-6">
             <div class="text-right">
-              <nuxt-link class="sect-link" to="/">
+              <nuxt-link class="sect-link" to="/categories/2">
                 <span> View all</span>
               </nuxt-link>
             </div>
