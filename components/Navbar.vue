@@ -52,7 +52,6 @@
           </div>
         </div>
         <ul
-          v-if="toogle"
           class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto"
         >
           <li class="nav-item">

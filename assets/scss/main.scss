@@ -315,6 +315,83 @@ button.bg-primary:hover {
 .text-dark {
   color: black;
 }
+.categ-section {
+  background-image: url("/images/category-header.svg");
+  background-size: cover;
+  padding: 70px 0px;
+}
+.categoryHeadd {
+  font-size: 47.6654px;
+  line-height: 52px;
+  color: $PRIMARY-COLOR;
+}
+.category-select {
+  background: $PRIMARY-COLOR;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 14px;
+  margin-top: 23px;
+  span {
+    color: $SECONDARY-COLOR;
+    padding: 0px 15px;
+  }
+  select {
+    display: inline-block;
+    width: unset;
+    background: transparent;
+    color: white;
+    border: 0px;
+    margin-right: 12px;
+    border-left: 1px solid;
+    border-radius: 0px;
+  }
+  select.form-control:focus {
+    background: transparent;
+    border-left: 1px solid;
+    color: white;
+  }
+}
+.rec-heading {
+  font-weight: 600;
+  font-size: 30.4466px;
+  line-height: 37px;
+  color: $PRIMARY-COLOR;
+}
+.ant-pagination-item-active,
+.ant-pagination-item:focus,
+.ant-pagination-item:hover {
+  border-color: $PRIMARY-COLOR;
+  background: $PRIMARY-COLOR;
+  color: white;
+}
+.filterbtn {
+  background: #cbdfab;
+  border-radius: 6px;
+  padding: 9px 22px;
+  color: #255e13;
+}
+.sortRadio {
+  .ant-radio-wrapper {
+    display: block;
+    .ant-radio-checked .ant-radio-inner {
+      border-color: $PRIMARY-COLOR;
+      &::after {
+        background-color: $PRIMARY-COLOR;
+      }
+    }
+    .ant-radio-checked::after {
+      border: 1px solid $PRIMARY-COLOR;
+    }
+  }
+}
+.ant-slider-track,
+.ant-slider:hover .ant-slider-track {
+  background-color: $PRIMARY-COLOR;
+}
+.ant-slider-handle,
+.ant-slider:hover .ant-slider-handle:not(.ant-tooltip-open) {
+  border-color: $PRIMARY-COLOR;
+}
 @media only screen and (max-width: 768px) {
   .text-head {
     font-size: 2.8rem;
@@ -358,5 +435,11 @@ button.bg-primary:hover {
   }
   .complete-sol.shop-all {
     height: 17rem;
+  }
+  .navbar-collapse.collapse {
+    display: none;
+  }
+  .navbar-collapse.collapse.show {
+    display: block;
   }
 }
