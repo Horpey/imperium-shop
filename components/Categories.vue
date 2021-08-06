@@ -12,7 +12,9 @@
               CHOOSE A PACKAGE THAT SUITES YOU FROM OUR VARIETIES OF SPECIAL
               OFFER PRODUCTS
             </p>
-            <nuxt-link class="text-primary" to="/complete">View all</nuxt-link>
+            <nuxt-link class="sect-link" to="/">
+              <span> View all products</span>
+            </nuxt-link>
             <div class="p-5">
               <img class="img-fluid" src="/images/product-3.png" alt="" />
             </div>
@@ -31,9 +33,9 @@
                 <p class="grid-descrip">
                   High output and efficiency performance
                 </p>
-                <nuxt-link class="text-primary" to="/complete"
-                  >View details ⟶</nuxt-link
-                >
+                <nuxt-link class="sect-link" to="/">
+                  <span> View all products</span>
+                </nuxt-link>
               </div>
             </div>
           </div>
@@ -47,9 +49,9 @@
                       <p class="grid-descrip text-left">
                         High output and efficiency performance
                       </p>
-                      <nuxt-link class="text-primary" to="/complete"
-                        >View details ⟶</nuxt-link
-                      >
+                      <nuxt-link class="sect-link" to="/">
+                        <span> View all products</span>
+                      </nuxt-link>
                     </div>
                   </div>
                   <div class="col-md-4">

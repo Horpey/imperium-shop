@@ -1,5 +1,5 @@
 <template>
-  <div class="makeRequest">
+  <div class="makeRequest text-center-sm">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-5">

@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="container">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 col-6">
           <h4 class="footer-heading">Company</h4>
           <ul class="footer-links">
             <li>
@@ -22,7 +22,7 @@
             </li>
           </ul>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 col-6">
           <h4 class="footer-heading">Offerings</h4>
           <ul class="footer-links">
             <li>
@@ -46,10 +46,7 @@
           <h4 class="footer-heading">Get in touch</h4>
           <ul class="footer-links">
             <li>
-              <a href="#"
-                >Any questions? Let us know in store @ 20, Marina, Lagos
-                State</a
-              >
+              <a href="#">20, Marina, Lagos State</a>
             </li>
             <li>
               <nuxt-link to="/">+234 (080) 6413 3937</nuxt-link>

@@ -54,7 +54,7 @@ export default {
       top: 24px;
       right: 24px;
       img {
-        height: 39px;
+        height: 50px;
       }
     }
   }
