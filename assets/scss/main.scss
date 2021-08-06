@@ -353,7 +353,7 @@ button.bg-primary:hover {
 }
 .rec-heading {
   font-weight: 600;
-  font-size: 30.4466px;
+  font-size: 31px;
   line-height: 37px;
   color: $PRIMARY-COLOR;
 }
@@ -441,5 +441,12 @@ button.bg-primary:hover {
   }
   .navbar-collapse.collapse.show {
     display: block;
+  }
+  .cat-img {
+    height: 160px;
+    margin-bottom: 26px;
+  }
+  .rec-heading {
+    font-size: 24px;
   }
 }

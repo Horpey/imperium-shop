@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-3">
-          <img src="/images/solar.png" alt="" />
+          <img class="cat-img" src="/images/solar.png" alt="" />
         </div>
         <div class="col-md-6">
           <h1 class="categoryHeadd f-bold">Solar Panel Systems</h1>
