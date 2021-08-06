@@ -23,6 +23,9 @@ ol,
 .f-bold {
   font-family: "proxima_nova_thextrabold", sans-serif !important;
 }
+.f-semibold {
+  font-family: "proxima_nova_semibold", sans-serif !important;
+}
 
 .btn-imp-secondary {
   border-radius: 15px;
@@ -392,6 +395,25 @@ button.bg-primary:hover {
 .ant-slider:hover .ant-slider-handle:not(.ant-tooltip-open) {
   border-color: $PRIMARY-COLOR;
 }
+.bready {
+  padding-bottom: 17px;
+  border-bottom: 1px solid #0000001f;
+  margin-bottom: 70px;
+}
+.productHeadd {
+  font-size: 36.6654px;
+}
+.quantityInput {
+  input {
+    border: 2px solid;
+    background-color: rgb(244, 248, 237);
+    font-family: "proxima_nova_semibold", sans-serif !important;
+  }
+}
+.productImageView {
+  width: 100%;
+}
+
 @media only screen and (max-width: 768px) {
   .text-head {
     font-size: 2.8rem;
@@ -448,5 +470,11 @@ button.bg-primary:hover {
   }
   .rec-heading {
     font-size: 24px;
+  }
+  .productImageView {
+    width: auto;
+    height: 199px;
+    margin: 0;
+    margin-bottom: 37px;
   }
 }

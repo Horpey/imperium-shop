@@ -2,14 +2,18 @@
   <div>
     <div class="productDiv mb-5">
       <div class="image-view">
-        <img src="/images/solar-panel.jpeg" alt="" />
+        <nuxt-link to="/product/12">
+          <img src="/images/solar-panel.jpeg" alt="" />
+        </nuxt-link>
         <a href="#" class="cart-icon">
           <img src="/images/svgs/card-icon.svg" alt="" />
         </a>
       </div>
-      <h4 class="name f-16">{{ data.name }}</h4>
-      <p class="description">{{ data.description }}</p>
-      <p class="price">{{ data.price }}</p>
+      <nuxt-link to="/product/12">
+        <h4 class="name f-16">{{ data.name }}</h4>
+        <p class="description">{{ data.description }}</p>
+        <p class="price">{{ data.price }}</p>
+      </nuxt-link>
     </div>
   </div>
 </template>

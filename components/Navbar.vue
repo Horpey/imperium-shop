@@ -7,7 +7,6 @@
       navbar-light
       position-sticky
       top-0
-      shadow
       py-2
     "
   >

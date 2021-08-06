@@ -1,9 +1,9 @@
 <template>
   <div>
-    <CategoryHeading />
-    <Breadcrumb :count="2235" />
-    <CategoryProductListing :pageCount="2" :products="products" />
-    <MoreProducts title="RECOMMENDED FOR YOU" :data="products" />
+    <ProducttoCart />
+    <ProductDescription :description="description" />
+    <MoreProducts title="SIMILAR ITEMS YOU MAY LIKE" :data="products" />
+    <MoreProducts title="RECENTLY VIEWED ITEMS" :data="products" />
     <PayWithSpecta />
   </div>
 </template>
@@ -11,6 +11,7 @@
 export default {
   data() {
     return {
+      description: {},
       products: [
         {
           name: "2KVA Inverter",

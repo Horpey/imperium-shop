@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <div style="margin: 100px 0px">
-      <h3 class="rec-heading text-center mb-5">RECOMMENDED FOR YOU</h3>
+      <h3 class="rec-heading text-center mb-5">{{ title }}</h3>
       <div class="row">
         <div
           class="col-md-3"
-          v-for="(deal, index) in recommended"
+          v-for="(deal, index) in data"
           v-if="index < 4"
           :key="index"
         >
@@ -17,6 +17,6 @@
 </template>
 <script>
 export default {
-  props: ["recommended"],
+  props: ["title", "data"],
 };
 </script>
