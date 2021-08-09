@@ -413,7 +413,46 @@ button.bg-primary:hover {
 .productImageView {
   width: 100%;
 }
-
+.paySummary {
+  background: #353535;
+  color: white;
+  font-size: 16px;
+  padding: 10px 19px;
+}
+.btn-checkout {
+  border-radius: 0px;
+  box-shadow: 0px 0px;
+  background: #353535;
+  width: 100%;
+  color: white;
+  margin-top: 21px;
+}
+.p-checkout {
+  font-size: 15px;
+  line-height: 15px;
+  text-decoration-line: underline;
+  color: #353535;
+  margin-bottom: 25px;
+  span {
+    float: right;
+  }
+}
+.div-demarc {
+  border-top: 1px solid #353535;
+  padding-top: 18px;
+}
+.remove-btn {
+  text-decoration: underline;
+  color: darkgray;
+}
+.cart-items {
+  border-bottom: 1px solid gainsboro;
+  padding: 36px 0px;
+}
+.cart-itemimage {
+  height: 184px;
+  margin-bottom: 37px;
+}
 @media only screen and (max-width: 768px) {
   .text-head {
     font-size: 2.8rem;

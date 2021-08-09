@@ -79,7 +79,7 @@
             </nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link to="/" target="_blank" class="nav-link text-primary">
+            <nuxt-link to="/cart" class="nav-link text-primary">
               <img src="/images/svgs/cart.svg" alt="cart" />
             </nuxt-link>
           </li>
