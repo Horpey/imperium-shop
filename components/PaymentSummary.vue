@@ -19,6 +19,18 @@
         <span>$799.77</span>
       </p>
     </div>
-    <nuxt-link to="/" class="btn btn-checkout">Checkout</nuxt-link>
+    <nuxt-link to="/checkout" v-if="route == 'cart'" class="btn btn-checkout"
+      >Proceed to checkout</nuxt-link
+    >
+    <button v-else class="btn btn-checkout">Checkout</button>
   </div>
 </template>
+<script>
+export default {
+  computed: {
+    route() {
+      return this.$route.name.toLowerCase();
+    },
+  },
+};
+</script>

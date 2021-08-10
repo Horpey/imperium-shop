@@ -427,6 +427,11 @@ button.bg-primary:hover {
   color: white;
   margin-top: 21px;
 }
+.btn-checkout:hover,
+.btn-checkout:focus {
+  color: white;
+  background: #696969;
+}
 .p-checkout {
   font-size: 15px;
   line-height: 15px;
