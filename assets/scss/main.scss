@@ -62,7 +62,13 @@ ol,
     max-width: 1228px;
   }
 }
-
+.btn {
+  transition: 0.5s;
+}
+.btn:hover,
+.btn:focus {
+  box-shadow: inset 0 -3.5em 0 0 #0000002d;
+}
 .ht-deals {
   font-weight: 600;
   font-size: 30.4466px;
@@ -150,6 +156,12 @@ ol,
   justify-content: center;
   align-items: center;
   height: 40rem;
+  cursor: pointer;
+  transition: 0.4s all;
+}
+.complete-sol:hover {
+  transform: scale(1.04) translateY(-12px);
+  box-shadow: 1px 7px 16px 0px #00000026;
 }
 .grid-head {
   font-weight: 600;

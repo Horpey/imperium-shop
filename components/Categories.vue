@@ -62,10 +62,10 @@
             </div>
             <div class="col-md-4 px-0">
               <div class="complete-sol shop-all">
-                <h3 class="grid-head">SHOP ALL CATEGORIES</h3>
-
+                <h3 class="grid-head">BATTERIES</h3>
+                <p class="text-dark">High output and efficiency performance</p>
                 <nuxt-link
-                  to="/"
+                  to="/categories/2"
                   target="_blank"
                   class="
                     btn btn-imp-secondary
@@ -76,7 +76,7 @@
                     mt-3
                   "
                 >
-                  Shop here
+                  View all products
                   <img
                     height="30"
                     src="/images/svgs/shop-arrow.svg"
