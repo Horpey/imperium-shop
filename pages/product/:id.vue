@@ -4,7 +4,6 @@
     <ProductDescription :description="description" />
     <MoreProducts title="SIMILAR ITEMS YOU MAY LIKE" :data="products" />
     <MoreProducts title="RECENTLY VIEWED ITEMS" :data="products" />
-    <PayWithSpecta />
   </div>
 </template>
 <script>

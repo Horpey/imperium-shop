@@ -4,7 +4,6 @@
     <Breadcrumb :count="2235" />
     <CategoryProductListing :pageCount="2" :products="products" />
     <MoreProducts title="RECOMMENDED FOR YOU" :data="products" />
-    <PayWithSpecta />
   </div>
 </template>
 <script>

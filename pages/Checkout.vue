@@ -110,6 +110,5 @@
         </div>
       </div>
     </div>
-    <PayWithSpecta />
   </div>
 </template>
