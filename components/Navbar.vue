@@ -53,10 +53,82 @@
         <ul
           class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto"
         >
-          <li class="nav-item">
-            <nuxt-link to="/" target="_blank" class="nav-link text-primary">
-              Products
-            </nuxt-link>
+          <li @mouseover="displayCategories = true" class="nav-item dropdown">
+            <a
+              href="#"
+              class="nav-link text-primary"
+              data-toggle="dropdown"
+              role="button"
+            >
+              <i class="ni ni-ui-04 d-lg-none"></i>
+              <span class="nav-link-inner--text">Products</span>
+            </a>
+            <div
+              @mouseover="displayCategories = true"
+              @mouseleave="displayCategories = false"
+              :class="{
+                'dropdown-menu': true,
+                'dropdown-menu-xl': true,
+                'p-2': true,
+                show: displayCategories,
+              }"
+            >
+              <div class="dropdown-menu-inner">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="dropdownmarg">
+                      <nuxt-link to="/categories/2" class="navdroplink">
+                        <img src="/images/svgs/nav/solar.svg" alt="" />
+                        <p>Solar panels</p>
+                      </nuxt-link>
+                    </div>
+                    <div class="dropdownmarg">
+                      <nuxt-link to="/categories/2" class="navdroplink">
+                        <img src="/images/svgs/nav/inverter.svg" alt="" />
+                        <p>Inverters</p>
+                      </nuxt-link>
+                    </div>
+                    <div class="dropdownmarg">
+                      <nuxt-link to="/categories/2" class="navdroplink">
+                        <img src="/images/svgs/nav/battery.svg" alt="" />
+                        <p>Batteries</p>
+                      </nuxt-link>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="dropdownmarg">
+                      <nuxt-link to="/categories/2" class="navdroplink">
+                        <img src="/images/svgs/nav/accessories.svg" alt="" />
+                        <p>Accessories</p>
+                      </nuxt-link>
+                    </div>
+                    <div class="dropdownmarg">
+                      <nuxt-link to="/categories/2" class="navdroplink">
+                        <img src="/images/svgs/nav/complete.svg" alt="" />
+                        <p>Inverters</p>
+                      </nuxt-link>
+                    </div>
+                    <div class="m-4">
+                      <nuxt-link
+                        to="/"
+                        class="
+                          btn btn-imp-secondary
+                          bg-primary
+                          text-white
+                          btnviewmore
+                          btnarrowlink
+                          btn-icon
+                        "
+                      >
+                        <span class="nav-link-inner--text"
+                          >View all products</span
+                        >
+                      </nuxt-link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </li>
           <li class="nav-item">
             <nuxt-link to="/" target="_blank" class="nav-link text-primary">
@@ -102,8 +174,40 @@ export default {
   data() {
     return {
       toogle: false,
+      displayCategories: false,
     };
   },
   methods: {},
 };
 </script>
+<style lang="scss">
+.dropdown-menu-xl {
+  min-width: 635px;
+  display: none;
+  transition: visibility 0.25s, opacity 0.25s, transform 0.25s;
+  animation: none;
+  opacity: 0;
+  border-radius: 0.3rem;
+  background: #fefefe;
+  box-shadow: 10px 10px 30px #17460933;
+  background-image: url("/images/svgs/nav/logobg.svg");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  border-radius: 0px;
+  margin: -2px ​0px 0px 14px;
+  &.show {
+    display: block;
+    opacity: 1;
+    transition: visibility 0.25s, opacity 0.25s, transform 0.25s;
+  }
+  .navdroplink {
+    p {
+      display: inline;
+      font-weight: bold;
+      color: black;
+      margin-left: 13px;
+      font-size: 14px;
+    }
+  }
+}
+</style>

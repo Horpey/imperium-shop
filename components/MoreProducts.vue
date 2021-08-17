@@ -6,7 +6,7 @@
         <div
           class="col-md-3"
           v-for="(deal, index) in data"
-          v-if="index < 4"
+          v-if="index < 8"
           :key="index"
         >
           <ProductCard :data="deal" />

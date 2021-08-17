@@ -20,71 +20,58 @@
             </div>
           </div>
         </div>
-        <div class="col-md-8 px-0">
-          <div class="row margin-non">
-            <div class="col-md-6 px-0">
-              <div class="solar-img-div">
-                <img src="/images/solar-panel.png" height="194" alt="" />
+        <div class="col-md-5 px-0">
+          <div class="complete-sol invertersys" style="background: #ddeac8">
+            <div class="row align-items-center">
+              <div class="col-md-4">
+                <img src="/images/solar-panel.png" class="img-fluid" alt="" />
               </div>
-            </div>
-            <div class="col-md-6 px-0">
-              <div class="complete-sol solardd">
-                <h3 class="grid-head">SOLAR PANEL SYSTEMS</h3>
-                <p class="grid-descrip">
-                  High output and efficiency performance
-                </p>
-                <nuxt-link class="sect-link" to="/categories/2">
-                  <span> View all products</span>
-                </nuxt-link>
-              </div>
-            </div>
-          </div>
-          <div class="row margin-non">
-            <div class="col-md-8 px-0">
-              <div class="complete-sol invertersys">
-                <div class="row align-items-center">
-                  <div class="col-md-8">
-                    <div class="text-left">
-                      <h3 class="grid-head">INVERTER SYSTEMS</h3>
-                      <p class="grid-descrip text-left">
-                        High output and efficiency performance
-                      </p>
-                      <nuxt-link class="sect-link" to="/categories/2">
-                        <span> View all products</span>
-                      </nuxt-link>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <img src="/images/inverter.png" class="img-fluid" alt="" />
-                  </div>
+              <div class="col-md-8">
+                <div class="text-left">
+                  <h3 class="grid-head">SOLAR PANEL SYSTEMS</h3>
+                  <p class="grid-descrip text-left">
+                    High output and efficiency performance
+                  </p>
+                  <nuxt-link class="sect-link" to="/categories/2">
+                    <span> View all products</span>
+                  </nuxt-link>
                 </div>
               </div>
             </div>
-            <div class="col-md-4 px-0">
-              <div class="complete-sol shop-all">
-                <h3 class="grid-head">BATTERIES</h3>
-                <p class="text-dark">High output and efficiency performance</p>
-                <nuxt-link
-                  to="/categories/2"
-                  target="_blank"
-                  class="
-                    btn btn-imp-secondary
-                    bg-primary
-                    btn-icon
-                    py-2
-                    px-4
-                    mt-3
-                  "
-                >
-                  View all products
-                  <img
-                    height="30"
-                    src="/images/svgs/shop-arrow.svg"
-                    class="ml-2"
-                    alt=""
-                  />
-                </nuxt-link>
+          </div>
+          <div class="complete-sol invertersys">
+            <div class="row align-items-center">
+              <div class="col-md-8">
+                <div class="text-left">
+                  <h3 class="grid-head">INVERTER SYSTEMS</h3>
+                  <p class="grid-descrip text-left">
+                    High output and efficiency performance
+                  </p>
+                  <nuxt-link class="sect-link" to="/categories/2">
+                    <span> View all products</span>
+                  </nuxt-link>
+                </div>
               </div>
+              <div class="col-md-4">
+                <img src="/images/inverter.png" class="img-fluid" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 px-0">
+          <div class="complete-sol">
+            <h3 class="grid-head">BATTERY SYSTEMS</h3>
+            <p class="grid-descrip">HIGH OUTPUT AND EFFICIENT PERFORMANCE</p>
+            <nuxt-link class="sect-link" to="/categories/2">
+              <span> View all products</span>
+            </nuxt-link>
+            <div class="p-5">
+              <img
+                style="height: 227px; margin-top: 40px"
+                class="img-fluid"
+                src="/images/battery.png"
+                alt=""
+              />
             </div>
           </div>
         </div>

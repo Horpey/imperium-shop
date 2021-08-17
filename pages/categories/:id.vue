@@ -41,6 +41,16 @@ export default {
           description: "5kva inverter",
           price: "₦ 160,000",
         },
+        {
+          name: "2KVA Inverter",
+          description: "Pure sine wave inverter, ups, avr (stabilizer)",
+          price: "₦ 162,563",
+        },
+        {
+          name: "5KVA",
+          description: "5kva inverter",
+          price: "₦ 160,000",
+        },
       ],
     };
   },

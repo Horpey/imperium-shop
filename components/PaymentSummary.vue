@@ -22,7 +22,10 @@
     <nuxt-link to="/checkout" v-if="route == 'cart'" class="btn btn-checkout"
       >Proceed to checkout</nuxt-link
     >
-    <button v-else class="btn btn-checkout">Checkout</button>
+    <div v-else>
+      <button class="btn btn-checkout mb-3">Outright payment</button>
+      <button class="btn btn-checkout mt-0">Least to Own</button>
+    </div>
   </div>
 </template>
 <script>
