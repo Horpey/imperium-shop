@@ -8,7 +8,7 @@
           </div>
           <div class="col-6">
             <div class="text-right">
-              <nuxt-link class="sect-link" to="/categories/2">
+              <nuxt-link class="sect-link" :to="`/categories/${category}`">
                 <span> View all</span>
               </nuxt-link>
             </div>
@@ -19,11 +19,11 @@
         <div class="row">
           <div
             class="col-md-3"
-            v-for="(deal, index) in hotDeals"
+            v-for="(product, index) in products"
             v-if="index < 4"
             :key="index"
           >
-            <ProductCard :data="deal" />
+            <ProductCard :data="product" />
           </div>
         </div>
       </div>
@@ -32,6 +32,11 @@
 </template>
 <script>
 export default {
-  props: ["category", "hotDeals"],
+  props: ["category", "products"],
 };
 </script>
+<style lang="scss" scoped>
+.sect-heading {
+  text-transform: uppercase;
+}
+</style>

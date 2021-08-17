@@ -14,7 +14,7 @@
           <div class="text-center-sm">
             <img
               class="img-fluid productImageView"
-              src="/images/inverter-c.png"
+              :src="product.display_image"
               alt=""
             />
           </div>
@@ -22,16 +22,12 @@
         <div class="col-md-5">
           <div class="text-left">
             <h1 class="categoryHeadd f-bold mb-3 productHeadd">
-              STRING INVERTER
+              {{ product.name }}
             </h1>
             <p class="mb-0 text-dark">
-              Gain access to over 14,570,000 Solar Panel Products
+              {{ product.description }}
             </p>
-            <p class="mb-0 text-dark">
-              This product can be used to powe every of your home appliances
-              ranging from laptop, ceiling fans, fridge and more...
-            </p>
-            <h4 class="mt-3 text-dark f-semibold">₦ 55,000</h4>
+            <h4 class="mt-3 text-dark f-semibold"></h4>
             <form>
               <div class="row">
                 <div class="col-6 col-md-4">
@@ -57,9 +53,8 @@
                   <a-input-number
                     class="quantityInput"
                     id="inputNumber"
-                    v-model="amount"
+                    v-model="quantity"
                     :min="1"
-                    :max="10"
                     @change="onChange"
                   />
                 </div>
@@ -86,9 +81,10 @@
 </template>
 <script>
 export default {
+  props: ["product"],
   data() {
     return {
-      amount: 3,
+      quantity: 1,
     };
   },
   methods: {
@@ -98,3 +94,16 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+.productHeadd {
+  text-transform: capitalize;
+}
+.productImageview {
+  width: 80%;
+  position: relative;
+  -o-object-position: center;
+  object-position: center;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+</style>

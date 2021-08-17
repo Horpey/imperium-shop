@@ -3,13 +3,16 @@
     <MainHeader />
     <Calculator />
     <Categories />
-    <HotDeals :hotDeals="hotDeals" />
+    <HotDeals :hotDeals="products.solarPanel" />
     <PayWithSpecta />
-    <CategoryProducts category="SOLAR PANEL" :hotDeals="hotDeals" />
-    <CategoryProducts category="INVERTERS" :hotDeals="hotDeals" />
+    <CategoryProducts category="solar panel" :products="products.solarPanel" />
+    <CategoryProducts category="inverter" :products="products.inverter" />
     <MakeRequest />
-    <CategoryProducts category="BATTERIES" :hotDeals="hotDeals" />
-    <CategoryProducts category="COMPLETE SOLUTIONS" :hotDeals="hotDeals" />
+    <CategoryProducts category="batteries" :products="products.battery" />
+    <CategoryProducts
+      category="complete solution"
+      :products="products.bundle"
+    />
   </div>
 </template>
 
@@ -17,6 +20,13 @@
 export default {
   data() {
     return {
+      loading: false,
+      products: {
+        solarPanel: [],
+        inverter: [],
+        battery: [],
+        bundle: [],
+      },
       hotDeals: [
         {
           name: "2KVA Inverter",
@@ -50,6 +60,43 @@ export default {
         },
       ],
     };
+  },
+  mounted() {
+    this.getProductsbyCategory("solar panel");
+    this.getProductsbyCategory("inverter");
+    this.getProductsbyCategory("battery");
+    this.getProductsbyCategory("bundle");
+  },
+  methods: {
+    getProductsbyCategory(category) {
+      this.loading = true;
+      let payload = {
+        path: `product?category=${category}&per_page=4`,
+      };
+      this.$store
+        .dispatch("getRequest", payload)
+        .then((resp) => {
+          this.loading = false;
+          switch (category) {
+            case "solar panel":
+              this.products.solarPanel = resp.data.data.result;
+              break;
+            case "inverter":
+              this.products.inverter = resp.data.data.result;
+              break;
+            case "battery":
+              this.products.battery = resp.data.data.result;
+              break;
+            case "bundle":
+              this.products.bundle = resp.data.data.result;
+              break;
+            default:
+          }
+        })
+        .catch((err) => {
+          this.loading = false;
+        });
+    },
   },
 };
 </script>

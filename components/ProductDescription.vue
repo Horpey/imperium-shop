@@ -4,9 +4,7 @@
       <div class="col-md-4">
         <h4 class="text-dark f-bold">Specification</h4>
         <p class="text-dark">
-          Solar PV: 1 KWp (5 years warranty), MPPT Controller: 2 years warranty,
-          Inverter: 1 KVA (2 years warranty), Lead Battery: 1 pcs 200 Ah, 12 V
-          (2 years warranty)
+          {{ product.description }}
         </p>
       </div>
       <div class="col-md-4">
@@ -22,12 +20,43 @@
       </div>
       <div class="col-md-4">
         <h4 class="text-dark f-bold">Delivery Location</h4>
-        <p class="text-dark">Nationwide</p>
+        <ul class="locationList">
+          <li
+            class="text-dark"
+            v-for="(location, index) in product.vendor_location"
+            :key="index"
+          >
+            {{ location }}
+          </li>
+        </ul>
       </div>
       <div class="col-md-4">
         <h4 class="text-dark f-bold">Available stock</h4>
-        <p class="text-dark">100 pcs</p>
+        <p class="text-dark">
+          {{ product.stock ? product.stock.quantity_available : "" }} pcs
+        </p>
       </div>
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: ["product"],
+};
+</script>
+<style lang="scss" scoped>
+.locationList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  li {
+    font-size: 1rem;
+    margin: 0 1rem;
+  }
+}
+</style>

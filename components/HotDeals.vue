@@ -15,7 +15,12 @@
       </div>
       <div class="py-4">
         <div class="row">
-          <div class="col-md-4" v-for="(deal, index) in hotDeals" :key="index">
+          <div
+            class="col-md-4"
+            v-for="(deal, index) in hotDeals"
+            v-if="index < 3"
+            :key="index"
+          >
             <ProductCard :data="deal" />
           </div>
         </div>

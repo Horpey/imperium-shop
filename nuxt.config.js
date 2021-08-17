@@ -1,5 +1,5 @@
 export default {
-  target: "static",
+  target: "server",
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "Imperium Shop",
@@ -31,7 +31,7 @@ export default {
   css: ["ant-design-vue/dist/antd.css", "@/assets/scss/main.scss"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["@/plugins/antd-ui"],
+  plugins: ["@/plugins/antd-ui", "~/plugins/helper.js"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
