@@ -1,9 +1,19 @@
 <template>
   <div>
-    <ProducttoCart :product="product" />
+    <ProducttoCart :loading="loading" :product="product" />
     <ProductDescription :product="product" />
-    <MoreProducts title="SIMILAR ITEMS YOU MAY LIKE" :data="similarProducts" />
-    <MoreProducts title="RECENTLY VIEWED ITEMS" :data="similarProducts" />
+    <div v-if="similarProducts">
+      <!-- <MoreProducts
+        :loading="loading"
+        title="SIMILAR ITEMS YOU MAY LIKE"
+        :data="similarProducts"
+      /> -->
+    </div>
+    <!-- <MoreProducts
+      :loading="loading"
+      title="RECENTLY VIEWED ITEMS"
+      :data="similarProducts"
+    /> -->
   </div>
 </template>
 <script>
@@ -13,38 +23,6 @@ export default {
       loading: false,
       product: {},
       similarProducts: [],
-      products: [
-        {
-          name: "2KVA Inverter",
-          description: "Pure sine wave inverter, ups, avr (stabilizer)",
-          price: "₦ 162,563",
-        },
-        {
-          name: "5KVA",
-          description: "5kva inverter",
-          price: "₦ 160,000",
-        },
-        {
-          name: "2KVA Inverter",
-          description: "Pure sine wave inverter, ups, avr (stabilizer)",
-          price: "₦ 162,563",
-        },
-        {
-          name: "5KVA",
-          description: "5kva inverter",
-          price: "₦ 160,000",
-        },
-        {
-          name: "2KVA Inverter",
-          description: "Pure sine wave inverter, ups, avr (stabilizer)",
-          price: "₦ 162,563",
-        },
-        {
-          name: "5KVA",
-          description: "5kva inverter",
-          price: "₦ 160,000",
-        },
-      ],
     };
   },
   computed: {
@@ -83,7 +61,6 @@ export default {
         .dispatch("getRequest", payload)
         .then((resp) => {
           this.loading = false;
-          console.log(resp.data.data);
           this.product = resp.data.data;
         })
         .catch((err) => {

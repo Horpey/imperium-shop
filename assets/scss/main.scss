@@ -190,7 +190,7 @@ ol,
   justify-content: center;
   align-items: center;
   height: 40rem;
-  cursor: pointer;
+  // cursor: pointer;
   transition: 0.4s all;
 }
 .complete-sol:hover {
@@ -290,7 +290,7 @@ button.bg-primary:hover {
   }
 }
 .navbar.navbar-main {
-  z-index: 3;
+  z-index: 99999;
 }
 .top-0 {
   top: 0;

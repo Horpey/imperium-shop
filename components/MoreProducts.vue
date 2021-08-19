@@ -2,6 +2,7 @@
   <div class="container">
     <div style="margin: 100px 0px">
       <h3 class="rec-heading text-center mb-5">{{ title }}</h3>
+      <Loading v-if="loading" />
       <div class="row">
         <div
           class="col-md-3"
@@ -17,6 +18,6 @@
 </template>
 <script>
 export default {
-  props: ["title", "data"],
+  props: ["title", "data", "loading"],
 };
 </script>

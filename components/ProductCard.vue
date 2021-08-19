@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="productDivView">
+    <span @click="addtoCart(data)" class="cart-icon">
+      <CartIcon :inCart="checkCart(data)" />
+    </span>
     <nuxt-link :to="`/product/${data.slug}?category=${data.category}`">
       <div class="productDiv mb-5">
-        <a href="#" class="cart-icon">
-          <img src="/images/svgs/card-icon.svg" alt="" />
-        </a>
         <div class="image-view">
           <img :src="data.display_image" alt="" />
         </div>
@@ -21,9 +21,40 @@
 <script>
 export default {
   props: ["data"],
+  computed: {
+    cartProducts() {
+      let storage = this.$auth.$storage.getLocalStorage("cart");
+      return storage ? storage : [];
+    },
+  },
+  methods: {
+    checkCart(data) {
+      const isAvailable = this.cartProducts.find(
+        (item) => item.slug === data.slug
+      );
+      if (isAvailable) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    addtoCart(data) {
+      this.$store.dispatch("addProductToCart", data);
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
+.productDivView {
+  position: relative;
+  .cart-icon {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    cursor: pointer;
+  }
+}
 .productDiv {
   text-align: center;
   border: 1px solid gainsboro;
@@ -72,14 +103,6 @@ export default {
       object-position: bottom;
       object-fit: contain;
       max-height: 100%;
-    }
-  }
-  .cart-icon {
-    position: absolute;
-    top: 24px;
-    right: 24px;
-    img {
-      height: 50px;
     }
   }
 }

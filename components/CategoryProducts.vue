@@ -15,7 +15,8 @@
           </div>
         </div>
       </div>
-      <div class="my-5">
+      <Loading v-if="loading" />
+      <div class="my-5" v-else>
         <div class="row">
           <div
             class="col-md-3"
@@ -32,7 +33,7 @@
 </template>
 <script>
 export default {
-  props: ["category", "products"],
+  props: ["category", "products", "loading"],
 };
 </script>
 <style lang="scss" scoped>

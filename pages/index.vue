@@ -5,11 +5,24 @@
     <Categories />
     <HotDeals :hotDeals="products.solarPanel" />
     <PayWithSpecta />
-    <CategoryProducts category="solar panel" :products="products.solarPanel" />
-    <CategoryProducts category="inverter" :products="products.inverter" />
-    <MakeRequest />
-    <CategoryProducts category="batteries" :products="products.battery" />
     <CategoryProducts
+      :loading="loading"
+      category="solar panel"
+      :products="products.solarPanel"
+    />
+    <CategoryProducts
+      :loading="loading"
+      category="inverter"
+      :products="products.inverter"
+    />
+    <MakeRequest />
+    <CategoryProducts
+      :loading="loading"
+      category="batteries"
+      :products="products.battery"
+    />
+    <CategoryProducts
+      :loading="loading"
       category="complete solution"
       :products="products.bundle"
     />
@@ -20,7 +33,7 @@
 export default {
   data() {
     return {
-      loading: false,
+      loading: true,
       products: {
         solarPanel: [],
         inverter: [],

@@ -12,7 +12,7 @@
               CHOOSE A PACKAGE THAT SUITES YOU FROM OUR VARIETIES OF SPECIAL
               OFFER PRODUCTS
             </p>
-            <nuxt-link class="sect-link" to="/categories/2">
+            <nuxt-link class="sect-link" to="/categories/bundle">
               <span> View all products</span>
             </nuxt-link>
             <div class="p-5">
@@ -32,7 +32,7 @@
                   <p class="grid-descrip text-left">
                     High output and efficiency performance
                   </p>
-                  <nuxt-link class="sect-link" to="/categories/2">
+                  <nuxt-link class="sect-link" to="/categories/solar panel">
                     <span> View all products</span>
                   </nuxt-link>
                 </div>
@@ -47,7 +47,7 @@
                   <p class="grid-descrip text-left">
                     High output and efficiency performance
                   </p>
-                  <nuxt-link class="sect-link" to="/categories/2">
+                  <nuxt-link class="sect-link" to="/categories/inverter">
                     <span> View all products</span>
                   </nuxt-link>
                 </div>
@@ -62,12 +62,12 @@
           <div class="complete-sol">
             <h3 class="grid-head">BATTERY SYSTEMS</h3>
             <p class="grid-descrip">HIGH OUTPUT AND EFFICIENT PERFORMANCE</p>
-            <nuxt-link class="sect-link" to="/categories/2">
+            <nuxt-link class="sect-link" to="/categories/battery">
               <span> View all products</span>
             </nuxt-link>
-            <div class="p-5">
+            <div class="p-2">
               <img
-                style="height: 227px; margin-top: 40px"
+                style="height: auto; margin-top: 40px; width: 100% !important"
                 class="img-fluid"
                 src="/images/battery.png"
                 alt=""
