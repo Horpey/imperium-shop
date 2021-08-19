@@ -138,6 +138,9 @@ export default {
         message: "Item added to Cart",
         position: "topCenter",
       });
+      setTimeout(() => {
+        window.location.reload(true);
+      }, 1000);
     },
     addToCart() {
       let productCart = {

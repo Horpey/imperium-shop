@@ -154,8 +154,9 @@
             </nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link to="/cart" class="nav-link text-primary">
+            <nuxt-link to="/cart" class="nav-link text-primary cartNavbar">
               <img src="/images/svgs/cart.svg" alt="cart" />
+              <span class="cartCount">{{ cartCount }}</span>
             </nuxt-link>
           </li>
           <li class="nav-item">
@@ -181,6 +182,19 @@ export default {
     };
   },
   methods: {},
+  computed: {
+    cartStorage() {
+      return this.$auth.$storage.getLocalStorage("cart");
+    },
+    cartCount() {
+      let storage = this.cartStorage ? this.cartStorage : [];
+      let quantity = 0;
+      for (const product of storage) {
+        quantity += product.quantity;
+      }
+      return quantity;
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -211,6 +225,22 @@ export default {
       margin-left: 13px;
       font-size: 14px;
     }
+  }
+}
+.cartNavbar {
+  position: relative;
+  .cartCount {
+    background: #fdc717;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 25px;
+    line-height: 20px;
+    position: absolute;
+    top: 10px;
+    right: 4px;
   }
 }
 </style>

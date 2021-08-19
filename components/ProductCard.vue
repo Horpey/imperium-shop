@@ -29,19 +29,72 @@ export default {
   },
   methods: {
     checkCart(data) {
-      const isAvailable = this.cartProducts.find((item) => item.id === data.id);
+      const isAvailable = this.cartProducts.find(
+        (item) => item.product.id === data.id
+      );
       if (isAvailable) {
         return true;
       } else {
         return false;
       }
     },
+    toggleStatus(productCart) {
+      if (this.checkCart(this.data)) {
+        let createCart = this.cartProducts;
+        let productIndex = createCart.findIndex(
+          (obj) => obj.product.id == productCart.product.id
+        );
+        if (productIndex > -1) {
+          createCart.splice(productIndex, 1);
+          this.$store.dispatch("addProductToCart", createCart);
+        }
+        this.$notify.success({
+          title: "",
+          message: "Item removed from Cart",
+          position: "topCenter",
+        });
+      } else {
+        let createCart = this.cartProducts;
+        createCart.push(productCart);
+        this.$store.dispatch("addProductToCart", createCart);
+        this.$notify.success({
+          title: "",
+          message: "Item added to Cart",
+          position: "topCenter",
+        });
+      }
+      setTimeout(() => {
+        window.location.reload(true);
+      }, 1000);
+    },
+    // checkCart(productCart) {
+    //   let createCart = this.cartProducts;
+    //   let productIndex = createCart.findIndex(
+    //     (obj) => obj.product.id == productCart.product.id
+    //   );
+
+    //   if (productIndex >= 0) {
+    //     createCart[productIndex] = productCart;
+    //   } else {
+    //     createCart.push(productCart);
+    //   }
+
+    //   this.$store.dispatch("addProductToCart", createCart);
+    //   this.$notify.success({
+    //     title: "",
+    //     message: "Item added to Cart",
+    //     position: "topCenter",
+    //   });
+    //   setTimeout(() => {
+    //     window.location.reload(true);
+    //   }, 1000);
+    // },
     addtoCart(data) {
       let productCart = {
         product: data,
         quantity: 1,
       };
-      this.$store.dispatch("addProductToCart", productCart);
+      this.toggleStatus(productCart);
     },
   },
 };
