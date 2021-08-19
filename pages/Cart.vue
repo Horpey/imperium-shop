@@ -23,7 +23,9 @@
                 <h6 class="text-dark">Quantity</h6>
               </div>
             </div>
-            <CartItems v-for="(item, index) in 5" :key="index" />
+            <div v-for="(product, index) in cardItem" :key="index">
+              <CartItems :product="product" />
+            </div>
           </div>
           <div class="col-md-4">
             <PaymentSummary />
@@ -33,3 +35,20 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  computed: {
+    cartStorage() {
+      return this.$auth.$storage.getLocalStorage("cart");
+    },
+  },
+  data() {
+    return {
+      cardItem: [],
+    };
+  },
+  mounted() {
+    this.cardItem = this.cartStorage;
+  },
+};
+</script>

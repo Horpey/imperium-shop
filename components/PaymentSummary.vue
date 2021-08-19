@@ -3,21 +3,24 @@
     <p class="paySummary">Payment Summary</p>
     <p class="p-checkout">
       Order Sub total
-      <span>$499.00</span>
+      <span>{{ subTotal }}</span>
     </p>
-    <p class="p-checkout">
+    <p v-if="loggedIn" class="p-checkout">
       Shipping Rate
       <span>$204.00</span>
     </p>
     <div class="div-demarc">
-      <p class="p-checkout">
-        Order Today
-        <span>$799.77</span>
-      </p>
-      <p class="p-checkout">
-        Estimated Pay
-        <span>$799.77</span>
-      </p>
+      <div v-if="loggedIn">
+        <p class="p-checkout">
+          Order Today
+          <span>$799.77</span>
+        </p>
+        <p class="p-checkout">
+          Estimated Pay
+          <span>$799.77</span>
+        </p>
+      </div>
+      <p class="text-dark">Delivery and taxes are calculated at checkout</p>
     </div>
     <nuxt-link to="/checkout" v-if="route == 'cart'" class="btn btn-checkout"
       >Proceed to checkout</nuxt-link
@@ -30,10 +33,31 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      // subTotal: 0,
+    };
+  },
   computed: {
     route() {
       return this.$route.name.toLowerCase();
     },
+    loggedIn() {
+      return false;
+    },
+    subTotal() {
+      let sTotal = 0;
+      for (const product of this.cartStorage) {
+        let tPrice = product.quantity * product.product.price;
+        sTotal += tPrice;
+      }
+      return sTotal;
+    },
+    cartStorage() {
+      let localStore = this.$auth.$storage.getLocalStorage("cart");
+      return localStore ? localStore : [];
+    },
   },
+  mounted() {},
 };
 </script>
