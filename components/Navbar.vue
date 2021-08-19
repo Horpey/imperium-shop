@@ -77,19 +77,22 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="dropdownmarg">
-                      <nuxt-link to="/categories/2" class="navdroplink">
+                      <nuxt-link
+                        to="/categories/solar-panel"
+                        class="navdroplink"
+                      >
                         <img src="/images/svgs/nav/solar.svg" alt="" />
                         <p>Solar panels</p>
                       </nuxt-link>
                     </div>
                     <div class="dropdownmarg">
-                      <nuxt-link to="/categories/2" class="navdroplink">
+                      <nuxt-link to="/categories/inverter" class="navdroplink">
                         <img src="/images/svgs/nav/inverter.svg" alt="" />
                         <p>Inverters</p>
                       </nuxt-link>
                     </div>
                     <div class="dropdownmarg">
-                      <nuxt-link to="/categories/2" class="navdroplink">
+                      <nuxt-link to="/categories/battery" class="navdroplink">
                         <img src="/images/svgs/nav/battery.svg" alt="" />
                         <p>Batteries</p>
                       </nuxt-link>
@@ -97,13 +100,13 @@
                   </div>
                   <div class="col-md-6">
                     <div class="dropdownmarg">
-                      <nuxt-link to="/categories/2" class="navdroplink">
+                      <nuxt-link to="/categories/bundle" class="navdroplink">
                         <img src="/images/svgs/nav/accessories.svg" alt="" />
-                        <p>Accessories</p>
+                        <p>Complete solution</p>
                       </nuxt-link>
                     </div>
                     <div class="dropdownmarg">
-                      <nuxt-link to="/categories/2" class="navdroplink">
+                      <nuxt-link to="/categories/inverter" class="navdroplink">
                         <img src="/images/svgs/nav/complete.svg" alt="" />
                         <p>Inverters</p>
                       </nuxt-link>
