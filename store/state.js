@@ -9,7 +9,27 @@
 // };
 
 export const state = {
-  cart: []
+  cart: [],
+  notificationSystem: {
+    options: {
+      ballon: {
+        balloon: true,
+        position: "bottomCenter"
+      },
+      info: {
+        position: "bottomCenter"
+      },
+      success: {
+        position: "bottomCenter"
+      },
+      warning: {
+        position: "bottomCenter"
+      },
+      error: {
+        position: "bottomCenter"
+      }
+    }
+  }
 };
 
 export default state;

@@ -3,7 +3,7 @@ const mutations = {
     this.$auth.$storage.setLocalStorage("cart", JSON.stringify(state.cart));
   },
   pushProductToCart(state, product) {
-    state.cart.push(product);
+    state.cart = product;
     this.commit("saveData");
   }
 };

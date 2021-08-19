@@ -29,9 +29,7 @@ export default {
   },
   methods: {
     checkCart(data) {
-      const isAvailable = this.cartProducts.find(
-        (item) => item.slug === data.slug
-      );
+      const isAvailable = this.cartProducts.find((item) => item.id === data.id);
       if (isAvailable) {
         return true;
       } else {
@@ -39,7 +37,11 @@ export default {
       }
     },
     addtoCart(data) {
-      this.$store.dispatch("addProductToCart", data);
+      let productCart = {
+        product: data,
+        quantity: 1,
+      };
+      this.$store.dispatch("addProductToCart", productCart);
     },
   },
 };

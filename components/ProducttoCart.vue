@@ -41,7 +41,7 @@
                 {{ product.description }}
               </p>
               <h4 class="mt-3 text-dark f-semibold"></h4>
-              <form>
+              <form @submit.prevent="addToCart()">
                 <div class="row">
                   <div class="col-6 col-md-4">
                     <p class="text-dark">Monthly Payment</p>
@@ -63,12 +63,20 @@
                     <p class="text-dark">Quantity</p>
                   </div>
                   <div class="col-6 col-md-8">
-                    <a-input-number
-                      class="quantityInput"
-                      id="inputNumber"
+                    <input
+                      min="1"
+                      :max="
+                        product.stock ? product.stock.quantity_available : 5
+                      "
                       v-model="quantity"
-                      :min="1"
-                      @change="onChange"
+                      style="
+                        width: 100px;
+                        font-weight: bold;
+                        color: black;
+                        font-size: 14px;
+                      "
+                      type="number"
+                      class="quantityInput form-control form-control-sm"
                     />
                   </div>
                 </div>
@@ -82,6 +90,7 @@
                     py-3
                     px-5
                   "
+                  type="submit"
                 >
                   Add to Cart
                 </button>
@@ -101,9 +110,41 @@ export default {
       quantity: 1,
     };
   },
+  computed: {
+    notificationSystem() {
+      return this.$store.getters.notificationSystem;
+    },
+    cartProducts() {
+      let storage = this.$auth.$storage.getLocalStorage("cart");
+      return storage ? storage : [];
+    },
+  },
   methods: {
-    onChange(value) {
-      console.log("changed", value);
+    checkCart(productCart) {
+      let createCart = this.cartProducts;
+      let productIndex = createCart.findIndex(
+        (obj) => obj.product.id == productCart.product.id
+      );
+
+      if (productIndex >= 0) {
+        createCart[productIndex] = productCart;
+      } else {
+        createCart.push(productCart);
+      }
+
+      this.$store.dispatch("addProductToCart", createCart);
+      this.$notify.success({
+        title: "",
+        message: "Item added to Cart",
+        position: "topCenter",
+      });
+    },
+    addToCart() {
+      let productCart = {
+        product: this.product,
+        quantity: parseInt(this.quantity),
+      };
+      this.checkCart(productCart);
     },
   },
 };
