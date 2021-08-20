@@ -70,8 +70,8 @@
 export default {
   data() {
     return {
-      email: "hellodfjsdi@gmail.com",
-      password: "12345678",
+      email: "",
+      password: "",
       loading: false,
     };
   },
