@@ -134,22 +134,22 @@
             </div>
           </li>
           <li class="nav-item">
-            <nuxt-link to="/" target="_blank" class="nav-link text-primary">
+            <nuxt-link to="/" class="nav-link text-primary">
               Special Offers
             </nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link to="/" target="_blank" class="nav-link text-primary">
+            <nuxt-link to="/" class="nav-link text-primary">
               Power as a service
             </nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link to="/" target="_blank" class="nav-link text-primary">
+            <nuxt-link to="/" class="nav-link text-primary">
               Energy Calculator
             </nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link to="/" target="_blank" class="nav-link text-primary">
+            <nuxt-link to="/" class="nav-link text-primary">
               <img src="/images/svgs/search.svg" alt="search" />
             </nuxt-link>
           </li>
@@ -161,8 +161,17 @@
           </li>
           <li class="nav-item">
             <nuxt-link
-              to="/"
-              target="_blank"
+              v-if="customer"
+              to="/my-account"
+              class="btn btn-imp-secondary btn-icon"
+            >
+              <span class="nav-link-inner--text"
+                >Hi, {{ customer.first_name }}</span
+              >
+            </nuxt-link>
+            <nuxt-link
+              to="/login"
+              v-else
               class="btn btn-imp-secondary btn-icon"
             >
               <span class="nav-link-inner--text">Login</span>
@@ -183,6 +192,10 @@ export default {
   },
   methods: {},
   computed: {
+    customer() {
+      let storage = this.$auth.$storage.getLocalStorage("customer");
+      return storage ? storage : null;
+    },
     cartStorage() {
       return this.$auth.$storage.getLocalStorage("cart");
     },

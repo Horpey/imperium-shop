@@ -11,7 +11,7 @@
           </h1>
           <p class="mb-0 text-dark">
             Gain access to over 14,570,000
-            <span class="text-capitalize">{{ categoryData }} </span> Products
+            <span class="text-capitalize">{{ categoryData }} </span>
           </p>
           <p class="mb-0 text-dark">Shop your choice of product!</p>
           <div class="category-select">
@@ -23,6 +23,7 @@
               name=""
               id=""
             >
+              <option value="">All products</option>
               <option value="solar panel">Solar Panel</option>
               <option value="inverter">Inverter Solutions</option>
               <option value="battery">Battery</option>
@@ -48,6 +49,9 @@ export default {
         case "bundle":
           return "Complete Solution";
           break;
+        case "all":
+          return "All Products";
+          break;
         default:
           return this.category;
           break;
@@ -68,13 +72,16 @@ export default {
           return "/images/complete.png";
           break;
         default:
-          return "";
+          return "/images/solar.png";
           break;
       }
     },
   },
   mounted() {
     this.categorySelect = this.category;
+    if (this.category == "all") {
+      this.categorySelect = "";
+    }
   },
   methods: {
     selectChange() {

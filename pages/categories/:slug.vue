@@ -25,14 +25,17 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$store.getters.cartProducts);
     this.getProductsbyCategory();
   },
   methods: {
     getProductsbyCategory() {
       this.loading = true;
+      let categ = this.category;
+      if (categ == "all") {
+        categ = "";
+      }
       let payload = {
-        path: `product?category=${this.category}&per_page=2`,
+        path: `product?category=${categ}&per_page=9`,
       };
       this.$store
         .dispatch("getRequest", payload)

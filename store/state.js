@@ -10,6 +10,9 @@
 
 export const state = {
   cart: [],
+  user: null,
+  customer: null,
+  token: null,
   notificationSystem: {
     options: {
       ballon: {
