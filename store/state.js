@@ -1,18 +1,12 @@
-// const state = {
-// cart: () => {
-//   return "hello";
-// let cart = this.$auth.$storage.getLocalStorage("cart")
-//   ? JSON.parse(cart)
-//   : [];
-// return cart;
-// }
-// };
+import cookies from "js-cookie";
+
+let token = cookies.get("x-access-token");
 
 export const state = {
   cart: [],
   user: null,
   customer: null,
-  token: null,
+  token: token ? token : null,
   notificationSystem: {
     options: {
       ballon: {

@@ -54,5 +54,8 @@ export default {
   build: {},
   styleResources: {
     scss: ["@/assets/scss/*.scss"]
+  },
+  router: {
+    middleware: "check-before-move"
   }
 };

@@ -13,6 +13,7 @@
                 <div class="col-md-6">
                   <div class="form-group mb-3">
                     <input
+                      required
                       v-model="form.first_name"
                       placeholder="First name"
                       type="text"
@@ -23,6 +24,7 @@
                 <div class="col-md-6">
                   <div class="form-group mb-3">
                     <input
+                      required
                       v-model="form.last_name"
                       placeholder="Last name"
                       type="text"
@@ -33,6 +35,7 @@
                 <div class="col-md-6">
                   <div class="form-group mb-3">
                     <input
+                      required
                       v-model="form.email"
                       placeholder="Email address"
                       type="email"
@@ -72,6 +75,7 @@
                 <div class="col-md-6">
                   <div class="form-group mb-3">
                     <input
+                      required
                       v-model="form.address.street"
                       placeholder="Street"
                       class="form-control text-dark"
@@ -136,16 +140,16 @@ export default {
     return {
       loading: false,
       form: {
-        email: "hellodfjsdi@gmail.com",
-        first_name: "kksfdk",
-        last_name: "kkfsf",
-        password: "12345678",
-        confirm_password: "12345678",
-        phone_number: "08118273823",
+        email: "",
+        first_name: "",
+        last_name: "",
+        password: "",
+        confirm_password: "",
+        phone_number: "",
         address: {
-          lga: "Surule",
-          state: "Lagos",
-          street: "8 Hughes",
+          lga: "",
+          state: "",
+          street: "",
         },
       },
     };

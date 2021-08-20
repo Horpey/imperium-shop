@@ -12,6 +12,7 @@
 </template>
 <script>
 export default {
+  auth: false,
   data() {
     return {
       loading: true,

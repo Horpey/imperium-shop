@@ -37,6 +37,7 @@
 </template>
 <script>
 export default {
+  auth: false,
   computed: {
     cartStorage() {
       return this.$auth.$storage.getLocalStorage("cart");
