@@ -2,6 +2,9 @@ export const mutations = {
   saveData(state) {
     window.localStorage.setItem("cart", JSON.stringify(state.cart));
   },
+  categorySelect(state, data) {
+    state.categorySelect = data;
+  },
   updateCart(state, product) {
     state.cart = product;
     this.commit("saveData");

@@ -52,6 +52,9 @@ export default {
         case "all":
           return "All Products";
           break;
+        case "":
+          return "All Products";
+          break;
         default:
           return this.category;
           break;
@@ -60,19 +63,19 @@ export default {
     categoryImage() {
       switch (this.category) {
         case "solar panel":
-          return "/images/solar.png";
+          return "/assets/images/solar.png";
           break;
         case "inverter":
-          return "/images/inverterb.png";
+          return "/assets/images/inverterb.png";
           break;
         case "battery":
-          return "/images/batterycateg.png";
+          return "/assets/images/batterycateg.png";
           break;
         case "bundle":
-          return "/images/complete.png";
+          return "/assets/images/complete.png";
           break;
         default:
-          return "/images/solar.png";
+          return "/assets/images/solar.png";
           break;
       }
     },
@@ -85,7 +88,7 @@ export default {
   },
   methods: {
     selectChange() {
-      this.$router.push(`/categories/${this.categorySelect}`);
+      this.$store.commit("categorySelect", this.categorySelect);
     },
   },
 };

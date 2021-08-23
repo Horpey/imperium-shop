@@ -20,5 +20,6 @@ export const getters = {
   },
   cartProducts(state) {
     return state.cart;
-  }
+  },
+  categorySelect: state => state.categorySelect
 };

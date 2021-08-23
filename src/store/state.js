@@ -5,6 +5,7 @@ export const state = {
   token: localStorage.getItem("token") || "",
   user: localStorage.getItem("user") || "",
   passPhrase: "!imP3riuM@.132]13",
+  categorySelect: "",
   notificationSystem: {
     options: {
       ballon: {

@@ -92,6 +92,9 @@ export default {
           let nProduct = product.product;
           nProduct.quantity = parseInt(product.quantity);
           nProduct.product_id = product.product.id;
+          delete nProduct.id;
+          delete nProduct.__v;
+
           products.push(nProduct);
         }
 

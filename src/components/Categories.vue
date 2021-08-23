@@ -12,7 +12,7 @@
               CHOOSE A PACKAGE THAT SUITES YOU FROM OUR VARIETIES OF SPECIAL
               OFFER PRODUCTS
             </p>
-            <router-link class="sect-link" to="/categories/bundle">
+            <router-link class="sect-link" to="/categories?type=bundle">
               <span> View all products</span>
             </router-link>
             <div class="p-5">
@@ -40,7 +40,10 @@
                   <p class="grid-descrip text-left">
                     High output and efficiency performance
                   </p>
-                  <router-link class="sect-link" to="/categories/solar panel">
+                  <router-link
+                    class="sect-link"
+                    to="/categories?type=solar panel"
+                  >
                     <span> View all products</span>
                   </router-link>
                 </div>
@@ -55,7 +58,7 @@
                   <p class="grid-descrip text-left">
                     High output and efficiency performance
                   </p>
-                  <router-link class="sect-link" to="/categories/inverter">
+                  <router-link class="sect-link" to="/categories?type=inverter">
                     <span> View all products</span>
                   </router-link>
                 </div>
@@ -74,7 +77,7 @@
           <div class="complete-sol">
             <h3 class="grid-head">BATTERY SYSTEMS</h3>
             <p class="grid-descrip">HIGH OUTPUT AND EFFICIENT PERFORMANCE</p>
-            <router-link class="sect-link" to="/categories/battery">
+            <router-link class="sect-link" to="/categories?type=battery">
               <span> View all products</span>
             </router-link>
             <div class="p-2">

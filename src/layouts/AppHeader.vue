@@ -78,7 +78,7 @@
                   <div class="col-md-6">
                     <div class="dropdownmarg">
                       <router-link
-                        to="/categories/solar-panel"
+                        to="/categories?type=solar-panel"
                         class="navdroplink"
                       >
                         <img src="/assets/images/svgs/nav/solar.svg" alt="" />
@@ -87,7 +87,7 @@
                     </div>
                     <div class="dropdownmarg">
                       <router-link
-                        to="/categories/inverter"
+                        to="/categories?type=inverter"
                         class="navdroplink"
                       >
                         <img
@@ -98,7 +98,10 @@
                       </router-link>
                     </div>
                     <div class="dropdownmarg">
-                      <router-link to="/categories/battery" class="navdroplink">
+                      <router-link
+                        to="/categories?type=battery"
+                        class="navdroplink"
+                      >
                         <img src="/assets/images/svgs/nav/battery.svg" alt="" />
                         <p>Batteries</p>
                       </router-link>
@@ -106,7 +109,10 @@
                   </div>
                   <div class="col-md-6">
                     <div class="dropdownmarg">
-                      <router-link to="/categories/bundle" class="navdroplink">
+                      <router-link
+                        to="/categories?type=bundle"
+                        class="navdroplink"
+                      >
                         <img
                           src="/assets/images/svgs/nav/accessories.svg"
                           alt=""
@@ -116,7 +122,7 @@
                     </div>
                     <div class="dropdownmarg">
                       <router-link
-                        to="/categories/inverter"
+                        to="/categories?type=inverter"
                         class="navdroplink"
                       >
                         <img

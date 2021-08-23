@@ -6,7 +6,7 @@
         <div class="bready">
           <ol class="breadcrumb">
             <li><router-link to="/">Shop</router-link></li>
-            <li><router-link to="/categories/all">Category</router-link></li>
+            <li><router-link to="/categories">Category</router-link></li>
             <li>
               <router-link
                 class="text-capitalize"
@@ -189,21 +189,5 @@ export default {
   object-position: center;
   -o-object-fit: contain;
   object-fit: contain;
-}
-.breadcrumb {
-  padding: 8px 15px;
-  list-style: none;
-  border-radius: 4px;
-  & > li {
-    display: inline-block;
-    a {
-      color: black;
-    }
-  }
-  & > li + li:before {
-    padding: 0 5px;
-    color: #ccc;
-    content: "/\00a0";
-  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="py-5">
+    <div class="py-5" style="min-height: 90vh">
       <div class="container mb-4">
         <router-link class="text-dark" to="/">
           <img src="/assets/images/svgs/left-arrow.svg" class="mr-2" />
@@ -10,25 +10,43 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8">
-            <p class="paySummary">Available now</p>
-            <div class="row mt-4 hide-sm">
-              <div class="col-md-2"></div>
-              <div class="col-md-3">
-                <h6 class="cartview text-dark">Product</h6>
-              </div>
-              <div class="col-md-4">
-                <h6 class="cartview text-dark">Description</h6>
-              </div>
-              <div class="col-md-2">
-                <h6 class="cartview text-dark">Quantity</h6>
-              </div>
+            <div v-if="cardItem.length < 1" class="text-center my-5">
+              <h5 class="text-dark mb-4">No Item in cart</h5>
+              <router-link
+                to="/categories"
+                class="
+                  btn btn-imp-secondary
+                  bg-primary
+                  btn-icon
+                  text-secondary
+                  py-2
+                  px-3
+                "
+              >
+                Start shopping
+              </router-link>
             </div>
-            <div v-for="(product, index) in cardItem" :key="index">
-              <CartItems :product="product" />
+            <div v-else>
+              <p class="paySummary">Items in cart</p>
+              <div class="row mt-4 hide-sm">
+                <div class="col-md-2"></div>
+                <div class="col-md-3">
+                  <h6 class="cartview text-dark">Product</h6>
+                </div>
+                <div class="col-md-4">
+                  <h6 class="cartview text-dark">Description</h6>
+                </div>
+                <div class="col-md-2">
+                  <h6 class="cartview text-dark">Quantity</h6>
+                </div>
+              </div>
+              <div v-for="(product, index) in cardItem" :key="index">
+                <CartItems :product="product" />
+              </div>
             </div>
           </div>
           <div class="col-md-4">
-            <PaymentSummary />
+            <PaymentSummary v-if="cardItem.length > 0" />
           </div>
         </div>
       </div>

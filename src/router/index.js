@@ -26,8 +26,9 @@ const routes = [
       footer: AppFooter
     }
   },
+
   {
-    path: "/categories/:slug",
+    path: "/categories",
     name: "categoryView",
     components: {
       header: AppHeader,

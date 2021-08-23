@@ -199,7 +199,7 @@ export default {
             );
 
             setTimeout(() => {
-              window.location.href = "/categories/all";
+              window.location.href = "/categories";
             }, 1000);
           })
           .catch((err) => {
