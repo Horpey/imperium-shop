@@ -20,5 +20,5 @@ export const mutations = {
   logout(state) {
     state.status = "";
     state.token = "";
-  },
+  }
 };

@@ -9,13 +9,32 @@ export const actions = {
       axios({
         url: payload.path,
         data: payload.data,
-        method: "POST",
+        method: "POST"
       })
-        .then((resp) => {
+        .then(resp => {
           resolve(resp);
         })
-        .catch((err) => {
+        .catch(err => {
           localStorage.removeItem("token");
+          reject(err);
+        });
+    });
+  },
+  postRequest({ commit, dispatch, getters }, payload) {
+    return new Promise((resolve, reject) => {
+      const token = getters.token;
+      axios({
+        url: payload.path,
+        data: payload.data,
+        method: "POST",
+        headers: {
+          Authorization: `bearer ${token}`
+        }
+      })
+        .then(resp => {
+          resolve(resp);
+        })
+        .catch(err => {
           reject(err);
         });
     });
@@ -28,13 +47,13 @@ export const actions = {
         url: `${payload.path}`,
         method: "GET",
         headers: {
-          Authorization: `bearer ${token}`,
-        },
+          Authorization: `bearer ${token}`
+        }
       })
-        .then((resp) => {
+        .then(resp => {
           resolve(resp);
         })
-        .catch((err) => {
+        .catch(err => {
           reject(err);
         });
     });
@@ -45,5 +64,5 @@ export const actions = {
     localStorage.removeItem("user");
     delete axios.defaults.headers.common["Authorization"];
     return Promise.resolve();
-  },
+  }
 };

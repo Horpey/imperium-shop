@@ -4,22 +4,19 @@
       <Loading v-if="loading" />
       <div v-else>
         <div class="bready">
-          <a-breadcrumb separator=">">
-            <a-breadcrumb-item>
-              <router-link to="/"> Shop </router-link>
-            </a-breadcrumb-item>
-            <a-breadcrumb-item>
-              <router-link to="/"> Category </router-link>
-            </a-breadcrumb-item>
-            <a-breadcrumb-item class="text-capitalize">
-              <router-link :to="`/categories/${product.category}`">
-                {{ product.category }}
-              </router-link>
-            </a-breadcrumb-item>
-            <a-breadcrumb-item class="text-capitalize">{{
-              product.name
-            }}</a-breadcrumb-item>
-          </a-breadcrumb>
+          <ol class="breadcrumb">
+            <li><router-link to="/">Shop</router-link></li>
+            <li><router-link to="/categories/all">Category</router-link></li>
+            <li>
+              <router-link
+                class="text-capitalize"
+                :to="`/categories/${product.category}`"
+              >
+                {{ product.category }}</router-link
+              >
+            </li>
+            <li class="active text-capitalize">{{ product.name }}</li>
+          </ol>
         </div>
 
         <div class="row align-items-center justify-content-center">
@@ -103,8 +100,11 @@
   </div>
 </template>
 <script>
+import Loading from "@/components/Loading.vue";
+
 export default {
   props: ["product", "loading"],
+  components: { Loading },
   data() {
     return {
       quantity: 1,
@@ -115,39 +115,65 @@ export default {
       return this.$store.getters.notificationSystem;
     },
     cartProducts() {
-      let storage = this.$auth.$storage.getLocalStorage("cart");
-      return storage ? storage : [];
+      return this.$store.getters.cartProducts;
     },
   },
   methods: {
-    checkCart(productCart) {
-      let createCart = this.cartProducts;
-      let productIndex = createCart.findIndex(
-        (obj) => obj.product.id == productCart.product.id
+    checkCart(data) {
+      const isAvailable = this.cartProducts.find(
+        (item) => item.product.id === data.id
       );
-
-      if (productIndex >= 0) {
-        createCart[productIndex] = productCart;
+      if (isAvailable) {
+        return true;
       } else {
-        createCart.push(productCart);
+        return false;
       }
 
-      this.$store.dispatch("addProductToCart", createCart);
-      this.$toast.success({
-        title: "",
-        message: "Item added to Cart",
-        position: "topCenter",
-      });
-      setTimeout(() => {
-        window.location.reload(true);
-      }, 1000);
+      // let createCart = this.cartProducts;
+      // let productIndex = createCart.findIndex(
+      //   (obj) => obj.product.id == productCart.product.id
+      // );
+      // if (productIndex >= 0) {
+      //   createCart[productIndex] = productCart;
+      // } else {
+      //   createCart.push(productCart);
+      // }
+      // this.$store.dispatch("addProductToCart", createCart);
+      // this.$toast.success({
+      //   title: "",
+      //   message: "Item added to Cart",
+      //   position: "topCenter",
+      // });
+      // setTimeout(() => {
+      //   window.location.reload(true);
+      // }, 1000);
+    },
+    toggleStatus(productCart) {
+      if (this.checkCart(this.product)) {
+        let createCart = this.cartProducts;
+        let productIndex = createCart.findIndex(
+          (obj) => obj.product.id == productCart.product.id
+        );
+
+        if (productIndex >= 0) {
+          createCart[productIndex] = productCart;
+        }
+        this.$store.commit("updateCart", createCart);
+
+        this.$toast.info("Cart", "Item updated in cart", this.$toastPosition);
+      } else {
+        let createCart = this.cartProducts;
+        createCart.push(productCart);
+        this.$store.commit("updateCart", createCart);
+        this.$toast.success("Cart", "Item added to cart.", this.$toastPosition);
+      }
     },
     addToCart() {
       let productCart = {
         product: this.product,
         quantity: parseInt(this.quantity),
       };
-      this.checkCart(productCart);
+      this.toggleStatus(productCart);
     },
   },
 };
@@ -163,5 +189,21 @@ export default {
   object-position: center;
   -o-object-fit: contain;
   object-fit: contain;
+}
+.breadcrumb {
+  padding: 8px 15px;
+  list-style: none;
+  border-radius: 4px;
+  & > li {
+    display: inline-block;
+    a {
+      color: black;
+    }
+  }
+  & > li + li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "/\00a0";
+  }
 }
 </style>

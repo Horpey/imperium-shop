@@ -78,7 +78,20 @@ export default {
     };
   },
   components: { BtnLoading },
-  mounted() {},
+  computed: {
+    cartRedirect() {
+      return this.$route.query.cart;
+    },
+  },
+  mounted() {
+    if (this.cartRedirect) {
+      this.$toast.info(
+        "Login",
+        "You have to login or signup before you can checkout",
+        this.$toastPosition
+      );
+    }
+  },
   methods: {
     submitForm() {
       this.loading = true;
@@ -107,6 +120,8 @@ export default {
             this.$passPhrase
           ).toString();
 
+          console.log(token);
+
           localStorage.setItem("token", token);
           localStorage.setItem("user", user);
 
@@ -117,7 +132,11 @@ export default {
           );
 
           setTimeout(() => {
-            window.location.href = "/";
+            if (this.cartRedirect) {
+              window.location.href = "/cart";
+            } else {
+              window.location.href = "/";
+            }
           }, 1000);
         })
         .catch((err) => {

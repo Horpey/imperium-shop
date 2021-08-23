@@ -48,13 +48,13 @@ export default {
         );
         if (productIndex > -1) {
           createCart.splice(productIndex, 1);
-          this.$store.dispatch("updateCart", createCart);
+          this.$store.commit("updateCart", createCart);
         }
         this.$toast.info("Cart", "Item removed from cart", this.$toastPosition);
       } else {
         let createCart = this.cartProducts;
         createCart.push(productCart);
-        this.$store.dispatch("updateCart", createCart);
+        this.$store.commit("updateCart", createCart);
         this.$toast.success("Cart", "Item added to cart.", this.$toastPosition);
       }
     },

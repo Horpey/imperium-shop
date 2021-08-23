@@ -9,22 +9,22 @@ export const state = {
     options: {
       ballon: {
         balloon: true,
-        position: "bottomCenter",
+        position: "bottomCenter"
       },
       info: {
-        position: "bottomCenter",
+        position: "bottomCenter"
       },
       success: {
-        position: "bottomCenter",
+        position: "bottomCenter"
       },
       warning: {
-        position: "bottomCenter",
+        position: "bottomCenter"
       },
       error: {
-        position: "bottomCenter",
-      },
-    },
-  },
+        position: "bottomCenter"
+      }
+    }
+  }
 };
 
 export default state;

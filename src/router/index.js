@@ -14,26 +14,26 @@ const routes = [
     components: {
       header: AppHeader,
       default: () => import("../views/Home.vue"),
-      footer: AppFooter,
-    },
+      footer: AppFooter
+    }
   },
   {
-    path: "/product/:id",
+    path: "/product/:slug",
     name: "productView",
     components: {
       header: AppHeader,
       default: () => import("../views/ProductView.vue"),
-      footer: AppFooter,
-    },
+      footer: AppFooter
+    }
   },
   {
-    path: "/categories/:id",
+    path: "/categories/:slug",
     name: "categoryView",
     components: {
       header: AppHeader,
       default: () => import("../views/CategoryView.vue"),
-      footer: AppFooter,
-    },
+      footer: AppFooter
+    }
   },
   {
     path: "/cart",
@@ -41,8 +41,8 @@ const routes = [
     components: {
       header: AppHeader,
       default: () => import("../views/Cart.vue"),
-      footer: AppFooter,
-    },
+      footer: AppFooter
+    }
   },
   {
     path: "/checkout",
@@ -50,11 +50,11 @@ const routes = [
     components: {
       header: AppHeader,
       default: () => import("../views/Checkout.vue"),
-      footer: AppFooter,
+      footer: AppFooter
     },
     meta: {
-      requiresAuth: true,
-    },
+      requiresAuth: true
+    }
   },
   {
     path: "/my-account",
@@ -62,11 +62,11 @@ const routes = [
     components: {
       header: AppHeader,
       default: () => import("../views/MyAccount.vue"),
-      footer: AppFooter,
+      footer: AppFooter
     },
     meta: {
-      requiresAuth: true,
-    },
+      requiresAuth: true
+    }
   },
   {
     path: "/forgot-password",
@@ -74,11 +74,11 @@ const routes = [
     components: {
       header: AppHeader,
       default: () => import("../views/auth/ForgotPassword.vue"),
-      footer: AppFooter,
+      footer: AppFooter
     },
     meta: {
-      requiresVisitor: true,
-    },
+      requiresVisitor: true
+    }
   },
   {
     path: "/sign-up",
@@ -86,11 +86,11 @@ const routes = [
     components: {
       header: AppHeader,
       default: () => import("../views/auth/SignUp.vue"),
-      footer: AppFooter,
+      footer: AppFooter
     },
     meta: {
-      requiresVisitor: true,
-    },
+      requiresVisitor: true
+    }
   },
   {
     path: "/login",
@@ -98,25 +98,25 @@ const routes = [
     components: {
       header: AppHeader,
       default: () => import("../views/auth/Login.vue"),
-      footer: AppFooter,
+      footer: AppFooter
     },
     meta: {
-      requiresVisitor: true,
-    },
-  },
+      requiresVisitor: true
+    }
+  }
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
-  scrollBehavior: (to) => {
+  scrollBehavior: to => {
     if (to.hash) {
       return { selector: to.hash };
     } else {
       return { x: 0, y: 0 };
     }
-  },
+  }
 });
 
 router.afterEach(() => {
@@ -128,7 +128,7 @@ router.afterEach(() => {
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some((record) => record.meta.requiresAuth)) {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
     if (!store.getters.isLoggedIn) {
@@ -136,10 +136,10 @@ router.beforeEach((to, from, next) => {
     } else {
       next();
     }
-  } else if (to.matched.some((record) => record.meta.requiresVisitor)) {
+  } else if (to.matched.some(record => record.meta.requiresVisitor)) {
     if (store.getters.isLoggedIn) {
       next({
-        path: "/my-account",
+        path: "/my-account"
       });
     } else {
       next();

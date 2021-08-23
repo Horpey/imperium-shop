@@ -1,10 +1,10 @@
 <template>
   <div class="cart-items text-center-sm">
     <div class="row mt-4">
-      <div class="col-md-3">
+      <div class="col-md-2">
         <img
           :src="product.product.display_image"
-          class="img-fluid cart-itemimage"
+          class="img-fluid cart-itemimage mb-0"
           alt=""
         />
       </div>
@@ -13,12 +13,12 @@
           {{ product.product.name }}
         </p>
         <h5 class="f-semibold text-dark">
-          {{ $helperService.formatPrice(product.product.price) }}
+          {{ $helpers.formatPrice(product.product.price) }}
         </h5>
-        <span class="remove-btn" @click="removeItem()">Remove Item</span>
+        <span class="remove-btn" @click="removeItem(product)">Remove Item</span>
       </div>
       <div class="col-md-4">
-        <p class="f-semibold text-dark">₦ 61, 481 (2 years)</p>
+        <p class="text-dark f-14">{{ product.product.description }}</p>
       </div>
       <div class="col-md-2">
         <input
@@ -26,6 +26,7 @@
           :max="
             product.product.stock ? product.product.stock.quantity_available : 5
           "
+          @change="quantityChange($event, product)"
           :value="product.quantity"
           style="width: 100px; font-weight: bold; color: black; font-size: 14px"
           type="number"
@@ -40,36 +41,44 @@ export default {
   props: ["product"],
   computed: {
     cartProducts() {
-      let storage = this.$auth.$storage.getLocalStorage("cart");
-      return storage ? storage : [];
+      return this.$store.getters.cartProducts;
     },
   },
   methods: {
-    removeItem() {
+    quantityChange($event, product) {
       let createCart = this.cartProducts;
       let productIndex = createCart.findIndex(
-        (obj) => obj.product.id == this.product.product.id
+        (obj) => obj.product.id == product.product.id
       );
-      console.log(productIndex);
+
+      let productCart = {
+        product: product.product,
+        quantity: $event.target.value,
+      };
+
+      if (productIndex >= 0) {
+        createCart[productIndex] = productCart;
+      }
+      this.$store.commit("updateCart", createCart);
+    },
+    removeItem(productCart) {
+      let createCart = this.cartProducts;
+      let productIndex = createCart.findIndex(
+        (obj) => obj.product.id == productCart.product.id
+      );
+
       if (productIndex > -1) {
         createCart.splice(productIndex, 1);
-        this.$store.dispatch("addProductToCart", createCart);
+        this.$store.commit("updateCart", createCart);
       }
-      this.$toast.success({
-        title: "",
-        message: "Item removed from Cart",
-        position: "topCenter",
-      });
-      setTimeout(() => {
-        window.location.reload(true);
-      }, 1000);
+      this.$toast.info("Cart", "Item removed from cart", this.$toastPosition);
     },
   },
 };
 </script>
 <style lang="scss" scoped>
 .cart-itemimage {
-  height: 136px;
+  height: auto;
 }
 .remove-btn {
   cursor: pointer;
