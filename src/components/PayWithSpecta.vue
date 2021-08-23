@@ -1,0 +1,27 @@
+<template>
+  <div class="section pt-3">
+    <div class="container">
+      <div class="card-specta py-5">
+        <div class="row align-items-center">
+          <div class="col-md-3">
+            <img src="/assets/images/specta.png" height="150" alt="" />
+          </div>
+          <div class="col-md-6">
+            <h3 class="head f-bold mb-4">Buy Now Pay With Specta</h3>
+            <router-link
+              to="/"
+              target="_blank"
+              class="btn btn-imp-secondary btn-icon text-secondary py-3 px-5"
+              style="background: #a0053e"
+            >
+              Click here
+            </router-link>
+          </div>
+          <div class="col-md-3 hide-sm">
+            <img src="/assets/images/specta-card.png" height="170" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
