@@ -8,7 +8,10 @@
           </div>
           <div class="col-6">
             <div class="text-right">
-              <router-link class="sect-link" :to="`/categories/${category}`">
+              <router-link
+                class="sect-link"
+                :to="`/categories?type=${category}`"
+              >
                 <span> View all</span>
               </router-link>
             </div>
