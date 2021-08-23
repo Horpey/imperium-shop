@@ -95,7 +95,7 @@ export default {
       this.loading = true;
       let payload = {
         data: {},
-        path: `order/checkout`,
+        path: `cart`,
       };
       this.$store
         .dispatch("postRequest", payload)

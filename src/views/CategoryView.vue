@@ -58,7 +58,7 @@ export default {
     },
     moreContentAvailable() {
       if (
-        Math.ceil(this.meta.totalRecords / this.meta.per_page) >=
+        Math.floor(this.meta.totalRecords / this.meta.per_page) >=
         this.current_page
       ) {
         return true;
@@ -69,6 +69,8 @@ export default {
   },
   watch: {
     category: function () {
+      this.products = [];
+      this.loading = true;
       this.getProductsbyCategory();
     },
     current_page: function () {
