@@ -175,7 +175,15 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/cart" class="nav-link text-primary cartNavbar">
+            <router-link
+              to="/cart"
+              :class="{
+                'nav-link': true,
+                'text-primary': true,
+                cartNavbar: true,
+                wiggle: itemAdded,
+              }"
+            >
               <img src="/assets/images/svgs/cart.svg" alt="cart" />
               <span class="cartCount">{{ cart.length }}</span>
             </router-link>
@@ -211,7 +219,16 @@ export default {
     return {
       toogle: false,
       displayCategories: false,
+      itemAdded: false,
     };
+  },
+  watch: {
+    cart: function () {
+      this.itemAdded = true;
+      setTimeout(() => {
+        this.itemAdded = false;
+      }, 1000);
+    },
   },
   computed: {
     user() {
@@ -266,6 +283,8 @@ export default {
   position: relative;
   .cartCount {
     background: #fdc717;
+    font-weight: bold;
+    color: black;
     width: 20px;
     height: 20px;
     display: inline-block;
@@ -276,6 +295,34 @@ export default {
     position: absolute;
     top: 10px;
     right: 4px;
+  }
+}
+.wiggle {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  /* When the animation is finished, start again */
+  animation-iteration-count: 1;
+}
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
   }
 }
 </style>

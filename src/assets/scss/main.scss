@@ -71,7 +71,19 @@ ol,
 }
 .btn:hover,
 .btn:focus {
-  box-shadow: inset 0 -3.5em 0 0 #0000002d;
+  // box-shadow: inset 0 -3.5em 0 0 #0000002d;
+}
+.btn.btn-imp-secondary:hover,
+.btn.btn-imp-secondary:focus {
+  box-shadow: inset 0 -3.5em 0 0 #66aa4f;
+  border-color: #66aa4f;
+  color: white;
+}
+.btn.btn-imp-secondary.bg-primary:hover,
+.btn.btn-imp-secondary.bg-primary:focus {
+  box-shadow: inset 0 -3.5em 0 0 #fdd826;
+  border-color: #fdd826;
+  color: black !important;
 }
 .ht-deals {
   font-weight: 600;
@@ -551,6 +563,7 @@ button.bg-primary:hover {
     content: "/\00a0";
   }
 }
+
 @media only screen and (max-width: 768px) {
   .text-head {
     font-size: 2.8rem;
@@ -619,5 +632,12 @@ button.bg-primary:hover {
   }
   .btnviewmore {
     margin-left: 0px;
+  }
+  .head-prodimg {
+    height: 220px;
+  }
+  .cartNavbar .cartCount {
+    top: 6px !important;
+    right: -16px !important;
   }
 }

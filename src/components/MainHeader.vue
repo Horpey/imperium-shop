@@ -30,7 +30,9 @@
                     bg-primary
                     text-white
                     btn-icon
+                    mt-2
                     py-3
+                    px-4
                   "
                 >
                   <span class="nav-link-inner--text">Browse Special Offer</span>
