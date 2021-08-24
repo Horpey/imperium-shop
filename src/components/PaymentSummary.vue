@@ -1,59 +1,97 @@
 <template>
   <div>
     <p class="paySummary">Payment Summary</p>
-    <p class="p-checkout">
-      Order Sub total
-      <span>{{
-        paymentSummary
-          ? $helpers.formatPrice(paymentSummary.sub_total)
-          : $helpers.formatPrice(subTotal)
-      }}</span>
-    </p>
-    <p
-      v-if="loggedIn && route == 'checkout' && paymentSummary"
-      class="p-checkout"
-    >
-      Shipping Rate
-      <span>{{ $helpers.formatPrice(paymentSummary.delivery_cost) }}</span>
-    </p>
-    <div class="div-demarc">
-      <div v-if="loggedIn && route == 'checkout' && paymentSummary">
-        <p class="p-checkout">
-          Total
-          <span>{{ $helpers.formatPrice(paymentSummary.total_price) }}</span>
+
+    <Loading class="pb-5" v-if="loading" />
+
+    <div v-else>
+      <p class="p-checkout">
+        Order Sub total
+        <span>{{
+          paymentSummary
+            ? $helpers.formatPrice(paymentSummary.sub_total)
+            : $helpers.formatPrice(subTotal)
+        }}</span>
+      </p>
+      <p
+        v-if="loggedIn && route == 'checkout' && paymentSummary"
+        class="p-checkout"
+      >
+        Shipping Rate
+        <span>{{ $helpers.formatPrice(paymentSummary.delivery_cost) }}</span>
+      </p>
+      <div class="div-demarc">
+        <div v-if="loggedIn && route == 'checkout' && paymentSummary">
+          <p class="p-checkout">
+            Total
+            <span>{{ $helpers.formatPrice(paymentSummary.total_price) }}</span>
+          </p>
+        </div>
+        <p v-if="route == 'cart'" class="text-dark">
+          Delivery and taxes are calculated at checkout
         </p>
       </div>
-      <p v-if="route == 'cart'" class="text-dark">
-        Delivery and taxes are calculated at checkout
-      </p>
-    </div>
-    <button
-      @click="redirectCheckout"
-      v-if="route == 'cart'"
-      :disabled="cartSending"
-      class="btn btn-checkout"
-    >
-      Proceed to checkout
-      <BtnLoading v-if="cartSending" class="btn-loading" />
-    </button>
-    <div v-else>
-      <button class="btn btn-checkout mb-3">Outright payment</button>
-      <button class="btn btn-checkout mt-0">Least to Own</button>
+      <button
+        @click="redirectCheckout"
+        v-if="route == 'cart'"
+        :disabled="cartSending"
+        class="btn btn-checkout"
+      >
+        Proceed to checkout
+        <BtnLoading v-if="cartSending" class="btn-loading" />
+      </button>
+      <div v-else>
+        <paystack
+          class="btn btn-checkout mb-3"
+          :amount="payAmount"
+          :email="loggedIn.user.email"
+          :paystackkey="paystackkey"
+          :reference="reference"
+          :callback="callback"
+          :close="close"
+          :metadata="{
+            custom_fields: {
+              order_id: this.getID,
+            },
+          }"
+          :embed="false"
+        >
+          Outright payment
+        </paystack>
+
+        <button @click="payWithSpecta()" class="btn btn-checkout mt-0">
+          Least to Own
+        </button>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import BtnLoading from "@/components/BtnLoading.vue";
+import Loading from "@/components/Loading.vue";
+
+import paystack from "vue-paystack";
 
 export default {
-  props: ["paymentSummary"],
+  props: ["paymentSummary", "loading"],
   data() {
     return {
       cartSending: false,
     };
   },
-  components: { BtnLoading },
+  components: { BtnLoading, Loading, paystack },
   computed: {
+    payAmount() {
+      return Math.ceil(
+        (this.paymentSummary ? this.paymentSummary.total_price : 0) * 100
+      );
+    },
+    getID() {
+      return this.paymentSummary ? this.paymentSummary.cart.id : null;
+    },
+    paystackkey() {
+      return this.$store.getters.paystackkey; //paystack public key
+    },
     route() {
       return this.$route.name.toLowerCase();
     },
@@ -79,9 +117,35 @@ export default {
     cartStorage() {
       return this.$store.getters.cartProducts;
     },
+    reference() {
+      let text = "";
+      let possible =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+      for (let i = 0; i < 10; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+      return text;
+    },
   },
   mounted() {},
   methods: {
+    callback: function (response) {
+      this.$toast.info(
+        "Payment Successful",
+        "Your order is being processed",
+        this.$toastPosition
+      );
+      this.$router.push("/categories");
+    },
+    close: function () {
+      this.$toast.info(
+        "Payment",
+        "Payment process closed",
+        this.$toastPosition
+      );
+    },
+    payWithSpecta() {},
     redirectCheckout() {
       if (this.loggedIn) {
         this.cartSending = true;

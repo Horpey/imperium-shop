@@ -1,8 +1,10 @@
 // axios
 import axios from "axios";
-const baseURL = "https://altpower-staging.herokuapp.com/v1/";
+import * as env from "../env.json";
+
+const baseURL = env.API_URL;
 
 export default axios.create({
-  baseURL,
+  baseURL
   // You can add your headers here
 });

@@ -13,21 +13,23 @@
             <p class="paySummary">Checkout Information</p>
             <div class="my-5">
               <div class="form-group">
-                <label>Country/Region</label>
+                <label>Full name</label>
                 <input
-                  placeholder="United African Republic"
+                  placeholder="Enter your fullname"
                   type="text"
-                  class="form-control"
+                  v-model="fullName"
+                  class="form-control text-dark"
                   name=""
                   id=""
                 />
               </div>
               <div class="form-group">
-                <label>House number</label>
+                <label>Phone number</label>
                 <input
-                  placeholder="43"
+                  placeholder="Enter your phone number"
                   type="text"
-                  class="form-control"
+                  v-model="phone_number"
+                  class="form-control text-dark"
                   name=""
                   id=""
                 />
@@ -35,41 +37,21 @@
               <div class="form-group">
                 <label>Address</label>
                 <input
-                  placeholder="Enter a location"
+                  placeholder="Enter your Address"
                   type="text"
-                  class="form-control"
+                  v-model="address"
+                  class="form-control text-dark"
                   name=""
                   id=""
                 />
-              </div>
-              <div class="form-group">
-                <label>Address Line 2</label>
-                <input
-                  placeholder="Address Line 2"
-                  type="text"
-                  class="form-control"
-                  name=""
-                  id=""
-                />
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  <div class="form-group">
-                    <label>City</label>
-                    <input type="text" class="form-control" name="" id="" />
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="form-group">
-                    <label>State or Region</label>
-                    <input type="text" class="form-control" name="" id="" />
-                  </div>
-                </div>
               </div>
             </div>
           </div>
           <div class="col-md-4">
-            <PaymentSummary :paymentSummary="paymentSummary" />
+            <PaymentSummary
+              :paymentSummary="paymentSummary"
+              :loading="loading"
+            />
           </div>
         </div>
       </div>
@@ -85,23 +67,42 @@ export default {
     return {
       loading: false,
       paymentSummary: null,
+      address: "",
+      user: "",
+      fullName: "",
+      phone_number: "",
     };
   },
+  computed: {
+    userData() {
+      if (localStorage.getItem("user")) {
+        let user = this.CryptoJS.AES.decrypt(
+          localStorage.getItem("user"),
+          this.$passPhrase
+        ).toString(this.CryptoJS.enc.Utf8);
+        return JSON.parse(user);
+      } else {
+        return false;
+      }
+    },
+  },
   mounted() {
+    this.user = this.userData;
+    this.fullName = `${this.user.customer.first_name} ${this.user.customer.last_name}`;
+    this.address = `${this.user.customer.address.street}, ${this.user.customer.address.lga}, ${this.user.customer.address.state}`;
+    this.phone_number = this.user.user.phone_number;
     this.getCart();
   },
   methods: {
     getCart() {
       this.loading = true;
       let payload = {
-        data: {},
         path: `cart`,
       };
       this.$store
-        .dispatch("postRequest", payload)
+        .dispatch("getRequest", payload)
         .then((resp) => {
           this.loading = false;
-          console.log(resp.data.data);
           this.paymentSummary = resp.data.data;
         })
         .catch((err) => {

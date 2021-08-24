@@ -1,3 +1,5 @@
+import * as env from "../../env.json";
+
 let cart = window.localStorage.getItem("cart");
 export const state = {
   cart: cart ? JSON.parse(cart) : [],
@@ -5,6 +7,7 @@ export const state = {
   token: localStorage.getItem("token") || "",
   user: localStorage.getItem("user") || "",
   passPhrase: "!imP3riuM@.132]13",
+  paystackkey: env.PAYSTACK_KEY,
   categorySelect: "",
   notificationSystem: {
     options: {
