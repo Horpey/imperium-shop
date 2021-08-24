@@ -81,7 +81,7 @@ export default {
 }
 .productDiv {
   text-align: center;
-  border: 1px solid gainsboro;
+  border: 1px solid transparent;
   padding: 17px;
   min-height: 426px;
   position: relative;
@@ -108,7 +108,7 @@ export default {
     -webkit-box-orient: vertical;
   }
   .price {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 17px;
     text-align: center;
     color: #121113;
@@ -121,8 +121,9 @@ export default {
     justify-content: center;
     position: relative;
     img {
-      height: 186px;
-      width: 60%;
+      height: 160px;
+      border-radius: 14px;
+      width: 82%;
       position: relative;
       object-position: bottom;
       object-fit: contain;

@@ -39,7 +39,7 @@
             </div>
             <div class="col-md-5">
               <img
-                class="img-fluid mt-4"
+                class="head-prodimg mt-4"
                 src="/assets/images/header-img.png"
                 alt=""
               />

@@ -16,9 +16,9 @@
       <div class="py-4">
         <div class="row">
           <div
-            class="col-md-4"
+            class="col-md-3"
             v-for="(deal, index) in hotDeals"
-            v-if="index < 3"
+            v-if="index < 4"
             :key="index"
           >
             <ProductCard :data="deal" />

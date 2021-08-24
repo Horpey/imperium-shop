@@ -1,6 +1,7 @@
 @import "./fonts.scss";
 @import "./variables.scss";
 @import "./utils/index.scss";
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
 
 html,
 body,
@@ -17,14 +18,17 @@ li,
 ul,
 ol,
 .nav-lin {
-  font-family: "proxima_nova", sans-serif !important;
+  // font-family: "proxima_nova", sans-serif !important;
+  font-family: "Nunito", sans-serif !important;
   scroll-behavior: smooth;
 }
 .f-bold {
-  font-family: "proxima_nova_thextrabold", sans-serif !important;
+  // font-family: "proxima_nova_thextrabold", sans-serif !important;
+  font-weight: bold;
 }
 .f-semibold {
-  font-family: "proxima_nova_semibold", sans-serif !important;
+  // font-family: "proxima_nova_semibold", sans-serif !important;
+  font-weight: 600;
 }
 
 .btn-imp-secondary {
@@ -192,10 +196,12 @@ ol,
   height: 40rem;
   // cursor: pointer;
   transition: 0.4s all;
+  border: 1px solid transparent;
 }
 .complete-sol:hover {
-  transform: scale(1.04) translateY(-12px);
-  box-shadow: 1px 7px 16px 0px #00000026;
+  border: 1px solid rgba(0, 0, 0, 0.411);
+  // transform: scale(1.04) translateY(-12px);
+  // box-shadow: 1px 7px 16px 0px #00000026;
 }
 .grid-head {
   font-weight: 600;
@@ -339,8 +345,11 @@ button.bg-primary:hover {
 }
 .text-head {
   font-weight: 800;
-  font-size: 4rem;
-  line-height: 69px;
+  font-size: 3.2rem;
+  line-height: 58px;
+}
+.head-prodimg {
+  height: 300px;
 }
 .section-pd {
   padding-top: 3rem;
