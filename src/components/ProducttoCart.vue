@@ -41,18 +41,12 @@
               <form @submit.prevent="addToCart()">
                 <div class="row">
                   <div class="col-6 col-md-4">
-                    <p class="text-dark">Monthly Payment</p>
+                    <p class="text-dark">Price</p>
                   </div>
                   <div class="col-6 col-md-8">
-                    <p class="f-semibold text-dark">₦ 61,481</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-6 col-md-4">
-                    <p class="text-dark">Duration</p>
-                  </div>
-                  <div class="col-6 col-md-8">
-                    <p class="f-semibold text-dark">2 Years</p>
+                    <p class="f-semibold text-dark">
+                      {{ $helpers.formatPrice(product.price) }}
+                    </p>
                   </div>
                 </div>
                 <div class="row">
@@ -89,7 +83,10 @@
                   "
                   type="submit"
                 >
-                  Add to Cart
+                  Add to Cart -
+                  <span class="amttotal">{{
+                    $helpers.formatPrice(product.price * quantity)
+                  }}</span>
                 </button>
               </form>
             </div>

@@ -8,25 +8,30 @@
         </router-link>
       </div>
       <div class="container">
-        <div class="row">
+        <div v-if="cardItem.length < 1" class="text-center my-5">
+          <img
+            src="/assets/images/svgs/cart.svg"
+            style="height: 100px; margin-bottom: 21px; opacity: 0.4"
+            alt="cart"
+          />
+          <h5 class="text-dark mb-4">No Item in cart</h5>
+          <router-link
+            to="/categories"
+            class="
+              btn btn-imp-secondary
+              bg-primary
+              btn-icon
+              text-secondary
+              py-2
+              px-3
+            "
+          >
+            Start shopping
+          </router-link>
+        </div>
+        <div v-else class="row">
           <div class="col-md-8">
-            <div v-if="cardItem.length < 1" class="text-center my-5">
-              <h5 class="text-dark mb-4">No Item in cart</h5>
-              <router-link
-                to="/categories"
-                class="
-                  btn btn-imp-secondary
-                  bg-primary
-                  btn-icon
-                  text-secondary
-                  py-2
-                  px-3
-                "
-              >
-                Start shopping
-              </router-link>
-            </div>
-            <div v-else>
+            <div>
               <p class="paySummary">Items in cart</p>
               <div class="row mt-4 hide-sm">
                 <div class="col-md-2"></div>

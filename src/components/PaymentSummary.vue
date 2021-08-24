@@ -128,15 +128,54 @@ export default {
       return text;
     },
   },
-  mounted() {},
+  mounted() {
+    if (this.route == "cart") {
+      this.clearInitialCart();
+    }
+  },
   methods: {
+    clearInitialCart() {
+      this.loading = true;
+      let products = [];
+      let data = {
+        products,
+      };
+      let payload = {
+        data,
+        path: "/cart",
+      };
+      this.$store
+        .dispatch("postRequest", payload)
+        .then((resp) => {
+          this.loading = false;
+        })
+        .catch((err) => {
+          if (err.response) {
+            this.$toast.info(
+              "Cart",
+              err.response.data.message,
+              this.$toastPosition
+            );
+          } else {
+            this.$toast.info(
+              "Cart",
+              "Unable to send product items, please try again",
+              this.$toastPosition
+            );
+          }
+          this.loading = false;
+        });
+    },
     callback: function (response) {
       this.$toast.info(
         "Payment Successful",
         "Your order is being processed",
         this.$toastPosition
       );
-      this.$router.push("/categories");
+      this.$store.commit("updateCart", []);
+      setTimeout(() => {
+        this.$router.push("/categories");
+      }, 1000);
     },
     close: function () {
       this.$toast.info(
@@ -151,7 +190,6 @@ export default {
         this.cartSending = true;
 
         let products = [];
-
         for (const product of this.cartStorage) {
           let nProduct = product.product;
           nProduct.quantity = parseInt(product.quantity);
