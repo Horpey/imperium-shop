@@ -1,8 +1,6 @@
 <template>
-  <div
-    class="section pt-0"
-    style="padding: 0px; max-width: 100vw; overflow: hidden"
-  >
+  <div class="section pt-0" style="padding: 0px; overflow: hidden">
+    <!-- max-width: 100vw; -->
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-4 px-0">
