@@ -2,8 +2,8 @@
   <div class="calculator-view">
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-md-7 mb-sm">
-          <div class="media">
+        <div class="col-md-8 mb-sm">
+          <div class="media align-items-center">
             <a class="d-flex" href="#">
               <img src="/assets/images/svgs/light-outline.svg" alt="" />
             </a>
@@ -15,7 +15,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-5 text-center">
+        <div class="col-md-4 text-right">
           <router-link
             to="/"
             target="_blank"

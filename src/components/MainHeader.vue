@@ -39,12 +39,14 @@
                 </router-link>
               </div>
             </div>
-            <div class="col-md-5">
-              <img
-                class="head-prodimg mt-4"
-                src="/assets/images/header-img.png"
-                alt=""
-              />
+            <div class="col-md-6">
+              <div class="text-center">
+                <img
+                  class="head-prodimg mt-4"
+                  src="/assets/images/header-img.png"
+                  alt=""
+                />
+              </div>
             </div>
           </div>
         </div>
