@@ -210,7 +210,7 @@ ol,
   text-align: center;
   justify-content: center;
   align-items: center;
-  height: 40rem;
+  height: 34rem;
   // cursor: pointer;
   transition: 0.4s all;
   border: 1px solid transparent;
@@ -245,7 +245,7 @@ ol,
   background-color: #e1edcf;
 }
 .invertersys {
-  height: 20rem;
+  height: 17rem;
   background-color: #f4f8ed;
   display: flex;
   padding: 0px 58px;
@@ -548,7 +548,7 @@ button.bg-primary:hover {
   padding: 1.4rem;
   cursor: pointer;
   transition: 0.5s all;
-  &:hover{
+  &:hover {
     background: #255e1317;
     border: 1px solid #255e1326;
   }

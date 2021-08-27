@@ -173,9 +173,7 @@ export default {
         this.$toastPosition
       );
       this.$store.commit("updateCart", []);
-      setTimeout(() => {
-        this.$router.push("/categories");
-      }, 1000);
+      this.$store.commit("paymentSent", true);
     },
     close: function () {
       this.$toast.info(

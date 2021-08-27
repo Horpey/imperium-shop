@@ -1,20 +1,85 @@
 <template>
   <div class="container">
-    <h1>Welcome to your page</h1>
-    <span @click="logout">Logout</span>
-    <Loading v-if="loading" />
+    <div class="py-5" style="min-height: 96vh">
+      <div class="accountTabs">
+        <span
+          @click="active = 'account'"
+          :class="{ active: active == 'account' }"
+          >Account</span
+        >
+        <span @click="active = 'order'" :class="{ active: active == 'order' }"
+          >Order History</span
+        >
+        <span
+          @click="active = 'password'"
+          :class="{ active: active == 'password' }"
+          >Change Password</span
+        >
+        <span class="logout" @click="logout()">Logout</span>
+      </div>
+
+      <div class="my-5">
+        <Loading v-if="loading" />
+        <div v-else>
+          <ProfileView v-if="active == 'account'" :customer="customer" />
+          <OrderHistory v-else-if="active == 'order'" :customer="customer" />
+        </div>
+        <ChangePassword v-if="active == 'password'" :customer="customer" />
+      </div>
+    </div>
   </div>
 </template>
 <script>
+import ProfileView from "@/components/ProfileView.vue";
+import OrderHistory from "@/components/OrderHistory.vue";
+import ChangePassword from "@/components/ChangePassword.vue";
+import Loading from "@/components/Loading.vue";
+
 export default {
-  // middleware: "auth",
+  components: { ProfileView, OrderHistory, ChangePassword, Loading },
   data() {
     return {
+      active: "account",
       loading: false,
+      customer: {},
+      orders: {},
     };
   },
-  mounted() {},
+  mounted() {
+    this.getOrderHistory();
+  },
   methods: {
+    getOrderHistory() {
+      this.loading = true;
+      let payload = {
+        path: `order?page=1`,
+      };
+      this.$store
+        .dispatch("getRequest", payload)
+        .then((resp) => {
+          this.loading = false;
+          console.log(resp.data.data);
+          let { customer, orders } = resp.data.data;
+          this.customer = customer;
+          this.orders = orders;
+        })
+        .catch((err) => {
+          if (err.response) {
+            this.$toast.info(
+              "Profile data",
+              err.response.data.message,
+              this.$toastPosition
+            );
+          } else {
+            this.$toast.info(
+              "Profile data",
+              "Unable to load Profile data",
+              this.$toastPosition
+            );
+          }
+          this.loading = false;
+        });
+    },
     logout() {
       this.$store.dispatch("logout").then(() => {
         location.href = "/login";
@@ -23,3 +88,26 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+.accountTabs {
+  border-bottom: 3px solid gainsboro;
+  padding: 16px 0px;
+  span {
+    font-size: 19px;
+    color: #646464;
+    padding: 16px 23px;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    &.logout {
+      color: red;
+      float: right;
+      margin-top: -15px;
+    }
+    &.active {
+      color: #255e13;
+      font-weight: bold;
+      border-bottom: 3px solid #255e13;
+    }
+  }
+}
+</style>

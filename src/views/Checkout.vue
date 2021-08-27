@@ -1,57 +1,60 @@
 <template>
   <div>
-    <div class="py-5">
-      <div class="container mb-4">
-        <router-link class="text-dark" to="/cart">
-          <img src="/assets/images/svgs/left-arrow.svg" class="mr-2" />
-          Back to Cart
-        </router-link>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            <p class="paySummary">Checkout Information</p>
-            <div class="my-5">
-              <div class="form-group">
-                <label>Full name</label>
-                <input
-                  placeholder="Enter your fullname"
-                  type="text"
-                  v-model="fullName"
-                  class="form-control text-dark"
-                  name=""
-                  id=""
-                />
-              </div>
-              <div class="form-group">
-                <label>Phone number</label>
-                <input
-                  placeholder="Enter your phone number"
-                  type="text"
-                  v-model="phone_number"
-                  class="form-control text-dark"
-                  name=""
-                  id=""
-                />
-              </div>
-              <div class="form-group">
-                <label>Address</label>
-                <input
-                  placeholder="Enter your Address"
-                  type="text"
-                  v-model="address"
-                  class="form-control text-dark"
-                  name=""
-                  id=""
-                />
+    <div class="py-5" style="min-height: 95vh">
+      <PaymentSuccessful :paymentSummary="paymentSummary" v-if="paymentSent" />
+      <div v-else>
+        <div class="container mb-4">
+          <router-link class="text-dark" to="/cart">
+            <img src="/assets/images/svgs/left-arrow.svg" class="mr-2" />
+            Back to Cart
+          </router-link>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+              <p class="paySummary">Checkout Information</p>
+              <div class="my-5">
+                <div class="form-group">
+                  <label>Full name</label>
+                  <input
+                    placeholder="Enter your fullname"
+                    type="text"
+                    v-model="fullName"
+                    class="form-control text-dark"
+                    name=""
+                    id=""
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Phone number</label>
+                  <input
+                    placeholder="Enter your phone number"
+                    type="text"
+                    v-model="phone_number"
+                    class="form-control text-dark"
+                    name=""
+                    id=""
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Address</label>
+                  <input
+                    placeholder="Enter your Address"
+                    type="text"
+                    v-model="address"
+                    class="form-control text-dark"
+                    name=""
+                    id=""
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-md-4">
-            <PaymentSummary
-              :paymentSummary="paymentSummary"
-              :loading="loading"
-            />
+            <div class="col-md-4">
+              <PaymentSummary
+                :paymentSummary="paymentSummary"
+                :loading="loading"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -60,9 +63,10 @@
 </template>
 <script>
 import PaymentSummary from "@/components/PaymentSummary.vue";
+import PaymentSuccessful from "@/components/PaymentSuccessful.vue";
 
 export default {
-  components: { PaymentSummary },
+  components: { PaymentSummary, PaymentSuccessful },
   data() {
     return {
       loading: false,
@@ -84,6 +88,9 @@ export default {
       } else {
         return false;
       }
+    },
+    paymentSent() {
+      return this.$store.getters.paymentSent;
     },
   },
   mounted() {

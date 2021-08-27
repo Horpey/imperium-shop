@@ -5,6 +5,9 @@ export const mutations = {
   categorySelect(state, data) {
     state.categorySelect = data;
   },
+  paymentSent(state, data) {
+    state.paymentSent = data;
+  },
   updateCart(state, product) {
     state.cart = product;
     this.commit("saveData");

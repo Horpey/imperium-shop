@@ -6,7 +6,14 @@ export const getters = {
   isLoggedIn: state => !!state.token,
   authStatus: state => state.status,
   notificationSystem: state => state.notificationSystem,
-  user: state => state.user,
+  user: state => {
+    let dUser = Vue.CryptoJS.AES.decrypt(state.user, state.passPhrase).toString(
+      Vue.CryptoJS.enc.Utf8
+    );
+
+    return JSON.parse(dUser);
+  },
+  paymentSent: state => state.paymentSent,
   customer: state => state.customer,
   passPhrase: state => state.passPhrase,
   paystackkey: state => state.paystackkey,

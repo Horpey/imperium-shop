@@ -9,6 +9,7 @@ export const state = {
   passPhrase: "!imP3riuM@.132]13",
   paystackkey: env.PAYSTACK_KEY,
   categorySelect: "",
+  paymentSent: false,
   notificationSystem: {
     options: {
       ballon: {
