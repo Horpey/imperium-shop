@@ -53,7 +53,11 @@
         <ul
           class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto"
         >
-          <li @mouseover="displayCategories = true" class="nav-item dropdown">
+          <li
+            @mouseover="displayCategories = true"
+            @mouseleave="setDelay()"
+            class="nav-item dropdown"
+          >
             <a
               href="#"
               class="nav-link text-primary"
@@ -227,6 +231,13 @@ export default {
       this.itemAdded = true;
       setTimeout(() => {
         this.itemAdded = false;
+      }, 1000);
+    },
+  },
+  methods: {
+    setDelay() {
+      setTimeout(() => {
+        this.displayCategories = false;
       }, 1000);
     },
   },

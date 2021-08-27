@@ -541,10 +541,20 @@ button.bg-primary:hover {
   margin-bottom: 37px;
 }
 .dropdownmarg {
-  margin: 1.5rem;
+  margin: 0.8rem;
+  background: transparent;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  padding: 1.4rem;
+  cursor: pointer;
+  transition: 0.5s all;
+  &:hover{
+    background: #255e1317;
+    border: 1px solid #255e1326;
+  }
 }
 .btnviewmore {
-  margin-left: 3rem;
+  // margin-left: 3rem;
 }
 .btn-loading {
   display: inline-block !important;
@@ -640,7 +650,7 @@ button.bg-primary:hover {
     margin-bottom: 37px;
   }
   .dropdownmarg {
-    margin: 0.6rem;
+    padding: 0.6rem;
   }
   .btnviewmore {
     margin-left: 0px;
