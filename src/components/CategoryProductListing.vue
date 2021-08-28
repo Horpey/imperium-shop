@@ -1,27 +1,20 @@
 <template>
   <div class="container mt-5">
     <div class="row">
-      <div class="col-md-3">
+      <!-- <div class="col-md-3">
         <FilterProducts />
-      </div>
-      <div class="col-md-9">
+      </div> -->
+      <div class="col-md-12">
         <Loading class="pb-5" v-if="loading" />
         <div v-else>
           <div class="row">
             <div
-              class="col-md-4"
+              class="col-md-3"
               v-for="(product, index) in products"
               :key="index"
             >
               <ProductCard :data="product" />
             </div>
-          </div>
-          <div class="mt-4 text-center">
-            <!-- <a-pagination
-              v-model="pageCount"
-              :total="500"
-              :item-render="itemRender"
-            /> -->
           </div>
         </div>
       </div>

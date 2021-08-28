@@ -1,26 +1,34 @@
 <template>
   <div>
     <CategoryHeading :category="category" />
-    <Breadcrumb :category="category" :meta="meta" />
+    <Breadcrumb id="CategoryView" :category="category" :meta="meta" />
     <CategoryProductListing
+      style="min-height: 50vh"
       :loading="loading"
       :pageCount="2"
       :products="products"
     />
-    <div class="container mb-5" v-if="!loading">
+    <div class="container mb-5">
       <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-9">
+        <div class="col-md-12">
           <div class="text-center pb-5">
-            <button
+            <Pagination
+              @pageChange="handlePageChange"
+              :totalRecord="pagination.totalRecords"
+              :currentPage="pagination.page"
+              :perPage="pagination.per_page"
+              :loading="loading"
+            />
+            <!-- <button
               v-if="moreContentAvailable"
               @click="incrementPage()"
               :disabled="moreLoading"
               class="btn btn-imp-secondary"
             >
               Load more products
+
               <BtnLoading v-if="moreLoading" class="btn-loading" />
-            </button>
+            </button> -->
           </div>
         </div>
       </div>
@@ -33,7 +41,7 @@ import CategoryHeading from "@/components/CategoryHeading.vue";
 import Breadcrumb from "@/components/Breadcrumb.vue";
 import CategoryProductListing from "@/components/CategoryProductListing.vue";
 import MoreProducts from "@/components/MoreProducts.vue";
-import BtnLoading from "@/components/BtnLoading.vue";
+import Pagination from "@/components/Pagination.vue";
 
 export default {
   components: {
@@ -41,7 +49,7 @@ export default {
     Breadcrumb,
     CategoryProductListing,
     MoreProducts,
-    BtnLoading,
+    Pagination,
   },
   data() {
     return {
@@ -50,6 +58,7 @@ export default {
       current_page: 1,
       products: [],
       meta: {},
+      pagination: {},
     };
   },
   computed: {
@@ -88,6 +97,11 @@ export default {
       this.loading = true;
       this.getProductsbyCategory(false);
     },
+    handlePageChange(page) {
+      this.loading = true;
+      document.querySelector("#CategoryView").scrollIntoView();
+      this.current_page = page;
+    },
     getProductsbyCategory(divLoad) {
       if (divLoad) {
         this.moreLoading = true;
@@ -98,13 +112,16 @@ export default {
         categ = "";
       }
       let payload = {
-        path: `product?category=${categ}&page=${this.current_page}&per_page=9`,
+        path: `product?category=${categ}&page=${this.current_page}&per_page=12`,
       };
       this.$store
         .dispatch("getRequest", payload)
         .then((resp) => {
           this.loading = false;
-          this.products = this.products.concat(resp.data.data.result);
+          // this.products = this.products.concat(resp.data.data.result);
+          this.products = resp.data.data.result;
+
+          this.pagination = resp.data.data;
           this.meta = resp.data.data;
           this.moreLoading = false;
         })
