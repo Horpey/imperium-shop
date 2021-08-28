@@ -5,7 +5,10 @@
     <Loading class="pb-5" v-if="loading" />
 
     <div v-else>
-      <p class="p-checkout">
+      <p
+        v-if="loggedIn && route == 'checkout' && paymentSummary"
+        class="p-checkout"
+      >
         Item Quantity
         <span>{{ paymentSummary ? paymentSummary.total_quantity : "" }}</span>
       </p>
