@@ -7,15 +7,18 @@
           {{ product.description }}
         </p>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4" v-if="product.recommended_load.length > 0">
         <h4 class="text-dark f-bold">Recommended load</h4>
+
         <ul class="text-dark">
-          <li>Laptop - 3pcs</li>
-          <li>Led tv set - 1pcs</li>
-          <li>Ceiling fan - 2pcs</li>
-          <li>Standing fan - 1pcs</li>
-          <li>Fridge (energy-savers) - 1pcs</li>
-          <li>Bulb - 8pcs</li>
+          <li
+            class="text-capitalize"
+            v-for="(load, index) in product.recommended_load"
+            :key="index"
+          >
+            {{ `${load.load}` }} &#45;
+            {{ `${load.quantity}pcs` }}
+          </li>
         </ul>
       </div>
       <div class="col-md-4">
