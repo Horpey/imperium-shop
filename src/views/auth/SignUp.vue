@@ -46,7 +46,11 @@
                 <div class="col-md-6">
                   <div class="form-group mb-3">
                     <input
+                      required
                       placeholder="Phone number"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      type="number"
+                      maxlength="11"
                       v-model="form.phone_number"
                       class="form-control text-dark"
                     />
@@ -55,6 +59,7 @@
                 <div class="col-md-6">
                   <div class="form-group mb-3">
                     <input
+                      required
                       placeholder="Password"
                       v-model="form.password"
                       type="password"
@@ -65,6 +70,7 @@
                 <div class="col-md-6">
                   <div class="form-group mb-3">
                     <input
+                      required
                       placeholder="Confirm Password"
                       type="password"
                       v-model="form.confirm_password"
@@ -87,6 +93,7 @@
                     <div class="col-6">
                       <div class="form-group mb-3">
                         <input
+                          required
                           v-model="form.address.lga"
                           placeholder="LGA"
                           class="form-control text-dark"
@@ -96,6 +103,7 @@
                     <div class="col-6">
                       <div class="form-group mb-3">
                         <input
+                          required
                           v-model="form.address.state"
                           placeholder="State"
                           class="form-control text-dark"

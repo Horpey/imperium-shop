@@ -41,15 +41,19 @@ export default {
     return {
       active: "account",
       loading: false,
-      customer: {},
       orders: {},
     };
   },
+  computed: {
+    customer() {
+      return this.$store.getters.user;
+    },
+  },
   mounted() {
-    this.getOrderHistory();
+    this.getCustomerOrder();
   },
   methods: {
-    getOrderHistory() {
+    getCustomerOrder() {
       this.loading = true;
       let payload = {
         path: `order?page=1`,
@@ -58,10 +62,8 @@ export default {
         .dispatch("getRequest", payload)
         .then((resp) => {
           this.loading = false;
+          let { orders } = resp.data.data;
           console.log(resp.data.data);
-          let { customer, orders } = resp.data.data;
-          this.customer = customer;
-          this.orders = orders;
         })
         .catch((err) => {
           if (err.response) {

@@ -135,13 +135,13 @@ export default {
     };
   },
   mounted() {
-    let { first_name, last_name } = this.customer;
-    this.form.first_name = first_name;
-    this.form.last_name = last_name;
-
-    if (this.customer.user) {
+    if (this.customer.customer) {
       let { email, phone_number } = this.customer.user;
-      let { lga, state, street } = this.customer.address;
+      let { lga, state, street } = this.customer.customer.address;
+      let { first_name, last_name } = this.customer.customer;
+
+      this.form.first_name = first_name;
+      this.form.last_name = last_name;
       this.form.email = email;
       this.form.phone_number = phone_number;
       this.form.lga = lga;

@@ -30,7 +30,7 @@
           :value="product.quantity"
           style="width: 100px; font-weight: bold; color: black; font-size: 14px"
           type="number"
-          class="quantityInput form-control form-control-sm"
+          class="quantityInput form-control form-control-sm margin-auto-sm"
         />
       </div>
     </div>

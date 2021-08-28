@@ -79,8 +79,11 @@
             >
               <div class="dropdown-menu-inner">
                 <div class="row">
-                  <div class="col-md-6">
-                    <div class="dropdownmarg">
+                  <div class="col-md-6 pr-0">
+                    <div
+                      @click="$router.push('/categories?type=solar-panel')"
+                      class="dropdownmarg"
+                    >
                       <router-link
                         to="/categories?type=solar-panel"
                         class="navdroplink"
@@ -89,7 +92,10 @@
                         <p>Solar panels</p>
                       </router-link>
                     </div>
-                    <div class="dropdownmarg">
+                    <div
+                      @click="$router.push('/categories?type=inverter')"
+                      class="dropdownmarg"
+                    >
                       <router-link
                         to="/categories?type=inverter"
                         class="navdroplink"
@@ -101,44 +107,9 @@
                         <p>Inverters</p>
                       </router-link>
                     </div>
-                    <div class="dropdownmarg">
-                      <router-link
-                        to="/categories?type=battery"
-                        class="navdroplink"
-                      >
-                        <img src="/assets/images/svgs/nav/battery.svg" alt="" />
-                        <p>Batteries</p>
-                      </router-link>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="dropdownmarg">
-                      <router-link
-                        to="/categories?type=bundle"
-                        class="navdroplink"
-                      >
-                        <img
-                          src="/assets/images/svgs/nav/accessories.svg"
-                          alt=""
-                        />
-                        <p>Complete solution</p>
-                      </router-link>
-                    </div>
-                    <div class="dropdownmarg">
-                      <router-link
-                        to="/categories?type=inverter"
-                        class="navdroplink"
-                      >
-                        <img
-                          src="/assets/images/svgs/nav/complete.svg"
-                          alt=""
-                        />
-                        <p>Inverters</p>
-                      </router-link>
-                    </div>
                     <div class="m-4">
                       <router-link
-                        to="/"
+                        to="/categories"
                         class="
                           btn btn-imp-secondary
                           bg-primary
@@ -151,6 +122,36 @@
                         <span class="nav-link-inner--text"
                           >View all products</span
                         >
+                      </router-link>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pl-0">
+                    <div
+                      @click="$router.push('/categories?type=bundle')"
+                      class="dropdownmarg"
+                    >
+                      <router-link
+                        to="/categories?type=bundle"
+                        class="navdroplink"
+                      >
+                        <img
+                          src="/assets/images/svgs/nav/accessories.svg"
+                          alt=""
+                        />
+                        <p>Complete solution</p>
+                      </router-link>
+                    </div>
+
+                    <div
+                      @click="$router.push('/categories?type=battery')"
+                      class="dropdownmarg"
+                    >
+                      <router-link
+                        to="/categories?type=battery"
+                        class="navdroplink"
+                      >
+                        <img src="/assets/images/svgs/nav/battery.svg" alt="" />
+                        <p>Batteries</p>
                       </router-link>
                     </div>
                   </div>

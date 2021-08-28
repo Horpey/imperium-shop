@@ -544,7 +544,7 @@ button.bg-primary:hover {
   margin: 0.8rem;
   background: transparent;
   border-radius: 10px;
-  border: 1px solid transparent;
+  border: 1px solid rgba(220, 220, 220, 0.603);
   padding: 1.4rem;
   cursor: pointer;
   transition: 0.5s all;
@@ -614,6 +614,9 @@ button.bg-primary:hover {
   }
   .text-center-sm {
     text-align: center;
+  }
+  .margin-auto-sm {
+    margin: 0 auto;
   }
   .sect-heading {
     font-size: 20px;

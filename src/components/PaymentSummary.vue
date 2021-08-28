@@ -6,6 +6,10 @@
 
     <div v-else>
       <p class="p-checkout">
+        Item Quantity
+        <span>{{ paymentSummary ? paymentSummary.total_quantity : "" }}</span>
+      </p>
+      <p class="p-checkout">
         Order Sub total
         <span>{{
           paymentSummary
@@ -59,8 +63,12 @@
           Outright payment
         </paystack>
 
-        <button @click="payWithSpecta()" class="btn btn-checkout mt-0">
-          Least to Own
+        <button
+          :disabled="spectaPaying"
+          @click="payWithSpecta()"
+          class="btn btn-checkout mt-0"
+        >
+          Lease to Own <BtnLoading v-if="spectaPaying" class="btn-loading" />
         </button>
       </div>
     </div>
@@ -77,6 +85,7 @@ export default {
   data() {
     return {
       cartSending: false,
+      spectaPaying: false,
     };
   },
   components: { BtnLoading, Loading, paystack },
@@ -130,7 +139,7 @@ export default {
   },
   mounted() {
     if (this.route == "cart") {
-      this.clearInitialCart();
+      // this.clearInitialCart();
     }
   },
   methods: {
@@ -182,7 +191,56 @@ export default {
         this.$toastPosition
       );
     },
-    payWithSpecta() {},
+    payWithSpecta() {
+      // this.paymentSummary.total_price < 20000
+      if (false) {
+        this.$toast.info(
+          "Specta",
+          "Total amount must be ₦20,000 and above to access our loan service.",
+          this.$toastPosition
+        );
+      } else {
+        const items = this.paymentSummary.cart.items.map((item) => {
+          return item.product.name;
+        });
+
+        const data = {
+          reference: `${this.reference}${this.paymentSummary.cart.id}`,
+          description: `Payment for ${items}`,
+          amount: Math.ceil(this.paymentSummary.total_price),
+        };
+        let payload = {
+          data,
+          path: `lease/createPayment`,
+        };
+        this.spectaPaying = true;
+
+        this.$store
+          .dispatch("postRequest", payload)
+          .then((resp) => {
+            this.spectaPaying = false;
+            if (resp.data.data) {
+              window.location = resp.data.data;
+            }
+          })
+          .catch((err) => {
+            this.spectaPaying = false;
+            if (err.response) {
+              this.$toast.info(
+                "Specta",
+                err.response.data.message,
+                this.$toastPosition
+              );
+            } else {
+              this.$toast.info(
+                "Specta",
+                "Loan payment is down, please contact support.",
+                this.$toastPosition
+              );
+            }
+          });
+      }
+    },
     redirectCheckout() {
       if (this.loggedIn) {
         this.cartSending = true;
