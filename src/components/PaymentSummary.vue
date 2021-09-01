@@ -48,23 +48,9 @@
         <BtnLoading v-if="cartSending" class="btn-loading" />
       </button>
       <div v-else>
-        <paystack
-          class="btn btn-checkout mb-3"
-          :amount="payAmount"
-          :email="loggedIn.user.email"
-          :paystackkey="paystackkey"
-          :reference="reference"
-          :callback="callback"
-          :close="close"
-          :metadata="{
-            custom_fields: {
-              order_id: this.getID,
-            },
-          }"
-          :embed="false"
-        >
+        <button class="btn btn-checkout mb-3" @click="placeOrder()">
           Outright payment
-        </paystack>
+        </button>
 
         <button
           :disabled="spectaPaying"
@@ -89,6 +75,7 @@ export default {
     return {
       cartSending: false,
       spectaPaying: false,
+      orderData: {},
     };
   },
   components: { BtnLoading, Loading, paystack },
@@ -141,75 +128,68 @@ export default {
     },
   },
   mounted() {
-    if (this.route == "cart") {
-      // this.getCart();
-    }
+    this.getCartCheckout();
   },
-  watch: {
-    cartId: function () {
-      this.clearInitialCart();
-    },
-  },
+
   methods: {
-    clearInitialCart() {
+    getCartCheckout() {
+      let data = {};
       let payload = {
-        path: `/order/${this.cartId}`,
+        data,
+        path: "order/checkout",
+      };
+      this.$store
+        .dispatch("postRequest", payload)
+        .then((resp) => {
+          this.orderData = resp.data.data;
+          if (this.route == "cart") {
+            this.clearInitialCart(this.orderData.order.id);
+          }
+        })
+        .catch((err) => {});
+    },
+    clearInitialCart(id) {
+      let payload = {
+        path: `/order/${id}`,
       };
       this.$store
         .dispatch("delRequest", payload)
-        .then((resp) => {
-          console.log(resp);
-        })
+        .then((resp) => {})
         .catch((err) => {});
-      // let products = [];
-      // let data = {
-      //   products,
-      // };
-      // let payload = {
-      //   data,
-      //   path: "/cart",
-      // };
-      // this.$store
-      //   .dispatch("postRequest", payload)
-      //   .then((resp) => {
-      //     this.loading = false;
-      //   })
-      //   .catch((err) => {
-      //     if (err.response) {
-      //       this.$toast.info(
-      //         "Cart",
-      //         err.response.data.message,
-      //         this.$toastPosition
-      //       );
-      //     } else {
-      //       this.$toast.info(
-      //         "Cart",
-      //         "Unable to send product items, please try again",
-      //         this.$toastPosition
-      //       );
-      //     }
-      //     this.loading = false;
-      //   });
     },
-    callback: function (response) {
-      this.$toast.info(
-        "Payment Successful",
-        "Your order is being processed",
-        this.$toastPosition
-      );
-      this.$store.commit("updateCart", []);
-      this.$store.commit("paymentSent", true);
-    },
-    close: function () {
-      this.$toast.info(
-        "Payment",
-        "Payment process closed",
-        this.$toastPosition
-      );
+    placeOrder() {
+      const handler = PaystackPop.setup({
+        key: this.paystackkey,
+        email: this.loggedIn.user.email,
+        amount: this.payAmount,
+        currency: "NGN",
+        metadata: {
+          custom_fields: {
+            order_id: this.orderData.order.id,
+          },
+        },
+        callback: function () {
+          this.$toast.info(
+            "Payment Successful",
+            "Your order is being processed",
+            this.$toastPosition
+          );
+          this.$store.commit("updateCart", []);
+          this.$store.commit("paymentSent", true);
+        },
+        close: function () {
+          this.$toast.info(
+            "Payment",
+            "Payment process closed",
+            this.$toastPosition
+          );
+        },
+      });
+      handler.openIframe();
     },
     payWithSpecta() {
       // this.paymentSummary.total_price < 20000
-      if (false) {
+      if (this.paymentSummary.total_price < 20000) {
         this.$toast.info(
           "Specta",
           "Total amount must be ₦20,000 and above to access our loan service.",
