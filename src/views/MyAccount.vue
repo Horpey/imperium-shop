@@ -22,9 +22,9 @@
         <Loading v-if="loading" />
         <div v-else>
           <ProfileView v-if="active == 'account'" :customer="customer" />
-          <OrderHistory v-else-if="active == 'order'" :customer="customer" />
+          <OrderHistory v-else-if="active == 'order'" :orders="orders" />
         </div>
-        <ChangePassword v-if="active == 'password'" :customer="customer" />
+        <ChangePassword v-if="active == 'password'" />
       </div>
     </div>
   </div>
@@ -42,13 +42,10 @@ export default {
       active: "account",
       loading: false,
       orders: {},
+      customer: {},
     };
   },
-  computed: {
-    customer() {
-      return this.$store.getters.user;
-    },
-  },
+
   mounted() {
     this.getCustomerOrder();
   },
@@ -63,7 +60,9 @@ export default {
         .then((resp) => {
           this.loading = false;
           let { orders } = resp.data.data;
-          console.log(resp.data.data);
+          let { customer } = resp.data.data;
+          this.orders = orders;
+          this.customer = customer;
         })
         .catch((err) => {
           if (err.response) {

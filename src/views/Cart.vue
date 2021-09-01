@@ -51,7 +51,11 @@
             </div>
           </div>
           <div class="col-md-4">
-            <PaymentSummary v-if="cardItem.length > 0" />
+            <PaymentSummary
+              :loading="payLoading"
+              :cartId="cartId"
+              v-if="cardItem.length > 0"
+            />
           </div>
         </div>
       </div>
@@ -72,10 +76,32 @@ export default {
   data() {
     return {
       cardItem: [],
+      payLoading: true,
+      cartId: "",
     };
   },
   mounted() {
     this.cardItem = this.cartStorage;
+    this.getCart();
+  },
+  methods: {
+    getCart() {
+      this.payLoading = true;
+      let payload = {
+        path: `cart`,
+      };
+      this.$store
+        .dispatch("getRequest", payload)
+        .then((resp) => {
+          if (resp.data.data.cart) {
+            this.cartId = resp.data.data.cart.id;
+          }
+          this.payLoading = false;
+        })
+        .catch((err) => {
+          this.payLoading = false;
+        });
+    },
   },
 };
 </script>

@@ -22,7 +22,7 @@ export default {
       "Nov",
       "Dec"
     ];
-    var days = ["Sun", "Mon", "Tues", "Wednes", "Thurs", "Fri", "Satur"];
+    var days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
     var d = new Date(time);
     var day = days[d.getDay()];
     var hr = d.getHours();

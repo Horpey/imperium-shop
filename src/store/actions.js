@@ -20,6 +20,25 @@ export const actions = {
         });
     });
   },
+  delRequest({ commit, dispatch, getters }, payload) {
+    return new Promise((resolve, reject) => {
+      const token = getters.token;
+
+      axios({
+        url: `${payload.path}`,
+        method: "DELETE",
+        headers: {
+          Authorization: `bearer ${token}`
+        }
+      })
+        .then(resp => {
+          resolve(resp);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  },
   putRequest({ commit, dispatch, getters }, payload) {
     return new Promise((resolve, reject) => {
       const token = getters.token;

@@ -84,7 +84,7 @@ import Loading from "@/components/Loading.vue";
 import paystack from "vue-paystack";
 
 export default {
-  props: ["paymentSummary", "loading"],
+  props: ["paymentSummary", "loading", "cartId"],
   data() {
     return {
       cartSending: false,
@@ -142,41 +142,54 @@ export default {
   },
   mounted() {
     if (this.route == "cart") {
-      // this.clearInitialCart();
+      // this.getCart();
     }
+  },
+  watch: {
+    cartId: function () {
+      this.clearInitialCart();
+    },
   },
   methods: {
     clearInitialCart() {
-      this.loading = true;
-      let products = [];
-      let data = {
-        products,
-      };
       let payload = {
-        data,
-        path: "/cart",
+        path: `/order/${this.cartId}`,
       };
       this.$store
-        .dispatch("postRequest", payload)
+        .dispatch("delRequest", payload)
         .then((resp) => {
-          this.loading = false;
+          console.log(resp);
         })
-        .catch((err) => {
-          if (err.response) {
-            this.$toast.info(
-              "Cart",
-              err.response.data.message,
-              this.$toastPosition
-            );
-          } else {
-            this.$toast.info(
-              "Cart",
-              "Unable to send product items, please try again",
-              this.$toastPosition
-            );
-          }
-          this.loading = false;
-        });
+        .catch((err) => {});
+      // let products = [];
+      // let data = {
+      //   products,
+      // };
+      // let payload = {
+      //   data,
+      //   path: "/cart",
+      // };
+      // this.$store
+      //   .dispatch("postRequest", payload)
+      //   .then((resp) => {
+      //     this.loading = false;
+      //   })
+      //   .catch((err) => {
+      //     if (err.response) {
+      //       this.$toast.info(
+      //         "Cart",
+      //         err.response.data.message,
+      //         this.$toastPosition
+      //       );
+      //     } else {
+      //       this.$toast.info(
+      //         "Cart",
+      //         "Unable to send product items, please try again",
+      //         this.$toastPosition
+      //       );
+      //     }
+      //     this.loading = false;
+      //   });
     },
     callback: function (response) {
       this.$toast.info(

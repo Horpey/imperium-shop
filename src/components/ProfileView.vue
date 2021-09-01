@@ -119,7 +119,11 @@ export default {
     ProfileView,
     BtnLoading,
   },
-  computed: {},
+  computed: {
+    customerId() {
+      return this.$store.getters.user.customer.id;
+    },
+  },
   data() {
     return {
       form: {
@@ -135,10 +139,10 @@ export default {
     };
   },
   mounted() {
-    if (this.customer.customer) {
+    if (this.customer) {
+      let { first_name, last_name } = this.customer;
+      let { lga, state, street } = this.customer.address;
       let { email, phone_number } = this.customer.user;
-      let { lga, state, street } = this.customer.customer.address;
-      let { first_name, last_name } = this.customer.customer;
 
       this.form.first_name = first_name;
       this.form.last_name = last_name;
@@ -152,16 +156,21 @@ export default {
   methods: {
     submitForm() {
       this.loading = true;
-      let data = this.form;
+      let data = {};
+      let { first_name, last_name, email, phone_number, street, lga, state } =
+        this.form;
+
+      data = { first_name, last_name, email, phone_number };
+      data.address = { street, lga, state };
+
       let payload = {
         data,
-        path: "/customer",
+        path: `/customer/${this.customerId}`,
       };
       this.$store
         .dispatch("putRequest", payload)
         .then((resp) => {
           this.loading = false;
-          console.log(resp);
 
           this.$toast.success(
             "Account",
