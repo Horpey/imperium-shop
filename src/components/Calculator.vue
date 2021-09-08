@@ -16,13 +16,12 @@
           </div>
         </div>
         <div class="col-md-4 gotoCal">
-          <router-link
-            to="/"
-            target="_blank"
+          <a
+            href="https://imperium-site.netlify.app/calculator" target="_blank"
             class="btn btn-imp-secondary bg-white text-primary btn-icon py-3"
           >
             Go to Calculator
-          </router-link>
+          </a>
         </div>
       </div>
     </div>

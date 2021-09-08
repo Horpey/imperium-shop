@@ -18,7 +18,7 @@
     <MakeRequest />
     <CategoryProducts
       :loading="loading"
-      category="batteries"
+      category="battery"
       :products="products.battery"
     />
     <CategoryProducts

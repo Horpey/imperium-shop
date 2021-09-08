@@ -85,6 +85,12 @@ export default {
     if (this.category == "all") {
       this.categorySelect = "";
     }
+    if(this.$route.query.type){
+      this.categorySelect = this.$route.query.type;
+      this.selectChange()
+    }else{
+      this.categorySelect =""
+    }
   },
   methods: {
     selectChange() {

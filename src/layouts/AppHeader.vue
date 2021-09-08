@@ -159,20 +159,20 @@
               </div>
             </div>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <router-link to="/" class="nav-link text-primary">
               Special Offers
             </router-link>
-          </li>
+          </li> -->
           <li class="nav-item">
             <router-link to="/" class="nav-link text-primary">
               Power as a service
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/" class="nav-link text-primary">
+            <a href="https://imperium-site.netlify.app/calculator" target="_blank" class="nav-link text-primary">
               Energy Calculator
-            </router-link>
+            </a>
           </li>
           <li class="nav-item">
             <router-link to="/" class="nav-link text-primary">
