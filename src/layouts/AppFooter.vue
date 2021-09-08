@@ -15,11 +15,11 @@
               <router-link to="/">Sell on Imperium</router-link>
             </li>
             <li>
-              <router-link to="/">Terms & Conditions</router-link>
+              <router-link to="/terms">Terms & Conditions</router-link>
             </li>
-            <li>
+            <!-- <li>
               <router-link to="/">Privacy policy</router-link>
-            </li>
+            </li> -->
           </ul>
         </div>
         <div class="col-md-3 col-6">

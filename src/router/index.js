@@ -104,6 +104,15 @@ const routes = [
     meta: {
       requiresVisitor: true
     }
+  },
+  {
+    path: "/terms",
+    name: "terms",
+    components: {
+      header: AppHeader,
+      default: () => import("../views/Terms.vue"),
+      footer: AppFooter
+    }
   }
 ];
 
