@@ -10,7 +10,7 @@
             <li>
               <router-link
                 class="text-capitalize"
-                :to="`/categories/${product.category}`"
+                :to="`/categories?type=${product.category}`"
               >
                 {{ product.category }}</router-link
               >

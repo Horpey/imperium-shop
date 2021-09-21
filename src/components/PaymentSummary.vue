@@ -168,7 +168,7 @@ export default {
             order_id: this.orderData.order.id,
           },
         },
-        callback: function () {
+        callback: () => {
           this.$toast.info(
             "Payment Successful",
             "Your order is being processed",
@@ -177,7 +177,7 @@ export default {
           this.$store.commit("updateCart", []);
           this.$store.commit("paymentSent", true);
         },
-        close: function () {
+        close: () => {
           this.$toast.info(
             "Payment",
             "Payment process closed",
