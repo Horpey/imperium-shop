@@ -113,6 +113,15 @@ const routes = [
       default: () => import("../views/Terms.vue"),
       footer: AppFooter
     }
+  },
+  {
+    path: "/power-as-a-service",
+    name: "power-as-a-service",
+    components: {
+      header: AppHeader,
+      default: () => import("../views/PowerService.vue"),
+      footer: AppFooter
+    }
   }
 ];
 

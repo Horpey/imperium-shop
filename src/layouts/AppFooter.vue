@@ -6,16 +6,28 @@
           <h4 class="footer-heading">Company</h4>
           <ul class="footer-links">
             <li>
-              <router-link to="/">About us</router-link>
+              <a target="_blank" href="https://imperium-site.netlify.app/about"
+                >About us</a
+              >
             </li>
             <li>
-              <router-link to="/">Contact Us</router-link>
+              <a
+                target="_blank"
+                href="https://imperium-site.netlify.app/contact"
+                >Contact Us</a
+              >
             </li>
             <li>
-              <router-link to="/">Sell on Imperium</router-link>
+              <a
+                target="_blank"
+                href="https://imperium-site.netlify.app/become-vendor"
+                >Sell on Imperium</a
+              >
             </li>
             <li>
-              <router-link to="/terms">Terms & Conditions</router-link>
+              <a target="_blank" href="https://imperium-site.netlify.app/terms"
+                >Terms & Conditions</a
+              >
             </li>
             <!-- <li>
               <router-link to="/">Privacy policy</router-link>
@@ -28,17 +40,11 @@
             <li>
               <router-link to="/">Energy Calculator</router-link>
             </li>
+
             <li>
-              <router-link to="/">Installations</router-link>
-            </li>
-            <li>
-              <router-link to="/">Delivery</router-link>
-            </li>
-            <li>
-              <router-link to="/">Lease to own</router-link>
-            </li>
-            <li>
-              <router-link to="/">Power as a service</router-link>
+              <router-link to="/power-as-a-service"
+                >Power as a service</router-link
+              >
             </li>
           </ul>
         </div>
