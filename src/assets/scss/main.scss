@@ -353,6 +353,49 @@ button.bg-primary:hover {
   letter-spacing: 0;
   transition: all 0.15s linear;
 }
+
+a.nav-link {
+  position: relative;
+  transition: 0.8s all;
+  &:hover {
+    color: $PRIMARY-COLOR !important;
+    &::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      bottom: 9px;
+      left: 46%;
+      border-radius: 21px;
+      background-color: $PRIMARY-COLOR !important;
+      position: absolute;
+    }
+  }
+  &::before {
+    transition: 0.8s all;
+    content: "";
+    width: 6px;
+    height: 6px;
+    bottom: 9px;
+    left: 46%;
+    border-radius: 21px;
+    background-color: transparent;
+    position: absolute;
+  }
+}
+a.nav-link.router-link-active {
+  color: $PRIMARY-COLOR !important;
+  position: relative;
+  &::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    bottom: 9px;
+    left: 46%;
+    border-radius: 21px;
+    background-color: $PRIMARY-COLOR;
+    position: absolute;
+  }
+}
 .navbar-nav {
   align-items: center;
 }

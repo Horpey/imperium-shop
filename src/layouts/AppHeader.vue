@@ -58,15 +58,15 @@
             @mouseleave="setDelay()"
             class="nav-item dropdown"
           >
-            <a
-              href="#"
+            <router-link
+              to="/categories"
               class="nav-link text-primary"
               data-toggle="dropdown"
               role="button"
             >
               <i class="ni ni-ui-04 d-lg-none"></i>
               <span class="nav-link-inner--text">Products</span>
-            </a>
+            </router-link>
             <div
               @mouseover="displayCategories = true"
               @mouseleave="displayCategories = false"
@@ -165,17 +165,21 @@
             </router-link>
           </li> -->
           <li class="nav-item">
-            <router-link to="/" class="nav-link text-primary">
+            <router-link to="/power-as-a-service" class="nav-link text-primary">
               Power as a service
             </router-link>
           </li>
           <li class="nav-item">
-            <a href="https://imperium-site.netlify.app/calculator" target="_blank" class="nav-link text-primary">
+            <a
+              href="https://imperium-site.netlify.app/calculator"
+              target="_blank"
+              class="nav-link text-primary"
+            >
               Energy Calculator
             </a>
           </li>
           <li class="nav-item">
-            <router-link to="/" class="nav-link text-primary">
+            <router-link to="/search" class="nav-link text-primary">
               <img src="/assets/images/svgs/search.svg" alt="search" />
             </router-link>
           </li>
