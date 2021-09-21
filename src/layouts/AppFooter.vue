@@ -64,16 +64,16 @@
           <ul class="footer-links">
             <li>
               <a href="#" class="pr-2">
-                <img src="/images/svgs/twitter.svg" alt="" />
+                <img src="/assets/images/svgs/twitter.svg" alt="" />
               </a>
               <a href="#" class="pr-2">
-                <img src="/images/svgs/facebook.svg" alt="" />
+                <img src="/assets/images/svgs/facebook.svg" alt="" />
               </a>
               <a href="#" class="pr-2">
-                <img src="/images/svgs/envelope.svg" alt="" />
+                <img src="/assets/images/svgs/envelope.svg" alt="" />
               </a>
               <a href="#" class="pr-2">
-                <img src="/images/svgs/linkedin.svg" alt="" />
+                <img src="/assets/images/svgs/linkedin.svg" alt="" />
               </a>
             </li>
             <li class="pt-4">

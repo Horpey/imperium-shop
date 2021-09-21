@@ -7,12 +7,12 @@
             <img src="/assets/images/specta.png" height="150" alt="" />
           </div>
           <div class="col-md-6">
-            <h3 class="head f-bold mb-4">Buy Now Pay With Specta</h3>
+            <h3 class="head f-bold mb-4 text-black">Buy Now Pay With Specta</h3>
             <router-link
               to="/"
               target="_blank"
-              class="btn btn-imp-secondary btn-icon text-secondary py-3 px-5"
-              style="background: #a0053e"
+              class="btn btn-imp-secondary btn-icon text-white py-3 px-5"
+              style="background: black"
             >
               Click here
             </router-link>

@@ -56,6 +56,10 @@
 </template>
 <style lang="scss">
 .bg-prp {
-  background: #f5fcf2;
+  background: linear-gradient(
+    180deg,
+    #e9f7e3 3.01%,
+    rgba(241, 252, 237, 0) 100%
+  );
 }
 </style>

@@ -23,17 +23,16 @@ li,
 ul,
 ol,
 .nav-lin {
-  // font-family: "proxima_nova", sans-serif !important;
-  font-family: "Nunito", sans-serif !important;
+  font-family: "Museo", sans-serif !important;
   scroll-behavior: smooth;
 }
 .f-bold {
-  // font-family: "proxima_nova_thextrabold", sans-serif !important;
-  font-weight: bold;
+  font-family: "Museo", sans-serif !important;
+  font-weight: 700;
 }
 .f-semibold {
-  // font-family: "proxima_nova_semibold", sans-serif !important;
-  font-weight: 600;
+  font-family: "Museo", sans-serif !important;
+  font-weight: 500;
 }
 
 .btn-imp-secondary {
@@ -63,7 +62,7 @@ ol,
   background-color: $PRIMARY-COLOR !important;
 }
 .calculator-view {
-  background: linear-gradient(180deg, #31761b 0%, #154805 118.75%);
+  background: #31761b;
   padding: 2rem 0px;
 }
 @media (min-width: 1200px) {
@@ -366,11 +365,11 @@ button.bg-primary:hover {
   line-height: 58px;
 }
 .head-prodimg {
-  height: 300px;
+  height: 400px;
 }
 .section-pd {
-  padding-top: 3rem;
-  padding-bottom: 5rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
 }
 .card-specta {
   text-align: center;
@@ -385,7 +384,7 @@ button.bg-primary:hover {
     font-weight: bold;
     font-size: 42px;
     line-height: 51px;
-    color: #760739;
+    color: black;
   }
 }
 .makeRequest {
