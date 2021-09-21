@@ -623,7 +623,15 @@ a.nav-link.router-link-active {
 .gotoCal {
   text-align: right;
 }
-
+.nav-item.dropdown:hover {
+  & > .dropdown-menu-xl {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+.bg-lightt {
+  // background-color: #ccdeab29;
+}
 @media only screen and (max-width: 768px) {
   .gotoCal {
     text-align: center;

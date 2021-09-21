@@ -1,25 +1,26 @@
 <template>
   <div>
     <CategoryHeading :category="category" />
-    <Breadcrumb id="CategoryView" :category="category" :meta="meta" />
-    <CategoryProductListing
-      style="min-height: 50vh"
-      :loading="loading"
-      :pageCount="2"
-      :products="products"
-    />
-    <div class="container mb-5">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="text-center pb-5">
-            <Pagination
-              @pageChange="handlePageChange"
-              :totalRecord="pagination.totalRecords"
-              :currentPage="pagination.page"
-              :perPage="pagination.per_page"
-              :loading="loading"
-            />
-            <!-- <button
+    <div class="bg-lightt">
+      <Breadcrumb id="CategoryView" :category="category" :meta="meta" />
+      <CategoryProductListing
+        style="min-height: 50vh"
+        :loading="loading"
+        :pageCount="2"
+        :products="products"
+      />
+      <div class="container pb-5">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-center pb-5">
+              <Pagination
+                @pageChange="handlePageChange"
+                :totalRecord="pagination.totalRecords"
+                :currentPage="pagination.page"
+                :perPage="pagination.per_page"
+                :loading="loading"
+              />
+              <!-- <button
               v-if="moreContentAvailable"
               @click="incrementPage()"
               :disabled="moreLoading"
@@ -29,6 +30,7 @@
 
               <BtnLoading v-if="moreLoading" class="btn-loading" />
             </button> -->
+            </div>
           </div>
         </div>
       </div>

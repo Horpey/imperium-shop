@@ -53,11 +53,7 @@
         <ul
           class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto"
         >
-          <li
-            @mouseover="displayCategories = true"
-            @mouseleave="setDelay()"
-            class="nav-item dropdown"
-          >
+          <li class="nav-item dropdown">
             <router-link
               to="/categories"
               class="nav-link text-primary"
@@ -67,14 +63,13 @@
               <i class="ni ni-ui-04 d-lg-none"></i>
               <span class="nav-link-inner--text">Products</span>
             </router-link>
+
             <div
-              @mouseover="displayCategories = true"
-              @mouseleave="displayCategories = false"
               :class="{
                 'dropdown-menu': true,
                 'dropdown-menu-xl': true,
                 'p-2': true,
-                show: displayCategories,
+                show: true,
               }"
             >
               <div class="dropdown-menu-inner">
@@ -268,10 +263,10 @@ export default {
 <style lang="scss">
 .dropdown-menu-xl {
   min-width: 635px;
-  display: none;
-  transition: visibility 0.25s, opacity 0.25s, transform 0.25s;
-  animation: none;
+  visibility: hidden;
   opacity: 0;
+  top: 79px;
+  transition: 0.5s all;
   border-radius: 0.3rem;
   background: #fefefe;
   box-shadow: 10px 10px 30px #17460933;
@@ -280,11 +275,11 @@ export default {
   background-position: bottom right;
   border-radius: 0px;
   margin: -2px ​0px 0px 14px;
-  &.show {
-    display: block;
-    opacity: 1;
-    transition: visibility 0.25s, opacity 0.25s, transform 0.25s;
-  }
+  // &.show {
+  //   display: block;
+  //   opacity: 1;
+  //   transition: visibility 0.25s, opacity 0.25s, transform 0.25s;
+  // }
   .navdroplink {
     p {
       display: inline;

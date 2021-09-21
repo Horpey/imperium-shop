@@ -73,15 +73,25 @@ export default {
   position: relative;
   .cart-icon {
     position: absolute;
-    top: 24px;
+    // top: 24px;
+    top: -5px;
+    opacity: 0;
     right: 24px;
     z-index: 9999;
     cursor: pointer;
+    transition: 0.4s all;
+  }
+}
+.productDivView:hover {
+  & > .cart-icon {
+    top: 24px;
+    opacity: 1;
   }
 }
 .productDiv {
   text-align: center;
   border: 1px solid transparent;
+  border-radius: 10px;
   padding: 17px;
   min-height: 426px;
   position: relative;
