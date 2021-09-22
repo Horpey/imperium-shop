@@ -120,8 +120,6 @@ export default {
             this.$passPhrase
           ).toString();
 
-          console.log(token);
-
           localStorage.setItem("token", token);
           localStorage.setItem("user", user);
 

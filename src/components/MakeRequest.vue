@@ -33,8 +33,7 @@
               agreed tariff based on the solution deployed.
             </p>
             <router-link
-              to="/"
-              target="_blank"
+              to="/power-as-a-service"
               class="
                 mt-4
                 btn btn-imp-secondary

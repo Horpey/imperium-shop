@@ -22,51 +22,156 @@
               </div>
               <div class="col-md-1"></div>
               <div class="col-md-6">
-                <form class="my-5">
+                <form @submit.prevent="submitForm()" class="my-5">
                   <div class="row">
                     <div class="form-group contactForm col-md-6">
                       <label>First name</label>
-                      <input class="form-control" type="text" />
+                      <input
+                        v-model="first_name"
+                        required
+                        class="form-control"
+                        type="text"
+                      />
                     </div>
                     <div class="form-group contactForm col-md-6">
                       <label>Last name</label>
-                      <input class="form-control" type="text" />
+                      <input
+                        v-model="last_name"
+                        required
+                        class="form-control"
+                        type="text"
+                      />
                     </div>
                     <div class="form-group contactForm col-md-6">
                       <label>Email address</label>
-                      <input class="form-control" type="email" />
+                      <input
+                        v-model="email"
+                        required
+                        class="form-control"
+                        type="email"
+                      />
                     </div>
                     <div class="form-group contactForm col-md-6">
                       <label>Phone number</label>
-                      <input class="form-control" type="text" />
+                      <input
+                        v-model="phone_number"
+                        required
+                        class="form-control"
+                        type="text"
+                      />
                     </div>
                     <div class="form-group contactForm col-md-6">
                       <label>Contact preference</label>
-                      <input class="form-control" type="text" />
+                      <select
+                        v-model="contact_reference"
+                        required="required"
+                        class="form-control"
+                      >
+                        <option
+                          value=""
+                          selected="selected"
+                          disabled="disabled"
+                        ></option>
+                        <option value="phone">Phone</option>
+                        <option value="email">Email</option>
+                        <option value="phone-email">
+                          Both Phone and Email
+                        </option>
+                      </select>
                     </div>
                     <div class="form-group contactForm col-md-6">
                       <label>Contact Date</label>
-                      <input class="form-control" type="text" />
+                      <input
+                        v-model="contact_date"
+                        required
+                        class="form-control"
+                        type="date"
+                      />
                     </div>
                     <div class="form-group contactForm col-md-6">
                       <label>House Number</label>
-                      <input class="form-control" type="text" />
+                      <input
+                        v-model="address.house_number"
+                        required
+                        class="form-control"
+                        type="text"
+                      />
                     </div>
                     <div class="form-group contactForm col-md-6">
                       <label>Street Number</label>
-                      <input class="form-control" type="text" />
+                      <input
+                        v-model="address.street"
+                        required
+                        class="form-control"
+                        type="text"
+                      />
                     </div>
                     <div class="form-group contactForm col-md-6">
                       <label>LGA</label>
-                      <input class="form-control" type="text" />
+                      <input
+                        v-model="address.lga"
+                        required
+                        class="form-control"
+                        type="text"
+                      />
                     </div>
                     <div class="form-group contactForm col-md-6">
                       <label>State</label>
-                      <input class="form-control" type="text" />
+                      <select
+                        v-model="address.state"
+                        name="state"
+                        required="required"
+                        class="form-control"
+                      >
+                        <option
+                          value=""
+                          selected="selected"
+                          disabled="disabled"
+                        ></option>
+                        <option value="Abuja FCT">Abuja FCT</option>
+                        <option value="Abia">Abia</option>
+                        <option value="Adamawa">Adamawa</option>
+                        <option value="Akwa Ibom">Akwa Ibom</option>
+                        <option value="Anambra">Anambra</option>
+                        <option value="Bauchi">Bauchi</option>
+                        <option value="Bayelsa">Bayelsa</option>
+                        <option value="Benue">Benue</option>
+                        <option value="Borno">Borno</option>
+                        <option value="Cross River">Cross River</option>
+                        <option value="Delta">Delta</option>
+                        <option value="Ebonyi">Ebonyi</option>
+                        <option value="Edo">Edo</option>
+                        <option value="Ekiti">Ekiti</option>
+                        <option value="Enugu">Enugu</option>
+                        <option value="Gombe">Gombe</option>
+                        <option value="Imo">Imo</option>
+                        <option value="Jigawa">Jigawa</option>
+                        <option value="Kaduna">Kaduna</option>
+                        <option value="Kano">Kano</option>
+                        <option value="Katsina">Katsina</option>
+                        <option value="Kebbi">Kebbi</option>
+                        <option value="Kogi">Kogi</option>
+                        <option value="Kwara">Kwara</option>
+                        <option value="Lagos">Lagos</option>
+                        <option value="Nassarawa">Nassarawa</option>
+                        <option value="Niger">Niger</option>
+                        <option value="Ogun">Ogun</option>
+                        <option value="Ondo">Ondo</option>
+                        <option value="Osun">Osun</option>
+                        <option value="Oyo">Oyo</option>
+                        <option value="Plateau">Plateau</option>
+                        <option value="Rivers">Rivers</option>
+                        <option value="Sokoto">Sokoto</option>
+                        <option value="Taraba">Taraba</option>
+                        <option value="Yobe">Yobe</option>
+                        <option value="Zamfara">Zamfara</option>
+                        <option value="Outside Nigeria">Outside Nigeria</option>
+                      </select>
                     </div>
                   </div>
                   <div class="form-group">
                     <button
+                      :disabled="loading"
                       class="
                         btn-block btn btn-imp-secondary
                         bg-dark
@@ -75,9 +180,15 @@
                         py-3
                         px-5
                       "
+                      type="submit"
                     >
-                      <span class="nav-link-inner--text">Submit</span>
+                      <span class="nav-link-inner--text">Send Request</span>
+                      <BtnLoading v-if="loading" class="btn-loading" />
                     </button>
+                    <p class="text-center my-3">
+                      By clicking the button, you agree to be contacted by the
+                      Imperium team.
+                    </p>
                   </div>
                 </form>
               </div>
@@ -88,6 +199,82 @@
     </div>
   </div>
 </template>
+<script>
+import BtnLoading from "@/components/BtnLoading.vue";
+
+export default {
+  components: { BtnLoading },
+  data() {
+    return {
+      loading: false,
+      email: "",
+      phone_number: "",
+      contact_reference: "",
+      contact_date: "",
+      address: {
+        house_number: "",
+        street: "",
+        lga: "",
+        state: "",
+      },
+      first_name: "",
+      last_name: "",
+    };
+  },
+  methods: {
+    submitForm() {
+      this.loading = true;
+      let data = {
+        email: this.email,
+        phone_number: this.phone_number,
+        contact_reference: this.contact_reference,
+        contact_date: this.contact_date,
+        address: this.address,
+        first_name: this.first_name,
+        last_name: this.last_name,
+      };
+      let payload = {
+        data,
+        path: "/power",
+      };
+      this.$store
+        .dispatch("postRequest", payload)
+        .then((resp) => {
+          this.loading = false;
+          this.email = "";
+          this.phone_number = "";
+          this.contact_reference = "";
+          this.contact_date = "";
+          this.address = "";
+          this.first_name = "";
+          this.last_name = "";
+
+          this.$toast.success(
+            "Request Submit",
+            "Your Request has been sent successfully",
+            this.$toastPosition
+          );
+        })
+        .catch((err) => {
+          if (err.response) {
+            this.$toast.info(
+              "Request Submit",
+              err.response.data.message,
+              this.$toastPosition
+            );
+          } else {
+            this.$toast.info(
+              "Request Submit",
+              "Unable to submit request, check the details and try again",
+              this.$toastPosition
+            );
+          }
+          this.loading = false;
+        });
+    },
+  },
+};
+</script>
 <style lang="scss">
 #terms-and-conditions {
   color: black;
@@ -120,9 +307,15 @@
 }
 .contactForm {
   input,
-  textarea {
+  textarea,
+  select {
     border: 1px solid #219653;
     border-radius: 15px;
+    color: black;
+    &:hover,
+    &:focus {
+      color: black;
+    }
   }
 }
 .locateInfo {
