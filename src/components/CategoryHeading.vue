@@ -80,19 +80,27 @@ export default {
       }
     },
   },
+  watch: {
+    "$route.query.type": function () {
+      this.setCategory();
+    },
+  },
   mounted() {
-    this.categorySelect = this.category;
-    if (this.category == "all") {
-      this.categorySelect = "";
-    }
-    if(this.$route.query.type){
-      this.categorySelect = this.$route.query.type;
-      this.selectChange()
-    }else{
-      this.categorySelect =""
-    }
+    this.setCategory();
   },
   methods: {
+    setCategory() {
+      this.categorySelect = this.category;
+      if (this.category == "all") {
+        this.categorySelect = "";
+      }
+      if (this.$route.query.type) {
+        this.categorySelect = this.$route.query.type;
+        this.selectChange();
+      } else {
+        this.categorySelect = "";
+      }
+    },
     selectChange() {
       this.$store.commit("categorySelect", this.categorySelect);
     },
