@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <a-collapse default-active-key="1" :bordered="false">
+    <a-collapse default-active-key="1" :bordered="false">
       <template #expandIcon="props">
         <a-icon type="caret-right" :rotate="props.isActive ? 90 : 0" />
       </template>
@@ -34,7 +34,7 @@
           <a-slider :marks="marks" range :default-value="[20, 50]" />
         </div>
       </a-collapse-panel>
-    </a-collapse> -->
+    </a-collapse>
     <button class="btn btn-sm text-capitalize filterbtn">Filter</button>
   </div>
 </template>
