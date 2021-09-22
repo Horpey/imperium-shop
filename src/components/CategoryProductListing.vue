@@ -113,7 +113,7 @@ export default {
   components: { FilterProducts, Loading, ProductCard },
   props: ["products", "pageCount", "loading"],
   mounted() {
-    this.setSlideJS();
+    // this.setSlideJS();
   },
   data() {
     return {
