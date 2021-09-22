@@ -97,6 +97,7 @@ export default {
   position: relative;
   cursor: pointer;
   transition: 0.7s all;
+  background-color: white;
   &:hover {
     border-color: #255e13;
   }

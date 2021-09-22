@@ -1,5 +1,5 @@
 <template>
-  <div class="section pt-3">
+  <div class="section pt-3 bg-lightt">
     <div class="container">
       <div class="card-specta py-5">
         <div class="row align-items-center">

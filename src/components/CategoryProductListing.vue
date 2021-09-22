@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-5">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-3" v-if="false">
         <div class="collapsible">
           <input type="checkbox" id="label-1" checked="true" />
           <label for="label-1">Sort by</label>
@@ -73,6 +73,7 @@
             </div>
             <div class="priceRange">
               <span class="text-small">₦ 100,000</span>
+              <span class="text-small float-right">₦ 500,000</span>
             </div>
           </div>
         </div>
@@ -88,11 +89,11 @@
           <p>Filter by price</p>
         </div> -->
       </div>
-      <div class="col-md-9">
+      <div class="col-md-12">
         <Loading class="pb-5" v-if="loading" />
         <div class="row" v-else>
           <div
-            class="col-md-4"
+            class="col-md-3"
             v-for="(product, index) in products"
             :key="index"
           >
