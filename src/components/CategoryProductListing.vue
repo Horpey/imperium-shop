@@ -1,19 +1,5 @@
 <template>
   <div class="container mt-5">
-    <div class="middle">
-      <div class="multi-range-slider">
-        <input type="range" id="input-left" min="0" max="100" value="25" />
-        <input type="range" id="input-right" min="0" max="100" value="75" />
-
-        <div class="slider">
-          <div class="track"></div>
-          <div class="range"></div>
-          <div class="thumb left"></div>
-          <div class="thumb right"></div>
-        </div>
-      </div>
-    </div>
-
     <div class="row">
       <div class="col-md-3">
         <div class="collapsible">
@@ -55,12 +41,40 @@
         </div>
 
         <div class="collapsible">
-          <input type="checkbox" id="label-2" />
+          <input type="checkbox" id="label-2" checked="true" />
           <label for="label-2">Filter by price</label>
           <i class="material-icons md-18">
             <img src="/assets/images/svgs/arrow-collapse.svg" alt="" />
           </i>
-          <div class="collapsible__content"></div>
+          <div class="collapsible__content">
+            <div class="middle my-3">
+              <div class="multi-range-slider">
+                <input
+                  type="range"
+                  id="input-left"
+                  min="0"
+                  max="100"
+                  value="25"
+                />
+                <input
+                  type="range"
+                  id="input-right"
+                  min="0"
+                  max="100"
+                  value="75"
+                />
+                <div class="slider">
+                  <div class="track"></div>
+                  <div class="range"></div>
+                  <div class="thumb left"></div>
+                  <div class="thumb right"></div>
+                </div>
+              </div>
+            </div>
+            <div class="priceRange">
+              <span class="text-small">₦ 100,000</span>
+            </div>
+          </div>
         </div>
 
         <button class="btn btn-sm text-capitalize filterbtn ml-3 mt-4">
@@ -99,6 +113,12 @@ export default {
   props: ["products", "pageCount", "loading"],
   mounted() {
     this.setSlideJS();
+  },
+  data() {
+    return {
+      minAmt: "",
+      maxAmt: "",
+    };
   },
   methods: {
     setSlideJS() {
@@ -238,15 +258,14 @@ export default {
 
 .middle {
   position: relative;
-  width: 50%;
-  max-width: 500px;
+  width: 100%;
+  max-width: 100%;
 }
 
 .slider {
   position: relative;
   z-index: 1;
-  height: 10px;
-  margin: 0 15px;
+  height: 4px;
 }
 .slider > .track {
   position: absolute;
@@ -266,17 +285,18 @@ export default {
   top: 0;
   bottom: 0;
   border-radius: 5px;
-  background-color: #6200ee;
+  background-color: #255e13;
 }
 .slider > .thumb {
   position: absolute;
   z-index: 3;
-  width: 30px;
-  height: 30px;
-  background-color: #6200ee;
+  width: 18px;
+  height: 18px;
+  background-color: #255e13;
   border-radius: 50%;
-  box-shadow: 0 0 0 0 rgba(98, 0, 238, 0.1);
+  box-shadow: 0 0 0 0 #255e1342;
   transition: box-shadow 0.3s ease-in-out;
+  top: 3px;
 }
 .slider > .thumb.left {
   left: 25%;
@@ -287,10 +307,10 @@ export default {
   transform: translate(15px, -10px);
 }
 .slider > .thumb.hover {
-  box-shadow: 0 0 0 20px rgba(98, 0, 238, 0.1);
+  box-shadow: 0 0 0 5px #255e1342;
 }
 .slider > .thumb.active {
-  box-shadow: 0 0 0 40px rgba(98, 0, 238, 0.2);
+  box-shadow: 0 0 0 10px #255e132f;
 }
 
 input[type="range"] {
@@ -310,5 +330,11 @@ input[type="range"]::-webkit-slider-thumb {
   border: 0 none;
   background-color: red;
   -webkit-appearance: none;
+}
+.priceRange {
+  span {
+    color: black;
+    font-size: 12px;
+  }
 }
 </style>
