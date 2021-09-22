@@ -60,18 +60,10 @@
               data-toggle="dropdown"
               role="button"
             >
-              <i class="ni ni-ui-04 d-lg-none"></i>
               <span class="nav-link-inner--text">Products</span>
             </router-link>
 
-            <div
-              :class="{
-                'dropdown-menu': true,
-                'dropdown-menu-xl': true,
-                'p-2': true,
-                show: true,
-              }"
-            >
+            <div class="dropdown-menu dropdown-menu-xl p-2 show">
               <div class="dropdown-menu-inner">
                 <div class="row">
                   <div class="col-md-6 pr-0">
@@ -154,11 +146,6 @@
               </div>
             </div>
           </li>
-          <!-- <li class="nav-item">
-            <router-link to="/" class="nav-link text-primary">
-              Special Offers
-            </router-link>
-          </li> -->
           <li class="nav-item">
             <router-link to="/power-as-a-service" class="nav-link text-primary">
               Power as a service
@@ -173,11 +160,69 @@
               Energy Calculator
             </a>
           </li>
-          <li class="nav-item">
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link text-primary"
+              data-toggle="dropdown"
+              role="button"
+            >
+              <img src="/assets/images/svgs/search.svg" alt="search" />
+            </a>
+
+            <div
+              class="
+                dropdown-menu dropdown-menu-search dropdown-menu-xl
+                p-2
+                show
+              "
+            >
+              <div class="dropdown-menu-inner">
+                <div class="p-4">
+                  <div class="searchinput">
+                    <img src="/assets/images/svgs/search-icon.svg" alt="" />
+                    <input
+                      v-model="searchField"
+                      placeholder="What are you looking for?"
+                      class="form-control text-dark"
+                      type="text"
+                    />
+                  </div>
+                  <div class="mt-4">
+                    <p class="text-dark" v-if="notFound">
+                      Sorry we couldn’t find your search word, try again!
+                    </p>
+                    <Loading v-if="loading" />
+                    <div v-else class="scrollSearchView">
+                      <h5
+                        class="text-dark"
+                        v-if="products.length > 1 && !loading"
+                      >
+                        Search results for "{{ searchField }}"
+                      </h5>
+                      <div class="row mt-3">
+                        <div
+                          class="col-6 col-md-4"
+                          v-for="(product, index) in products"
+                          :key="index"
+                        >
+                          <div>
+                            <ProductCard :data="product" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- <li class="nav-item">
             <router-link to="/search" class="nav-link text-primary">
               <img src="/assets/images/svgs/search.svg" alt="search" />
             </router-link>
-          </li>
+          </li> -->
           <li class="nav-item">
             <router-link
               to="/cart"
@@ -217,13 +262,21 @@
 </template>
 
 <script>
+import ProductCard from "@/components/ProductCard.vue";
+import Loading from "@/components/Loading.vue";
+
 export default {
   name: "AppHeader",
+  components: { ProductCard, Loading },
   data() {
     return {
       toogle: false,
       displayCategories: false,
       itemAdded: false,
+      products: [],
+      notFound: false,
+      searchField: "",
+      loading: false,
     };
   },
   watch: {
@@ -233,12 +286,54 @@ export default {
         this.itemAdded = false;
       }, 1000);
     },
+    searchField: function (data) {
+      if (data) {
+        this.getSearchResult();
+      } else {
+        this.products = [];
+      }
+    },
   },
   methods: {
     setDelay() {
       setTimeout(() => {
         this.displayCategories = false;
       }, 1000);
+    },
+    getSearchResult() {
+      this.loading = true;
+      this.notFound = false;
+
+      let payload = {
+        path: `product/search/?q=${this.searchField}`,
+      };
+      this.$store
+        .dispatch("getRequest", payload)
+        .then((resp) => {
+          this.loading = false;
+          this.products = resp.data.data.result;
+          if (this.products.length == 0) {
+            this.notFound = true;
+          } else {
+            this.notFound = false;
+          }
+        })
+        .catch((err) => {
+          if (err.response) {
+            this.$toast.info(
+              "Product Search",
+              err.response.data.message,
+              this.$toastPosition
+            );
+          } else {
+            this.$toast.info(
+              "Product Search",
+              "Unable to search product",
+              this.$toastPosition
+            );
+          }
+          this.loading = false;
+        });
     },
   },
   computed: {
@@ -257,7 +352,6 @@ export default {
       return this.$store.getters.cartProducts;
     },
   },
-  components: {},
 };
 </script>
 <style lang="scss">
@@ -275,11 +369,7 @@ export default {
   background-position: bottom right;
   border-radius: 0px;
   margin: -2px ​0px 0px 14px;
-  // &.show {
-  //   display: block;
-  //   opacity: 1;
-  //   transition: visibility 0.25s, opacity 0.25s, transform 0.25s;
-  // }
+
   .navdroplink {
     p {
       display: inline;
@@ -289,6 +379,11 @@ export default {
       font-size: 14px;
     }
   }
+}
+.dropdown-menu-search {
+  right: 0;
+  min-height: 600px;
+  width: 970px;
 }
 .cartNavbar {
   position: relative;
@@ -307,6 +402,22 @@ export default {
     top: 10px;
     right: 4px;
   }
+}
+.searchinput {
+  display: flex;
+  border-bottom: 1px solid black;
+  input {
+    border: 0px;
+    &:hover,
+    &:focus {
+      color: black;
+    }
+  }
+}
+.scrollSearchView {
+  overflow-y: scroll;
+  height: 500px;
+  overflow-x: hidden;
 }
 .wiggle {
   /* Start the shake animation and make the animation last for 0.5 seconds */
