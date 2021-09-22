@@ -63,7 +63,7 @@
               <span class="nav-link-inner--text">Products</span>
             </router-link>
 
-            <div class="dropdown-menu dropdown-menu-xl p-2 show">
+            <div class="dropdown-menu dropdown-menu-xl p-2 show hide-sm">
               <div class="dropdown-menu-inner">
                 <div class="row">
                   <div class="col-md-6 pr-0">
@@ -175,6 +175,7 @@
                 dropdown-menu dropdown-menu-search dropdown-menu-xl
                 p-2
                 show
+                hide-sm
               "
             >
               <div class="dropdown-menu-inner">
