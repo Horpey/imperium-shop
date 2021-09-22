@@ -111,4 +111,11 @@ export default {
 .cat-img {
   height: 300px;
 }
+.category-select {
+  select {
+    option {
+      color: black;
+    }
+  }
+}
 </style>
