@@ -12,7 +12,7 @@
   >
     <div class="container">
       <router-link class="navbar-brand mr-lg-5" to="/">
-        <img src="/assets/images/logo.svg" />
+        <img src="/assets/images/imperium_logo.png" />
       </router-link>
       <button
         v-if="!toogle"
@@ -35,7 +35,7 @@
           <div class="row">
             <div class="col-6 collapse-brand">
               <router-link to="/">
-                <img src="/assets/images/logo.svg" />
+                <img src="/assets/images/imperium_logo.png" />
               </router-link>
             </div>
             <div class="col-6 collapse-close">
