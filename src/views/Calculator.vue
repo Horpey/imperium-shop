@@ -76,13 +76,13 @@
                 <div class="text-right">
                   <div class="basedClass">
                     <div
-                      @click="calculation = 'general'"
+                      @click="switchFormToGeneral(true)"
                       :class="{ active: calculation == 'general' }"
                     >
                       General Based
                     </div>
                     <div
-                      @click="calculation = 'device'"
+                      @click="switchFormToGeneral(false)"
                       :class="{ active: calculation == 'device' }"
                     >
                       Device Based
@@ -261,6 +261,8 @@
                               name=""
                               class="form-control"
                               id=""
+                              required=""
+                              ref="applianceName"
                               @change="onDeviceItemChange($event)"
                             >
                               <option value="" disabled selected>
@@ -276,15 +278,18 @@
                           </div>
                           <div class="form-group calForm">
                             <label class="">Power rating</label>
-                            <input
-                              type="number"
-                              step="any"
-                              class="form-control"
-                              ref="capacityNum"
-                              v-model="capcityOfSelectedDevice"
-                              disabled
-                              required
-                            />
+                            <div class="inputDesc">
+                              <input
+                                type="number"
+                                step="any"
+                                class="form-control"
+                                ref="capacityNum"
+                                v-model="capcityOfSelectedDevice"
+                                disabled
+                                required
+                              />
+                              <span ref="powerMeasurment">Watt</span>
+                            </div>
                           </div>
                           <div class="form-group calForm">
                             <label class="">Quantity</label>
@@ -324,39 +329,47 @@
                       </div>
                     </div>
                     <div class="col-md-5">
-                      <div id="appliances-list-view" class="form-body">
-                        <div class="header-text" v-if="!formGeneralIsActive">
+                      <div class="maintenn" v-if="!formGeneralIsActive">
+                        <h5 class="f-semibold text-dark mb-3">
                           Your appliances
-                        </div>
+                        </h5>
                         <div
-                          class="appliance-view-rect"
+                          class="appliance"
                           v-for="(device, index) in devices"
                           :key="index"
-                          v-bind:class="{ float_right: index % 2 > 0 }"
                         >
-                          <!-- <img
-                            src="@/assets/images/close.svg"
-                            alt="close icon"
-                            class="icon-close"
-                            @click="removeAppliance(index)"
-                          /> -->
-                          <div class="appliance-details">
-                            <div>{{ device.name }}</div>
-                            <span>{{ device.quantity }}</span
-                            ><span class="pipe">|</span>
-                            <span> {{ device.size }} kw</span
-                            ><span class="pipe">|</span
-                            ><span> {{ device.on_time }} hrs daily</span>
+                          <div>
+                            <p class="name">{{ device.name }}</p>
+                            <p class="descr">
+                              {{ device.quantity }} | {{ device.size }} |
+                              {{ device.on_time }}
+                              hrs daily
+                            </p>
                           </div>
+                          <span @click="removeAppliance(index)">⨯</span>
+                        </div>
+                        <div class="form-group">
+                          <button
+                            :disabled="generatorCal"
+                            class="
+                              btn btn-imp-secondary
+                              bg-primary
+                              text-white
+                              btn-block
+                              mt-2
+                              py-3
+                              px-5
+                            "
+                            @click="calculateCostAndEnergyConsumption()"
+                          >
+                            <span class="nav-link-inner--text">Proceed</span>
+                            <BtnLoading
+                              v-if="generatorCal"
+                              class="btn-loading"
+                            />
+                          </button>
                         </div>
                       </div>
-                      <button
-                        class="btn-full-green"
-                        v-if="!formGeneralIsActive"
-                        @click="calculateCostAndEnergyConsumption()"
-                      >
-                        Proceed
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -560,12 +573,11 @@ export default {
 
     clearApplianceInputFields() {
       this.$refs.applianceName.selectedIndex = 0;
-      this.$refs.capacityNum.value =
-        this.$refs.powerMeasurment.value =
-        this.$refs.quantity.value =
-        this.$refs.dailyUsageHours.value =
-        this.capcityOfSelectedDevice =
-          null;
+      this.$refs.capacityNum.value = 0;
+      this.$refs.powerMeasurment.value = 0;
+      this.$refs.quantity.value = 0;
+      this.$refs.dailyUsageHours.value = 0;
+      this.capcityOfSelectedDevice = null;
     },
 
     clearAddedAppliance() {
@@ -576,13 +588,11 @@ export default {
       this.formGeneralIsActive = val;
 
       if (this.formGeneralIsActive) {
-        this.$refs.generalBasedButton.classList.add("bg-black");
-        this.$refs.deviceBasedButton.classList.remove("bg-black");
+        this.calculation = "general";
         this.clearApplianceInputFields();
         this.clearAddedAppliance();
       } else {
-        this.$refs.deviceBasedButton.classList.add("bg-black");
-        this.$refs.generalBasedButton.classList.remove("bg-black");
+        this.calculation = "device";
         this.clearGeneratorInputField();
         this.clearMaintenanceInfo();
       }
@@ -658,13 +668,26 @@ export default {
           });
       } else {
         if (this.devices.length === 0) {
-          alert("Please add devices");
+          this.$toast.info(
+            "Info",
+            "Please add devices to proceed",
+            this.$toastPosition
+          );
+
           return;
         } else {
           localStorage.calculationType = "device-based";
-          api
-            .costAndEnergyConsumptionDevice({ devices: this.devices })
+          this.generatorCal = true;
+
+          let payload = {
+            data: { devices: this.devices },
+            path: "/calculation/device",
+          };
+
+          this.$store
+            .dispatch("postRequest", payload)
             .then(({ data }) => {
+              this.generatorCal = false;
               localStorage.totalDeviceEnergy = data.data.totalDeviceEnergy;
               localStorage.energyConsumptionPerMonth =
                 data.data.energyConsumptionPerMonth;
@@ -674,9 +697,28 @@ export default {
                 data.data.energyConsumptionPerYear;
 
               this.$router.push("/calculator-result");
+
+              this.$toast.success(
+                "Result Generation",
+                "Result generated successfully",
+                this.$toastPosition
+              );
             })
-            .catch(({ response }) => {
-              alert(`${response.data.status}`);
+            .catch((err) => {
+              if (err.response) {
+                this.$toast.info(
+                  "Result Generation",
+                  err.response.data.message,
+                  this.$toastPosition
+                );
+              } else {
+                this.$toast.info(
+                  "Result Generation",
+                  "Unable to generate result, check the details and try again",
+                  this.$toastPosition
+                );
+              }
+              this.generatorCal = false;
             });
         }
       }

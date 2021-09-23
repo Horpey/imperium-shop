@@ -352,22 +352,29 @@ export default {
       }
 
       .left {
-        border: 1px solid #1d1d1d;
+        border-radius: 18px;
+        background: white;
 
         div {
           text-align: center;
           padding: 2rem 0;
 
           h3 {
-            font-size: 1.125rem;
+            font-size: 1.4rem;
             font-weight: bold;
+            color: black;
             margin-block-start: 0;
             margin-block-end: 0;
           }
 
           p {
-            color: #616161;
+            color: #00000094;
             margin-top: 0.6rem;
+            margin-bottom: 0;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 12px;
+            letter-spacing: 1px;
           }
         }
       }
@@ -377,7 +384,8 @@ export default {
         display: flex;
         justify-content: center;
         align-content: center;
-        border: 1px solid #1d1d1d;
+        border-radius: 18px;
+        background: white;
 
         @media screen and (max-width: 680px) {
           padding: 1rem 0;
@@ -395,6 +403,8 @@ export default {
         }
 
         select {
+          outline: 0;
+          border: 0px;
           text-align-last: center;
           font-size: 1.2rem;
         }
