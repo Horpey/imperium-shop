@@ -98,7 +98,7 @@ export default {
       calculationType: null,
       totalCost: "",
       suggestedProduct: [],
-      shopURL: "process.env.VUE_APP_SHOP_URL",
+      shopURL: "https://imperium-shop.netlify.app/",
       contentLoaderText: "Nothing to show",
       show: true,
       loading: true,
