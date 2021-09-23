@@ -122,6 +122,15 @@ const routes = [
       default: () => import("../views/PowerService.vue"),
       footer: AppFooter
     }
+  },
+  {
+    path: "/calculator",
+    name: "calculator",
+    components: {
+      header: AppHeader,
+      default: () => import("../views/Calculator.vue"),
+      footer: AppFooter
+    }
   }
 ];
 

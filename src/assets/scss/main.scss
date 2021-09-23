@@ -315,8 +315,50 @@ button.bg-primary:hover {
   z-index: 99999;
   background-color: #e8f7e2 !important;
 }
+
+.calForm {
+  margin-bottom: 30px;
+
+  label {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: black;
+  }
+  .form-control {
+    background: white;
+    border: 1px solid #219653;
+    border-radius: 20px;
+    height: 56px;
+    color: black;
+    padding: 14px;
+    &.disabledd {
+      background: #e0ecce;
+      border-color: transparent;
+    }
+  }
+  .inputDesc {
+    position: relative;
+    span {
+      position: absolute;
+      right: 17px;
+      font-size: 16px;
+      line-height: 55px;
+      bottom: 0;
+      color: #219653;
+    }
+  }
+}
 .top-0 {
   top: 0;
+}
+.formView {
+  background: #fafafa;
+  border-radius: 25px;
+  padding: 40px 0px;
+}
+.bg-pr-trans {
+  background: linear-gradient(180deg, #e8f7e2 70%, transparent);
 }
 .profile-page .card-profile .card-profile-image img,
 .shadow {

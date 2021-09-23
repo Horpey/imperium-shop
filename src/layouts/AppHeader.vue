@@ -152,13 +152,9 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <a
-              href="https://imperium-site.netlify.app/calculator"
-              target="_blank"
-              class="nav-link text-primary"
-            >
+            <router-link to="/calculator" class="nav-link text-primary">
               Energy Calculator
-            </a>
+            </router-link>
           </li>
 
           <li class="nav-item dropdown">
