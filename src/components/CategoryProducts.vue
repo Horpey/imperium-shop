@@ -1,7 +1,10 @@
 <template>
-  <div class="section bg-lightt">
+  <div class="section bg-lightt py-3">
     <div class="container">
-      <div class="sect-direct">
+      <div
+        class="sect-direct"
+        :style="{ 'margin-top': category == 'battery' ? '60px' : '0px' }"
+      >
         <div class="row">
           <div class="col-6">
             <h3 class="sect-heading">{{ category }}</h3>

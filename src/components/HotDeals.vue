@@ -1,5 +1,5 @@
 <template>
-  <div class="section bg-lightt">
+  <div class="section bg-lightt pb-3">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-3">
