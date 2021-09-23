@@ -131,6 +131,15 @@ const routes = [
       default: () => import("../views/Calculator.vue"),
       footer: AppFooter
     }
+  },
+  {
+    path: "/calculator-result",
+    name: "calculator-result",
+    components: {
+      header: AppHeader,
+      default: () => import("../views/CalculatorResult.vue"),
+      footer: AppFooter
+    }
   }
 ];
 
