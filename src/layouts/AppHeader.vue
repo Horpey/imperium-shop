@@ -68,11 +68,11 @@
                 <div class="row">
                   <div class="col-md-6 pr-0">
                     <div
-                      @click="$router.push('/categories?type=solar-panel')"
+                      @click="$router.push('/categories?type=solar panel')"
                       class="dropdownmarg"
                     >
                       <router-link
-                        to="/categories?type=solar-panel"
+                        to="/categories?type=solar panel"
                         class="navdroplink"
                       >
                         <img src="/assets/images/svgs/nav/solar.svg" alt="" />

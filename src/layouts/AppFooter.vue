@@ -18,9 +18,7 @@
               >
             </li>
             <li>
-              <a
-                target="_blank"
-                href="https://imperium-site.netlify.app/become-vendor"
+              <a target="_blank" href="https://vendor.imperiumng.com/#/signup"
                 >Sell on Imperium</a
               >
             </li>
@@ -83,6 +81,20 @@
               </a>
             </li>
             <li class="pt-4">
+              <div>
+                <p class="text-white">Can't find what you're looking for?</p>
+                <a
+                  tag="button"
+                  href="mailto:info@imperiumng.com"
+                  target="_blank"
+                  class="btn btn-imp-secondary"
+                  style="color: black"
+                >
+                  Send us an email</a
+                >
+              </div>
+            </li>
+            <!-- <li class="pt-4">
               <div class="form-group positive-relative">
                 <input
                   type="text"
@@ -96,7 +108,7 @@
                   Subscribe
                 </button>
               </div>
-            </li>
+            </li> -->
             <li>
               <a href="#">
                 <img src="/images/logo-white.svg" alt="" />
