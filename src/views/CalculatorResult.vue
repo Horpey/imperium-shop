@@ -1,58 +1,83 @@
 <template>
-  <div id="calculator-result" class="container">
-    <section class="result-container">
-      <h2>Your result</h2>
-      <div class="device-result" v-if="calculationType == 'device-based'">
-        <div class="left">
-          <div>
-            <h3>{{ energyConsumption }}</h3>
-            <p>Your energy consumption</p>
+  <div class="section pt-1 bg-pr-trans">
+    <div id="calculator-result" class="container">
+      <section class="result-container">
+        <h2>Your Result</h2>
+        <div class="device-result" v-if="calculationType == 'device-based'">
+          <div class="left">
+            <div>
+              <h3>{{ energyConsumption }}</h3>
+              <p>Your energy consumption</p>
+            </div>
+          </div>
+          <div class="right">
+            <!-- <img src="@/assets/images/chevron-down.svg" alt="chevron icon" /> -->
+            <select name="" @change="onDeviceDurationChange($event)">
+              <option value="Weekly">Weekly</option>
+              <option value="Monthly" selected>Monthly</option>
+              <option value="Yearly">Yearly</option>
+            </select>
           </div>
         </div>
-        <div class="right">
-          <!-- <img src="@/assets/images/chevron-down.svg" alt="chevron icon" /> -->
-          <select name="" @change="onDeviceDurationChange($event)">
-            <option value="Weekly">Weekly</option>
-            <option value="Monthly" selected>Monthly</option>
-            <option value="Yearly">Yearly</option>
-          </select>
-        </div>
-      </div>
-      <div class="gen-result" v-else>
-        <div class="left">
-          <div>
-            <h3>₦ {{ totalOperatingCost }}</h3>
-            <p>Total operating cost</p>
+        <div class="gen-result" v-else>
+          <div class="left">
+            <div>
+              <h3>₦ {{ totalOperatingCost }}</h3>
+              <p>Total operating cost</p>
+            </div>
+            <div>
+              <h3>₦ {{ fuelCost }}</h3>
+              <p>Total fueling cost</p>
+            </div>
+            <div>
+              <h3>₦ {{ maintenanceCost }}</h3>
+              <p>Total maintenance cost</p>
+            </div>
           </div>
-          <div>
-            <h3>₦ {{ fuelCost }}</h3>
-            <p>Total fueling cost</p>
-          </div>
-          <div>
-            <h3>₦ {{ maintenanceCost }}</h3>
-            <p>Total maintenance cost</p>
+          <div class="right">
+            <!-- <img src="@/assets/images/chevron-down.svg" alt="chevron icon" /> -->
+            <select name="" @change="onGenDurationChange($event)">
+              <option value="Weekly">Weekly</option>
+              <option value="Monthly" selected>Monthly</option>
+              <option value="Yearly">Yearly</option>
+            </select>
           </div>
         </div>
-        <div class="right">
-          <!-- <img src="@/assets/images/chevron-down.svg" alt="chevron icon" /> -->
-          <select name="" @change="onGenDurationChange($event)">
-            <option value="Weekly">Weekly</option>
-            <option value="Monthly" selected>Monthly</option>
-            <option value="Yearly">Yearly</option>
-          </select>
+        <router-link
+          to="/calculator"
+          class="restart-calculator font-weight-bold"
+        >
+          Restart Calculator
+        </router-link>
+
+        <div class="mt-5">
+          <h2>Suggested Products</h2>
+          <Loading v-if="loading" />
+          <div class="row">
+            <div
+              class="col-6 col-md-3"
+              v-for="(product, index) in suggestedProduct"
+              :key="index"
+            >
+              <div>
+                <ProductCard :data="product" />
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <router-link to="/calculator" class="restart-calculator">
-        Restart Calculator
-      </router-link>
-    </section>
+      </section>
+    </div>
   </div>
 </template>
 
 <script>
+import Loading from "@/components/Loading.vue";
+import ProductCard from "@/components/ProductCard.vue";
+
 export default {
   components: {
-    // ContentLoader,
+    Loading,
+    ProductCard,
   },
   data() {
     return {
@@ -311,8 +336,8 @@ export default {
     margin-top: 4rem;
 
     h2 {
-      font-size: 1.4rem;
-      font-weight: 500;
+      font-size: 2.4rem;
+      font-weight: bold;
       color: #1d1d1d;
     }
 
@@ -334,9 +359,8 @@ export default {
           padding: 2rem 0;
 
           h3 {
-            font-family: Gotham;
             font-size: 1.125rem;
-            font-weight: 500;
+            font-weight: bold;
             margin-block-start: 0;
             margin-block-end: 0;
           }
@@ -390,7 +414,8 @@ export default {
       .left {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        border: 1px solid #1d1d1d;
+        border-radius: 18px;
+        background: white;
 
         @media screen and (max-width: 900px) {
           grid-template-columns: 1fr 1fr;
@@ -401,21 +426,26 @@ export default {
           padding: 2rem 0;
 
           h3 {
-            font-family: Gotham;
-            font-size: 1.125rem;
-            font-weight: 500;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: black;
             margin-block-start: 0;
             margin-block-end: 0;
           }
 
           p {
-            color: #616161;
+            color: #00000094;
             margin-top: 0.6rem;
+            margin-bottom: 0;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 12px;
+            letter-spacing: 1px;
           }
 
           &:nth-child(2) {
-            border-left: 1px solid #1d1d1d;
-            border-right: 1px solid #1d1d1d;
+            border-left: 1px solid #1d1d1d1c;
+            border-right: 1px solid #1d1d1d1c;
 
             @media screen and (max-width: 900px) {
               border-right: none;
@@ -437,7 +467,8 @@ export default {
         display: flex;
         justify-content: center;
         align-content: center;
-        border: 1px solid #1d1d1d;
+        border-radius: 18px;
+        background: white;
 
         @media screen and (max-width: 900px) {
           padding: 1rem 0;
@@ -455,6 +486,8 @@ export default {
         }
 
         select {
+          outline: 0;
+          border: 0px;
           text-align-last: center;
           font-size: 1.2rem;
         }
