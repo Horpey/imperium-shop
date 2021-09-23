@@ -11,11 +11,7 @@
               >
             </li>
             <li>
-              <a
-                target="_blank"
-                href="https://imperium-site.netlify.app/contact"
-                >Contact Us</a
-              >
+              <a target="_blank" href="mailto:info@imperium.com">Contact Us</a>
             </li>
             <li>
               <a target="_blank" href="https://vendor.imperiumng.com/#/signup"
@@ -53,13 +49,19 @@
               <a href="#">20, Marina, Lagos State</a>
             </li>
             <li>
-              <router-link to="/">+234 (080) 6413 3937</router-link>
+              <a target="_blank" href="tel:+234 (080) 6413 3937"
+                >+234 (080) 6413 3937</a
+              >
             </li>
             <li>
-              <router-link to="/">+234 (081) 3547 3439</router-link>
+              <a target="_blank" href="tel:+234 (081) 3547 3439"
+                >+234 (081) 3547 3439</a
+              >
             </li>
             <li>
-              <router-link to="/">info@imperium.com</router-link>
+              <a target="_blank" href="mailto:info@imperium.com"
+                >info@imperium.com</a
+              >
             </li>
           </ul>
         </div>
