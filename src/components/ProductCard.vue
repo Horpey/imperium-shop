@@ -1,5 +1,5 @@
 <template>
-  <div class="productDivView">
+  <div class="productDivView" v-if="data.name">
     <span @click="addtoCart(data)" class="cart-icon">
       <CartIcon :inCart="checkCart(data)" />
     </span>

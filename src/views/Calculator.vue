@@ -254,77 +254,109 @@
                         <h5 class="f-semibold text-dark mb-3">
                           Your Calculation
                         </h5>
-                        <div class="form-group calForm">
-                          <label class="">Choose Device</label>
-                          <select name="" class="form-control" id="">
-                            <option value="" disabled selected>
-                              Choose a device
-                            </option>
-                            <option
-                              v-for="(appliance, index) in appliances"
-                              :key="index"
+                        <form @submit.prevent="addAppliance()">
+                          <div class="form-group calForm">
+                            <label class="">Choose Device</label>
+                            <select
+                              name=""
+                              class="form-control"
+                              id=""
+                              @change="onDeviceItemChange($event)"
                             >
-                              {{ appliance.name }}
-                            </option>
-                          </select>
-                        </div>
-                        <div class="form-group calForm">
-                          <label class="">Power rating</label>
-                          <input readonly class="form-control" type="text" />
-                        </div>
-                        <div class="form-group calForm">
-                          <label class="">Quantity</label>
-                          <input class="form-control" type="number" />
-                        </div>
-                        <div class="form-group calForm">
-                          <label class="">Hours of usage daily</label>
-                          <input class="form-control" type="number" />
-                        </div>
-                        <div class="form-group">
-                          <button
-                            class="
-                              btn btn-imp-secondary
-                              bg-primary
-                              text-white
-                              btn-block
-                              mt-2
-                              py-3
-                              px-5
-                            "
-                          >
-                            <span class="nav-link-inner--text">Add</span>
-                          </button>
-                        </div>
+                              <option value="" disabled selected>
+                                Choose a device
+                              </option>
+                              <option
+                                v-for="(appliance, index) in appliances"
+                                :key="index"
+                              >
+                                {{ appliance.name }}
+                              </option>
+                            </select>
+                          </div>
+                          <div class="form-group calForm">
+                            <label class="">Power rating</label>
+                            <input
+                              type="number"
+                              step="any"
+                              class="form-control"
+                              ref="capacityNum"
+                              v-model="capcityOfSelectedDevice"
+                              disabled
+                              required
+                            />
+                          </div>
+                          <div class="form-group calForm">
+                            <label class="">Quantity</label>
+                            <input
+                              class="form-control"
+                              type="number"
+                              ref="quantity"
+                              required
+                            />
+                          </div>
+                          <div class="form-group calForm">
+                            <label class="">Hours of usage daily</label>
+                            <input
+                              class="form-control"
+                              type="number"
+                              ref="dailyUsageHours"
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <button
+                              class="
+                                btn btn-imp-secondary
+                                bg-primary
+                                text-white
+                                btn-block
+                                mt-2
+                                py-3
+                                px-5
+                              "
+                              ref="buttonAddAppliance"
+                            >
+                              <span class="nav-link-inner--text">Add</span>
+                            </button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                     <div class="col-md-5">
-                      <div class="maintenn">
-                        <h5 class="f-semibold text-dark mb-3">
+                      <div id="appliances-list-view" class="form-body">
+                        <div class="header-text" v-if="!formGeneralIsActive">
                           Your appliances
-                        </h5>
-                        <div class="appliance">
-                          <div>
-                            <p class="name">LED bulb</p>
-                            <p class="descr">2, 0.018 kw, 11 hrs daily</p>
-                          </div>
-                          <span>⨯</span>
                         </div>
-                        <div class="form-group">
-                          <button
-                            class="
-                              btn btn-imp-secondary
-                              bg-primary
-                              text-white
-                              btn-block
-                              mt-2
-                              py-3
-                              px-5
-                            "
-                          >
-                            <span class="nav-link-inner--text">Proceed</span>
-                          </button>
+                        <div
+                          class="appliance-view-rect"
+                          v-for="(device, index) in devices"
+                          :key="index"
+                          v-bind:class="{ float_right: index % 2 > 0 }"
+                        >
+                          <!-- <img
+                            src="@/assets/images/close.svg"
+                            alt="close icon"
+                            class="icon-close"
+                            @click="removeAppliance(index)"
+                          /> -->
+                          <div class="appliance-details">
+                            <div>{{ device.name }}</div>
+                            <span>{{ device.quantity }}</span
+                            ><span class="pipe">|</span>
+                            <span> {{ device.size }} kw</span
+                            ><span class="pipe">|</span
+                            ><span> {{ device.on_time }} hrs daily</span>
+                          </div>
                         </div>
                       </div>
+                      <button
+                        class="btn-full-green"
+                        v-if="!formGeneralIsActive"
+                        @click="calculateCostAndEnergyConsumption()"
+                      >
+                        Proceed
+                      </button>
                     </div>
                   </div>
                 </div>
