@@ -1,204 +1,212 @@
 <template>
   <!-- position-sticky top-0 -->
-  <nav
-    id="navbar-main"
-    class="navbar navbar-main navbar-expand-lg bg-white navbar-light py-2"
-  >
-    <div class="container">
-      <router-link class="navbar-brand mr-lg-5" to="/">
-        <img src="/assets/images/imperium_logo.png" />
-      </router-link>
-      <button
-        v-if="!toogle"
-        class="navbar-toggler"
-        @click="toogle = true"
-        style="z-index: 9999"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div
-        :class="{
-          'navbar-collapse': true,
-          collapse: true,
-          show: toogle == true,
-        }"
-        id="navbar_global"
-        style="outline: 0"
-      >
-        <div class="navbar-collapse-header">
-          <div class="row">
-            <div class="col-6 collapse-brand">
-              <router-link to="/">
-                <img src="/assets/images/imperium_logo.png" />
-              </router-link>
-            </div>
-            <div class="col-6 collapse-close">
-              <button
-                v-if="toogle"
-                @click="toogle = false"
-                class="navbar-toggler"
-              >
-                <span></span>
-                <span></span>
-              </button>
+  <div>
+    <nav
+      id="navbar-main"
+      class="navbar navbar-main navbar-expand-lg bg-white navbar-light py-2"
+    >
+      <div class="container">
+        <router-link class="navbar-brand mr-lg-5" to="/">
+          <img src="/assets/images/imperium_logo.png" />
+        </router-link>
+        <button
+          v-if="!toogle"
+          class="navbar-toggler"
+          @click="toogle = true"
+          style="z-index: 9999"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          :class="{
+            'navbar-collapse': true,
+            collapse: true,
+            show: toogle == true,
+          }"
+          id="navbar_global"
+          style="outline: 0"
+        >
+          <div class="navbar-collapse-header">
+            <div class="row">
+              <div class="col-6 collapse-brand">
+                <router-link to="/">
+                  <img src="/assets/images/imperium_logo.png" />
+                </router-link>
+              </div>
+              <div class="col-6 collapse-close">
+                <button
+                  v-if="toogle"
+                  @click="toogle = false"
+                  class="navbar-toggler"
+                >
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <ul
-          class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto"
-        >
-          <li class="nav-item dropdown">
-            <router-link
-              to="/categories"
-              class="nav-link text-primary"
-              data-toggle="dropdown"
-              role="button"
-            >
-              <span class="nav-link-inner--text">Products</span>
-            </router-link>
+          <ul
+            class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto"
+          >
+            <li class="nav-item dropdown">
+              <router-link
+                to="/categories"
+                class="nav-link text-primary"
+                data-toggle="dropdown"
+                role="button"
+              >
+                <span class="nav-link-inner--text">Products</span>
+              </router-link>
 
-            <div class="dropdown-menu dropdown-menu-xl p-2 show hide-sm">
-              <div class="dropdown-menu-inner">
-                <div class="row">
-                  <div class="col-md-6 pr-0">
-                    <div
-                      @click="$router.push('/categories?type=solar panel')"
-                      class="dropdownmarg"
-                    >
-                      <router-link
-                        to="/categories?type=solar panel"
-                        class="navdroplink"
+              <div class="dropdown-menu dropdown-menu-xl p-2 show hide-sm">
+                <div class="dropdown-menu-inner">
+                  <div class="row">
+                    <div class="col-md-6 pr-0">
+                      <div
+                        @click="$router.push('/categories?type=solar panel')"
+                        class="dropdownmarg"
                       >
-                        <img src="/assets/images/svgs/nav/solar.svg" alt="" />
-                        <p>Solar panels</p>
-                      </router-link>
-                    </div>
-                    <div
-                      @click="$router.push('/categories?type=inverter')"
-                      class="dropdownmarg"
-                    >
-                      <router-link
-                        to="/categories?type=inverter"
-                        class="navdroplink"
-                      >
-                        <img
-                          src="/assets/images/svgs/nav/inverter.svg"
-                          alt=""
-                        />
-                        <p>Inverters</p>
-                      </router-link>
-                    </div>
-                    <div class="m-4">
-                      <router-link
-                        to="/categories"
-                        class="
-                          btn btn-imp-secondary
-                          bg-primary
-                          text-white
-                          btnviewmore
-                          btnarrowlink
-                          btn-icon
-                        "
-                      >
-                        <span class="nav-link-inner--text"
-                          >View all products</span
+                        <router-link
+                          to="/categories?type=solar panel"
+                          class="navdroplink"
                         >
-                      </router-link>
-                    </div>
-                  </div>
-                  <div class="col-md-6 pl-0">
-                    <div
-                      @click="$router.push('/categories?type=bundle')"
-                      class="dropdownmarg"
-                    >
-                      <router-link
-                        to="/categories?type=bundle"
-                        class="navdroplink"
+                          <img src="/assets/images/svgs/nav/solar.svg" alt="" />
+                          <p>Solar panels</p>
+                        </router-link>
+                      </div>
+                      <div
+                        @click="$router.push('/categories?type=inverter')"
+                        class="dropdownmarg"
                       >
-                        <img
-                          src="/assets/images/svgs/nav/accessories.svg"
-                          alt=""
-                        />
-                        <p>Complete solution</p>
-                      </router-link>
+                        <router-link
+                          to="/categories?type=inverter"
+                          class="navdroplink"
+                        >
+                          <img
+                            src="/assets/images/svgs/nav/inverter.svg"
+                            alt=""
+                          />
+                          <p>Inverters</p>
+                        </router-link>
+                      </div>
+                      <div class="m-4">
+                        <router-link
+                          to="/categories"
+                          class="
+                            btn btn-imp-secondary
+                            bg-primary
+                            text-white
+                            btnviewmore
+                            btnarrowlink
+                            btn-icon
+                          "
+                        >
+                          <span class="nav-link-inner--text"
+                            >View all products</span
+                          >
+                        </router-link>
+                      </div>
                     </div>
+                    <div class="col-md-6 pl-0">
+                      <div
+                        @click="$router.push('/categories?type=bundle')"
+                        class="dropdownmarg"
+                      >
+                        <router-link
+                          to="/categories?type=bundle"
+                          class="navdroplink"
+                        >
+                          <img
+                            src="/assets/images/svgs/nav/accessories.svg"
+                            alt=""
+                          />
+                          <p>Complete solution</p>
+                        </router-link>
+                      </div>
 
-                    <div
-                      @click="$router.push('/categories?type=battery')"
-                      class="dropdownmarg"
-                    >
-                      <router-link
-                        to="/categories?type=battery"
-                        class="navdroplink"
+                      <div
+                        @click="$router.push('/categories?type=battery')"
+                        class="dropdownmarg"
                       >
-                        <img src="/assets/images/svgs/nav/battery.svg" alt="" />
-                        <p>Batteries</p>
-                      </router-link>
+                        <router-link
+                          to="/categories?type=battery"
+                          class="navdroplink"
+                        >
+                          <img
+                            src="/assets/images/svgs/nav/battery.svg"
+                            alt=""
+                          />
+                          <p>Batteries</p>
+                        </router-link>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </li>
-          <li class="nav-item">
-            <router-link to="/power-as-a-service" class="nav-link text-primary">
-              Power as a service
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/calculator" class="nav-link text-primary">
-              Energy Calculator
-            </router-link>
-          </li>
+            </li>
+            <li class="nav-item">
+              <router-link
+                to="/power-as-a-service"
+                class="nav-link text-primary"
+              >
+                Power as a service
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/calculator" class="nav-link text-primary">
+                Energy Calculator
+              </router-link>
+            </li>
 
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link text-primary"
-              data-toggle="dropdown"
-              role="button"
-            >
-              <img src="/assets/images/svgs/search.svg" alt="search" />
-            </a>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link text-primary"
+                data-toggle="dropdown"
+                role="button"
+              >
+                <img src="/assets/images/svgs/search.svg" alt="search" />
+              </a>
 
-            <div
-              class="
-                dropdown-menu dropdown-menu-search dropdown-menu-xl
-                p-2
-                show
-                hide-sm
-              "
-            >
-              <div class="dropdown-menu-inner">
-                <div class="p-4">
-                  <div class="searchinput">
-                    <img src="/assets/images/svgs/search-icon.svg" alt="" />
-                    <input
-                      v-model="searchField"
-                      placeholder="What are you looking for?"
-                      class="form-control text-dark"
-                      type="text"
-                    />
-                  </div>
-                  <div class="mt-4">
-                    <p class="text-dark" v-if="notFound">
-                      Sorry we couldn’t find your search word, try again!
-                    </p>
-                    <Loading v-if="loading" />
-                    <div v-else class="scrollSearchView">
-                      <h5
-                        class="text-dark"
-                        v-if="products.length > 1 && !loading"
-                      >
-                        Search results for "{{ searchField }}"
-                      </h5>
-                      <div class="row mt-3">
-                        <div
-                          class="col-6 col-md-4"
-                          v-for="(product, index) in products"
-                          :key="index"
+              <div
+                class="
+                  dropdown-menu dropdown-menu-search dropdown-menu-xl
+                  p-2
+                  show
+                  hide-sm
+                "
+              >
+                <div class="dropdown-menu-inner">
+                  <div class="p-4">
+                    <div class="searchinput">
+                      <img src="/assets/images/svgs/search-icon.svg" alt="" />
+                      <input
+                        v-model="searchField"
+                        placeholder="What are you looking for?"
+                        class="form-control text-dark"
+                        type="text"
+                      />
+                    </div>
+                    <div class="mt-4">
+                      <p class="text-dark" v-if="notFound">
+                        Sorry we couldn’t find your search word, try again!
+                      </p>
+                      <Loading v-if="loading" />
+                      <div v-else class="scrollSearchView">
+                        <h5
+                          class="text-dark"
+                          v-if="products.length > 1 && !loading"
                         >
-                          <div>
-                            <ProductCard :data="product" />
+                          Search results for "{{ searchField }}"
+                        </h5>
+                        <div class="row mt-3">
+                          <div
+                            class="col-6 col-md-4"
+                            v-for="(product, index) in products"
+                            :key="index"
+                          >
+                            <div>
+                              <ProductCard :data="product" />
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -206,59 +214,61 @@
                   </div>
                 </div>
               </div>
-            </div>
-          </li>
+            </li>
 
-          <!-- <li class="nav-item">
+            <!-- <li class="nav-item">
             <router-link to="/search" class="nav-link text-primary">
               <img src="/assets/images/svgs/search.svg" alt="search" />
             </router-link>
           </li> -->
-          <li class="nav-item">
-            <router-link
-              to="/cart"
-              :class="{
-                'nav-link': true,
-                'text-primary': true,
-                cartNavbar: true,
-                wiggle: itemAdded,
-              }"
-            >
-              <img src="/assets/images/svgs/cart.svg" alt="cart" />
-              <span class="cartCount">{{ cart.length }}</span>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link
-              v-if="user"
-              to="/my-account"
-              class="btn btn-imp-secondary btn-icon"
-            >
-              <span class="nav-link-inner--text"
-                >Hi, {{ user.customer.first_name }}</span
+            <li class="nav-item">
+              <router-link
+                to="/cart"
+                :class="{
+                  'nav-link': true,
+                  'text-primary': true,
+                  cartNavbar: true,
+                  wiggle: itemAdded,
+                }"
               >
-            </router-link>
-            <router-link
-              to="/login"
-              v-else
-              class="btn btn-imp-secondary btn-icon"
-            >
-              <span class="nav-link-inner--text">Login</span>
-            </router-link>
-          </li>
-        </ul>
+                <img src="/assets/images/svgs/cart.svg" alt="cart" />
+                <span class="cartCount">{{ cart.length }}</span>
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <router-link
+                v-if="user"
+                to="/my-account"
+                class="btn btn-imp-secondary btn-icon"
+              >
+                <span class="nav-link-inner--text"
+                  >Hi, {{ user.customer.first_name }}</span
+                >
+              </router-link>
+              <router-link
+                to="/login"
+                v-else
+                class="btn btn-imp-secondary btn-icon"
+              >
+                <span class="nav-link-inner--text">Login</span>
+              </router-link>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+    <GotoTop />
+  </div>
 </template>
 
 <script>
 import ProductCard from "@/components/ProductCard.vue";
 import Loading from "@/components/Loading.vue";
+import GotoTop from "@/components/GotoTop.vue";
 
 export default {
   name: "AppHeader",
-  components: { ProductCard, Loading },
+  components: { ProductCard, Loading, GotoTop },
   data() {
     return {
       toogle: false,
