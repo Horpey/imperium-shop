@@ -483,7 +483,12 @@ a.nav-link.router-link-active {
   color: black;
 }
 .categ-section {
-  background-image: url("/assets/images/category-header.svg");
+  // background-image: url("/assets/images/category-header.svg");
+  background: linear-gradient(
+    180deg,
+    #e9f7e3 3.01%,
+    rgba(241, 252, 237, 0) 100%
+  );
   background-size: cover;
   padding: 70px 0px;
 }

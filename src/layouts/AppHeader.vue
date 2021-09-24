@@ -1,14 +1,8 @@
 <template>
+  <!-- position-sticky top-0 -->
   <nav
     id="navbar-main"
-    class="
-      navbar navbar-main navbar-expand-lg
-      bg-white
-      navbar-light
-      position-sticky
-      top-0
-      py-2
-    "
+    class="navbar navbar-main navbar-expand-lg bg-white navbar-light py-2"
   >
     <div class="container">
       <router-link class="navbar-brand mr-lg-5" to="/">
@@ -152,10 +146,7 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link
-            to="/calculator"
-              class="nav-link text-primary"
-            >
+            <router-link to="/calculator" class="nav-link text-primary">
               Energy Calculator
             </router-link>
           </li>
