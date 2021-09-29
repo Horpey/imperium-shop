@@ -126,6 +126,7 @@
                             <input
                               v-model="generator.size"
                               required=""
+                              step="any"
                               class="form-control"
                               type="number"
                             />
@@ -146,27 +147,21 @@
                             <span>Hrs/Day</span>
                           </div>
                         </div>
-                        <!-- <div class="form-group calForm">
-                          <label class=""
-                            >Percentage loading in gallons/hour?
-                          </label>
-                          <select
-                            v-model="generalCal.load"
-                            name=""
-                            class="form-control"
-                            id=""
-                          >
-                            <option
-                              value=""
-                              disabled="disabled"
-                              selected="selected"
-                            ></option>
-                            <option value="25">25%</option>
-                            <option value="50">50%</option>
-                            <option value="50">75%</option>
-                            <option value="50">100%</option>
-                          </select>
-                        </div> -->
+                        <div
+                          v-if="fuelType === 'diesel'"
+                          class="form-group calForm"
+                        >
+                          <label>Percentage loading in gallons/hour?</label>
+                          <div class="inputDesc">
+                            <select class="form-control" required>
+                              <option value="" disabled selected></option>
+                              <option value="25">25%</option>
+                              <option value="50">50%</option>
+                              <option value="50">75%</option>
+                              <option value="50">100%</option>
+                            </select>
+                          </div>
+                        </div>
                         <div class="form-group calForm">
                           <label class="">Period of usage in months</label>
                           <input
