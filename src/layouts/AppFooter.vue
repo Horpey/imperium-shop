@@ -11,7 +11,7 @@
               >
             </li>
             <li>
-              <a target="_blank" href="mailto:info@imperium.com">Contact Us</a>
+              <a target="_blank" href="mailto:info@imperium.com">Contact us</a>
             </li>
             <li>
               <a target="_blank" href="https://vendor.imperiumng.com/#/signup"
@@ -20,7 +20,7 @@
             </li>
             <li>
               <a target="_blank" href="https://imperium-site.netlify.app/terms"
-                >Terms & Conditions</a
+                >Terms & conditions</a
               >
             </li>
             <!-- <li>
@@ -32,7 +32,7 @@
           <h4 class="footer-heading">Offerings</h4>
           <ul class="footer-links">
             <li>
-              <router-link to="/">Energy Calculator</router-link>
+              <router-link to="/">Energy calculator</router-link>
             </li>
 
             <li>
