@@ -8,7 +8,7 @@
               <img src="/assets/images/svgs/hot-deal.svg" alt="" />
             </div>
 
-            <h4 class="mb-2 ht-deals mt-4">HOT DEALS</h4>
+            <h4 class="mb-2 ht-deals mt-4">Hot Deals</h4>
             <p class="text-dark">Power your home with our range of products</p>
           </div>
         </div>

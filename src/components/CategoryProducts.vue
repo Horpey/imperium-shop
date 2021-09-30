@@ -48,6 +48,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .sect-heading {
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 </style>
