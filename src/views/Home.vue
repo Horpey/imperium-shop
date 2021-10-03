@@ -3,7 +3,7 @@
     <MainHeader />
     <Calculator />
     <Categories />
-    <HotDeals :hotDeals="products.solarPanel" />
+    <HotDeals :hotDeals="products.package" />
     <PayWithSpecta />
     <CategoryProducts
       :loading="loading"
@@ -47,39 +47,8 @@ export default {
         inverter: [],
         battery: [],
         bundle: [],
+        package: [],
       },
-      hotDeals: [
-        {
-          name: "2KVA Inverter",
-          description: "Pure sine wave inverter, ups, avr (stabilizer)",
-          price: "₦ 162,563",
-        },
-        {
-          name: "5KVA",
-          description: "5kva inverter",
-          price: "₦ 160,000",
-        },
-        {
-          name: "2KVA Inverter",
-          description: "Pure sine wave inverter, ups, avr (stabilizer)",
-          price: "₦ 162,563",
-        },
-        {
-          name: "5KVA",
-          description: "5kva inverter",
-          price: "₦ 160,000",
-        },
-        {
-          name: "2KVA Inverter",
-          description: "Pure sine wave inverter, ups, avr (stabilizer)",
-          price: "₦ 162,563",
-        },
-        {
-          name: "5KVA",
-          description: "5kva inverter",
-          price: "₦ 160,000",
-        },
-      ],
     };
   },
   components: {
@@ -96,6 +65,7 @@ export default {
     this.getProductsbyCategory("inverter");
     this.getProductsbyCategory("battery");
     this.getProductsbyCategory("bundle");
+    this.getProductsbyCategory("package");
   },
   methods: {
     getProductsbyCategory(category) {
@@ -120,6 +90,9 @@ export default {
               break;
             case "bundle":
               this.products.bundle = resp.data.data.result;
+              break;
+            case "package":
+              this.products.package = resp.data.data.result;
               break;
             default:
           }

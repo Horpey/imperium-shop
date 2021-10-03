@@ -114,7 +114,7 @@ export default {
       }
 
       let payload = {
-        path: `order?page=${this.current_page}&per_page=12`,
+        path: `order?page=${this.current_page}&per_page=20`,
       };
       this.$store
         .dispatch("getRequest", payload)

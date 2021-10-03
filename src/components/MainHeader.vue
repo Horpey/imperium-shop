@@ -23,8 +23,7 @@
               </p>
               <div class="btn-wrapper mt-3">
                 <router-link
-                  to="/"
-                  target="_blank"
+                  to="/categories?type=package"
                   class="
                     btn btn-imp-secondary
                     bg-primary

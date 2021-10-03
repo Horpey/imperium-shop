@@ -114,7 +114,7 @@ export default {
         categ = "";
       }
       let payload = {
-        path: `product?category=${categ}&page=${this.current_page}&per_page=12`,
+        path: `product?category=${categ}&page=${this.current_page}&per_page=20`,
       };
       this.$store
         .dispatch("getRequest", payload)
