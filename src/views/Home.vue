@@ -26,6 +26,11 @@
       category="complete solution"
       :products="products.bundle"
     />
+    <CategoryProducts
+      :loading="loading"
+      category="Accessories"
+      :products="products.accessories"
+    />
   </div>
 </template>
 
@@ -48,6 +53,7 @@ export default {
         battery: [],
         bundle: [],
         package: [],
+        accessories: [],
       },
     };
   },
@@ -66,6 +72,7 @@ export default {
     this.getProductsbyCategory("battery");
     this.getProductsbyCategory("bundle");
     this.getProductsbyCategory("package");
+    this.getProductsbyCategory("accessory");
   },
   methods: {
     getProductsbyCategory(category) {
@@ -93,6 +100,9 @@ export default {
               break;
             case "package":
               this.products.package = resp.data.data.result;
+              break;
+            case "accessory":
+              this.products.accessories = resp.data.data.result;
               break;
             default:
           }
