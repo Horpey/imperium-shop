@@ -27,6 +27,7 @@
               <option value="solar panel">Solar Panel</option>
               <option value="inverter">Inverter Solutions</option>
               <option value="battery">Battery</option>
+              <option value="accessory">Accessories</option>
               <option value="bundle">Complete Solution</option>
               <option value="package">Special offers</option>
             </select>

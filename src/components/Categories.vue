@@ -4,7 +4,10 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-4 px-0">
-          <div class="complete-sol">
+          <div
+            class="complete-sol"
+            @click="$router.push('/categories?type=bundle')"
+          >
             <h3 class="grid-head">Complete Solutions</h3>
             <p class="grid-descrip">
               Choose A Package That Suites You From Our Varieties Of Special
@@ -23,7 +26,11 @@
           </div>
         </div>
         <div class="col-md-5 px-0">
-          <div class="complete-sol invertersys" style="background: #ddeac8">
+          <div
+            class="complete-sol invertersys"
+            @click="$router.push('/categories?type=solar panel')"
+            style="background: #ddeac8"
+          >
             <div class="row align-items-center">
               <div class="col-md-4">
                 <img
@@ -48,7 +55,10 @@
               </div>
             </div>
           </div>
-          <div class="complete-sol invertersys">
+          <div
+            class="complete-sol invertersys"
+            @click="$router.push('/categories?type=inverter')"
+          >
             <div class="row align-items-center">
               <div class="col-md-8">
                 <div class="text-left">
@@ -72,7 +82,10 @@
           </div>
         </div>
         <div class="col-md-3 px-0">
-          <div class="complete-sol">
+          <div
+            class="complete-sol"
+            @click="$router.push('/categories?type=battery')"
+          >
             <h3 class="grid-head">Battery Systems</h3>
             <p class="grid-descrip">High Output And Efficient Performance</p>
             <router-link class="sect-link" to="/categories?type=battery">
