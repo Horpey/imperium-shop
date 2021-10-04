@@ -89,21 +89,20 @@
                           <p>Inverters</p>
                         </router-link>
                       </div>
-                      <div class="m-4">
+
+                      <div
+                        @click="$router.push('/categories?type=accessory')"
+                        class="dropdownmarg"
+                      >
                         <router-link
-                          to="/categories"
-                          class="
-                            btn btn-imp-secondary
-                            bg-primary
-                            text-white
-                            btnviewmore
-                            btnarrowlink
-                            btn-icon
-                          "
+                          to="/categories?type=accessory"
+                          class="navdroplink"
                         >
-                          <span class="nav-link-inner--text"
-                            >View all products</span
-                          >
+                          <img
+                            src="/assets/images/svgs/nav/accessories.svg"
+                            alt=""
+                          />
+                          <p>Accessories</p>
                         </router-link>
                       </div>
                     </div>
@@ -137,6 +136,19 @@
                             alt=""
                           />
                           <p>Batteries</p>
+                        </router-link>
+                      </div>
+
+                      <div
+                        @click="$router.push('/categories?type=package')"
+                        class="dropdownmarg"
+                      >
+                        <router-link
+                          to="/categories?type=package"
+                          class="navdroplink"
+                        >
+                          <img src="/assets/images/svgs/nav/solar.svg" alt="" />
+                          <p>Special offer</p>
                         </router-link>
                       </div>
                     </div>
