@@ -170,7 +170,7 @@
               </router-link>
             </li>
 
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown search">
               <a
                 class="nav-link text-primary"
                 data-toggle="dropdown"
@@ -212,7 +212,7 @@
                         </h5>
                         <div class="row mt-3">
                           <div
-                            class="col-6 col-md-4"
+                            class="col-6 col-md-6"
                             v-for="(product, index) in products"
                             :key="index"
                           >
@@ -372,7 +372,7 @@ export default {
   min-width: 635px;
   visibility: hidden;
   opacity: 0;
-  top: 79px;
+  top: 60px;
   transition: 0.5s all;
   border-radius: 0.3rem;
   background: #fefefe;
@@ -393,10 +393,13 @@ export default {
     }
   }
 }
+.nav-item.dropdown.search{
+  position: relative;
+}
 .dropdown-menu-search {
-  right: 0;
+     left: -219px;
   min-height: 600px;
-  width: 970px;
+  width: 500px;
 }
 .cartNavbar {
   position: relative;

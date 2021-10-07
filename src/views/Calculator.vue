@@ -79,7 +79,7 @@
                       @click="switchFormToGeneral(true)"
                       :class="{ active: calculation == 'general' }"
                     >
-                      General Based
+                      Generator Based
                     </div>
                     <div
                       @click="switchFormToGeneral(false)"
@@ -283,7 +283,7 @@
                                 disabled
                                 required
                               />
-                              <span ref="powerMeasurment">Watt</span>
+                              <span ref="powerMeasurment">KW</span>
                             </div>
                           </div>
                           <div class="form-group calForm">
