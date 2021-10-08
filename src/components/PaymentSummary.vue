@@ -126,6 +126,17 @@ export default {
 
       return text;
     },
+    userData() {
+      if (localStorage.getItem("user")) {
+        let user = this.CryptoJS.AES.decrypt(
+          localStorage.getItem("user"),
+          this.$passPhrase
+        ).toString(this.CryptoJS.enc.Utf8);
+        return JSON.parse(user);
+      } else {
+        return {};
+      }
+    },
   },
   mounted() {
     this.getCartCheckout();
@@ -133,7 +144,18 @@ export default {
 
   methods: {
     getCartCheckout() {
-      let data = {};
+      let data = {}
+      // console.log(this.userData.user.phone_number)
+      // if(this.userData.user){
+      //   data = {
+      //     contact_phone: this.userData.user.phone_number,
+      //     shipping_address: {
+      //       lga: this.userData.customer.address.lga,
+      //       state: this.userData.customer.address.state,
+      //       street: this.userData.customer.address.street
+      //     }
+      //   };
+      // }
       let payload = {
         data,
         path: "order/checkout",
