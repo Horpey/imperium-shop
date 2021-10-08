@@ -372,7 +372,7 @@ export default {
   min-width: 635px;
   visibility: hidden;
   opacity: 0;
-  top: 60px;
+  top: 94px;
   transition: 0.5s all;
   border-radius: 0.3rem;
   background: #fefefe;
@@ -394,11 +394,12 @@ export default {
   }
 }
 .nav-item.dropdown.search{
-  position: relative;
+  // position: relative;
 }
 .dropdown-menu-search {
-     left: -219px;
-  min-height: 600px;
+  right: 0px;
+  // min-height: 600px;
+  max-height: 660px;
   width: 500px;
 }
 .cartNavbar {
@@ -432,7 +433,7 @@ export default {
 }
 .scrollSearchView {
   overflow-y: scroll;
-  height: 500px;
+  max-height: 500px;
   overflow-x: hidden;
 }
 .wiggle {
