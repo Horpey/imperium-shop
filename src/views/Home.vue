@@ -23,12 +23,12 @@
     />
     <CategoryProducts
       :loading="loading"
-      category="complete solution"
+      category="bundle"
       :products="products.bundle"
     />
     <CategoryProducts
       :loading="loading"
-      category="Accessories"
+      category="Accessory"
       :products="products.accessories"
     />
   </div>

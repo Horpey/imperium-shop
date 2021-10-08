@@ -7,7 +7,12 @@
       >
         <div class="row">
           <div class="col-6">
-            <h3 class="sect-heading">{{ category }}</h3>
+            <h3 class="sect-heading">
+              <span v-if="category == 'bundle'"> Complete Solution </span>
+              <span v-else>
+                {{ category }}
+              </span>
+            </h3>
           </div>
           <div class="col-6">
             <div class="text-right">
