@@ -486,6 +486,11 @@ export default {
   overflow-y: scroll;
   max-height: 300px;
   overflow-x: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 .wiggle {
   /* Start the shake animation and make the animation last for 0.5 seconds */
