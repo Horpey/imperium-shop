@@ -198,7 +198,58 @@
                         type="text"
                       />
                     </div>
-                    <div class="mt-4">
+                    <div class="scrollSearchView">
+                      <p class="text-dark" v-if="notFound">
+                        Sorry we couldn’t find your search word, try again!
+                      </p>
+                      <Loading v-if="loading" />
+                      <div v-else>
+                        <p
+                          class="text-dark pt-2"
+                          v-if="products.length > 1 && !loading"
+                        >
+                          Search results for "{{ searchField }}"
+                        </p>
+                        <div
+                          class="searchlist"
+                          v-for="(product, index) in products"
+                          :key="index"
+                          @click="
+                            $router.push(
+                              `/product/${product.slug}?category=${product.category}`
+                            )
+                          "
+                        >
+                          <div class="row">
+                            <div class="col-2">
+                              <div class="search-image-view">
+                                <img :src="product.display_image" alt="" />
+                              </div>
+                            </div>
+                            <div class="col-10">
+                              <h6
+                                class="
+                                  text-dark
+                                  mt-2
+                                  font-weight-bold
+                                  mb-1
+                                  text-capitalize
+                                "
+                              >
+                                {{ product.name }}
+                              </h6>
+                              <p class="search-description">
+                                {{ product.description }}
+                              </p>
+                              <p class="price f-bold text-dark">
+                                {{ $helpers.formatPrice(product.price) }}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="mt-4">
                       <p class="text-dark" v-if="notFound">
                         Sorry we couldn’t find your search word, try again!
                       </p>
@@ -222,7 +273,7 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -369,7 +420,7 @@ export default {
 </script>
 <style lang="scss">
 .dropdown-menu-xl {
-  min-width: 635px;
+  min-width: 500px;
   visibility: hidden;
   opacity: 0;
   top: 94px;
@@ -393,7 +444,7 @@ export default {
     }
   }
 }
-.nav-item.dropdown.search{
+.nav-item.dropdown.search {
   // position: relative;
 }
 .dropdown-menu-search {
@@ -433,7 +484,7 @@ export default {
 }
 .scrollSearchView {
   overflow-y: scroll;
-  max-height: 500px;
+  max-height: 300px;
   overflow-x: hidden;
 }
 .wiggle {

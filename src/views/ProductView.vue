@@ -37,11 +37,19 @@ export default {
       return this.$route.query.category;
     },
   },
+  watch: {
+    "$route.params.slug": function () {
+      this.initiateSearches();
+    },
+  },
   mounted() {
-    this.getProductDetails();
-    this.getProductsbyCategory();
+    this.initiateSearches();
   },
   methods: {
+    initiateSearches() {
+      this.getProductDetails();
+      this.getProductsbyCategory();
+    },
     getProductsbyCategory() {
       this.loading = true;
       let payload = {
